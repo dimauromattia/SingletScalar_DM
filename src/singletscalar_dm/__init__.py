@@ -8,12 +8,24 @@ in the root directory.
 .. code-block::shell
     python -m pip install .
 
-Importing the package automatically loads a matplotlibrc file defining the
-plotting style.
-
 Functions
 ---------
 set_plot_style
+interpolate_Omega
+interpolate_Omega_MicrOMEGAs
+interpolate_lambda
+interpolate_lambda_MicrOMEGAs
+sigmav_channels
+DMspectra_inttable
+provide_ULEXP
+SI_noomega
+SI_withomega
+GetUL_DD_nomega
+GetUL_DD_withomega
+minimize_br_inv
+Gamma_inv
+Br_inv
+Br_inv_UL
 
 Variables
 ---------
