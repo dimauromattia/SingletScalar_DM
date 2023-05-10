@@ -6,10 +6,19 @@
 Welcome to SingletScalar-DM's documentation!
 ============================================
 
+Contents
+========
+
 .. toctree::
-   :maxdepth: 2
+   Back to Github <https://github.com/dimauromattia/SingletScalar_DM>
+
+.. toctree::
+   :maxdepth: 1
    :caption: Contents:
 
+   modules
+   singletscalar_dm
+   examples_gallery/index
 
 
 Indices and tables

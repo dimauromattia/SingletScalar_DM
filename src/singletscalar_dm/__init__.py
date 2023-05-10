@@ -5,7 +5,8 @@ Singlet Scalar DM
 This repository should be installed through `pip`, running the following command
 in the root directory.
 
-.. code-block::shell
+.. code-block:: bash
+
     python -m pip install .
 
 Functions
@@ -50,9 +51,6 @@ These data files can be obtained by using `importlib.resources`:
 
 >>> from importlib.resources import files
 ... data_text = files('singletscalar_dm.data').joinpath('SHP_sigmav_bb.dat')
-
-The package provides a matplotlibrc file to be used as a default plotting style
-Running the function `set_plot_style` automatically sets this style.
 '''
 
 from . import _globals

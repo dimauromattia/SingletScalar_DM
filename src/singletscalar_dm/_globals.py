@@ -1,7 +1,8 @@
 '''Global variables definitions.
 
 Sub-module containing global variables definitions.
-Variables and functions defined here are also present in the ``src`` namespace.
+Variables and functions defined here are also present in the ``singletscalar_dm``
+namespace.
 
 '''
 
@@ -25,14 +26,19 @@ import numpy as np
 
 fN = 0.297
 ''' Parametrization of Higgs boson-nucleon interaction. '''
+
 mN = 0.946
 ''' Nucleon mass in GeV. '''
+
 mh = 125.00
 ''' Higgs Boson mass in GeV. '''
+
 GeVm2tocm2 = 0.3894*1e-3*1e-24
 ''' Conversion factor from GeV^-2 to cm^2. '''
+
 Gamma_H_SM = 3.2*1e-3 # GeV (3.2^+2.4_-1.7 MeV)
 ''' Higgs boson decay width to SM particles in GeV. '''
+
 v = 246.0
 ''' Vacuum expectation value of the Higgs boson in GeV. '''
 
