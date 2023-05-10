@@ -10,7 +10,6 @@ in the root directory.
 
 Functions
 ---------
-set_plot_style
 interpolate_Omega
 interpolate_Omega_MicrOMEGAs
 interpolate_lambda

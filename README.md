@@ -11,7 +11,7 @@ The package supports Python 3.10 and beyond.
 Moreover, it depends on the following packages:
 * [`numpy`](https://numpy.org/)
 * [`scipy`](https://scipy.org/)
-* [`matplotlib`](https://matplotlib.org/) (only to load the main plotting style)
+* [`matplotlib`](https://matplotlib.org/) (to run the examples)
 
 To install the package along its dependencies, download or clone this repository
 and run the following command in the package directory:

@@ -6,7 +6,6 @@ import matplotlib.pyplot as plt
 from ._globals import *
 
 __all__ = [
-    'set_plot_style',
     'interpolate_Omega',
     'interpolate_Omega_MicrOMEGAs',
     'interpolate_lambda',
@@ -25,12 +24,6 @@ __all__ = [
 ]
 
 _data_dir = files('singletscalar_dm.data')
-
-def set_plot_style():
-    '''Sets the default plot style provided by this package.'''
-    plt.style.use(
-        files('singletscalar_dm.plot_styles').joinpath('matplotlibrc')
-    )
 
 def interpolate_Omega(mass_val,lambda_val,QCDmodel):
     '''Calculates the relic density as Omega h^2 given the mass and lambda.
