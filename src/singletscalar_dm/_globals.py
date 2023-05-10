@@ -24,18 +24,18 @@ __all__ = [
 import numpy as np
 
 fN = 0.297
-'''  '''
+''' Parametrization of Higgs boson-nucleon interaction. '''
 mN = 0.946
-'''  '''
+''' Nucleon mass in GeV. '''
 mh = 125.00
-''' Higgs Boson mass in GeV '''
+''' Higgs Boson mass in GeV. '''
 GeVm2tocm2 = 0.3894*1e-3*1e-24
-''' Conversion factor between GeV^-2 to cm^2 '''
-Gamma_H_SM = 3.2*1e-3 #GeV (3.2^+2.4_-1.7 MeV)
-''' Higgs boson decay width to SM particles in GeV '''
-v = 246.0    
-''' Dark matter halo velocity in km/s '''
-    
+''' Conversion factor from GeV^-2 to cm^2. '''
+Gamma_H_SM = 3.2*1e-3 # GeV (3.2^+2.4_-1.7 MeV)
+''' Higgs boson decay width to SM particles in GeV. '''
+v = 246.0
+''' Vacuum expectation value of the Higgs boson in GeV. '''
+
 mass_vector_micro = np.array([2.00000000e+00, 2.09622627e+00, 2.19708228e+00, 2.30279080e+00,
           2.41358528e+00, 2.52971043e+00, 2.65142273e+00, 2.77899099e+00,
           2.91269696e+00, 3.05283593e+00, 3.19971744e+00, 3.35366587e+00,

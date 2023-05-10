@@ -13,7 +13,7 @@ plotting style.
 
 Functions
 ---------
-
+set_plot_style
 
 Variables
 ---------
@@ -30,6 +30,18 @@ MassDD_vec
 logenergyx_bins
 lambda_vec
 lambdahs_vec
+
+Notes
+-----
+The package routines rely on additional data files containing the main data
+the computations are based on.
+These data files can be obtained by using `importlib.resources`:
+
+>>> from importlib.resources import files
+... data_text = files('singletscalar_dm.data').joinpath('SHP_sigmav_bb.dat')
+
+The package provides a matplotlibrc file to be used as a default plotting style
+Running the function `set_plot_style` automatically sets this style.
 '''
 
 from . import _globals
