@@ -51,7 +51,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel):
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
 
         bins=100
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_DRAKE_fBE_%s.txt'%QCDmodel))
+        table = np.loadtxt(_data_dir.joinpath('tableOmega_DRAKE_fBE_%s.dat'%QCDmodel))
         idx = np.searchsorted(mass_vector_drake, mass_val, side='right')-1
 
         cont1 = idx*bins
@@ -95,7 +95,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel):
 
     else:
         if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-            table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.txt'))
+            table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
             Omega_table = table[:,2]
             lambdahs_vec = np.logspace(-5,2,500)
             func  = interp2d(mass_vector_micro,lambdahs_vec,Omega_table)
@@ -126,7 +126,7 @@ def interpolate_Omega_MicrOMEGAs(mass_val,lambda_val):
     '''
 
     if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.txt'))
+        table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
         Omega_table = table[:,2]
         lambdahs_vec = np.logspace(-5,2,500)
         func  = interp2d(mass_vector_micro,lambdahs_vec,Omega_table)
@@ -161,7 +161,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel):
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
 
         bins=100
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_DRAKE_fBE_%s.txt'%QCDmodel))
+        table = np.loadtxt(_data_dir.joinpath('tableOmega_DRAKE_fBE_%s.dat'%QCDmodel))
         idx = np.searchsorted(mass_vector_drake, mass_val, side='right')-1
 
         cont1 = idx*bins
@@ -204,7 +204,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel):
 
     else:
         if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-            table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.txt'))
+            table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
             bins = 500
             lambdahs_vec = np.logspace(-5,2,bins)
             bins=len(lambdahs_vec)
@@ -296,7 +296,7 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val):
     '''
 
     if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.txt'))
+        table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
         bins = 500
         lambdahs_vec = np.logspace(-5,2,bins)
         bins=len(lambdahs_vec)
@@ -446,11 +446,11 @@ def sigmav_channels(DMmass_val,lambdahs_val,channel):
     #print(check,np.where((channel_vec[:]==channel)),np.where((channel_vec[:]==channel)))
     #if check==1:
     if channel=='tot':
-        table_int = np.loadtxt(_data_dir.joinpath('SHP_sigmav_table.txt'))
+        table_int = np.loadtxt(_data_dir.joinpath('SHP_sigmav_table.dat'))
         sigmav_val = _lambda2sigmav(DMmass_val,lambdahs_val,table_int)
 
     else:
-        table_int = np.loadtxt(_data_dir.joinpath('SHP_sigmav_%s.txt'%channel))
+        table_int = np.loadtxt(_data_dir.joinpath('SHP_sigmav_%s.dat'%channel))
         sigmav_val = _lambda2sigmav(DMmass_val,lambdahs_val,table_int)
 
     return sigmav_val
@@ -484,7 +484,7 @@ def DMspectra_inttable(DMmass_val,lambdahs_val,particle,smooth=False):
     add = ''
     if smooth:
         add = '_smooth'
-    tablespectra_int = np.loadtxt(_data_dir.joinpath('SHP_spectra%s_table_%s.txt'%(add,particle)))
+    tablespectra_int = np.loadtxt(_data_dir.joinpath('SHP_spectra%s_table_%s.dat'%(add,particle)))
 
     if DMmass_val<=massz_vec[164]:
         func_int = interp2d(massz_vec,logenergyx_bins,tablespectra_int[:,5])
@@ -608,7 +608,7 @@ def SI_noomega(DMmass_val,lambdahs_val):
 def SI_withomega(lambda_hs,DMmass,Lambda_vec,Mass_vec,csi_vec):
     '''Provides the spin-independent cross-section for direct detection in cm^2.
 
-    ####
+    <missing>
 
     Parameters
     ----------
@@ -617,11 +617,11 @@ def SI_withomega(lambda_hs,DMmass,Lambda_vec,Mass_vec,csi_vec):
     lambdahs_val : np.ndarray
         Values of the lambda_HS parameter.
     Lambda_vec : np.ndarray
-        ####
+        <missing>
     Mass_vec : np.ndarray
-        ####
+        <missing>
     csi_vec : np.ndarray
-        ####
+        <missing>
 
     Return
     ------
@@ -639,7 +639,7 @@ def GetUL_DD_nomega(DMmass_val,Exp):
 
     It interpolates the limits on the array of dark matter masses provided.
     Limits are returned in units cm^2.
-    ####
+    <missing>
 
     Parameters
     ----------
@@ -665,7 +665,7 @@ def GetUL_DD_nomega(DMmass_val,Exp):
         print('Choose among LZ and DARWIN')
 
 def _tominimize_DD(Lambda_val,DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
-    ''' Function to minimize #### '''
+    ''' Function to minimize <missing> '''
     #print(Lambda_val)
     if Lambda_val<=Lambda_vec[0]:
         Lambda_val=Lambda_vec[0]
@@ -683,18 +683,18 @@ def GetUL_DD_withomega(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
 
     It interpolates the limits on the array of dark matter masses provided.
     Limits are returned in units cm^2.
-    ####
+    <missing>
 
     Parameters
     ----------
     DMmass : np.ndarray
         Dark matter mass values in GeV.
     Lambda_vec : np.ndarray
-        ####
+        <missing>
     Mass_vec : np.ndarray
-        ####
+        <missing>
     csi_vec : np.ndarray
-        ####
+        <missing>
     Exp : {'LZ', 'Darwin'}
         The experiment to consider.
 
@@ -743,9 +743,9 @@ def GetUL_DD_withomega(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
         return value
 
 def minimize_br_inv(DMmass,Gamma_H,Gamma_inv_measured):
-    '''####
+    '''<missing>
 
-    ####
+    <missing>
 
     Parameters
     ----------
@@ -759,8 +759,8 @@ def minimize_br_inv(DMmass,Gamma_H,Gamma_inv_measured):
     Return
     ------
     ndarray
+        <missing>
     '''
-        ####
     lambda_0 = 0.01
     value = minimize(Br_inv_UL, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Gamma_H,Gamma_inv_measured)).x[0]
     return value 
@@ -799,8 +799,8 @@ def Br_inv(lambda_hs,DMmass,Gamma_H):
     Br_inv : ndarray
         The Branching ratio of Higgs to invisible.
     '''
-    Gamma_inv = Gamma_inv(DMmass,lambda_hs)
-    return (Gamma_inv)/(Gamma_H+Gamma_inv)
+    Gamma_inv_value = Gamma_inv(DMmass,lambda_hs)
+    return (Gamma_inv_value)/(Gamma_H+Gamma_inv_value)
 
 def Br_inv_UL(lambda_hs,DMmass,Gamma_H,Gamma_inv_measured):
     '''Calculates the upper limit on the Branching ratio of Higgs boson to invisible particles.

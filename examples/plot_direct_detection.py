@@ -59,7 +59,7 @@ plt.show()
 
 Omegah2_best = 0.120
 
-table = np.loadtxt(_data_dir.joinpath('Omega_MICROMEGAs_zoom_paper.txt'))
+table = np.loadtxt(_data_dir.joinpath('Omega_MICROMEGAs_zoom_paper.dat'))
 
 Lambda_vec = np.logspace(-5,1,500)
 csi_vec = np.zeros(len(MassDD_vec)*len(Lambda_vec))
@@ -86,7 +86,7 @@ for t in range(len(MassDD_vec)):
 
 # %%
 
-table_RD_FB = np.loadtxt(_data_dir.joinpath('DRAKE_omega_fBE_QCDB_paper.txt'))
+table_RD_FB = np.loadtxt(_data_dir.joinpath('DRAKE_omega_fBE_QCDB_paper.dat'))
 mass_RD_FBQCDB = table_RD_FB[:,0]
 lambda_RD_FBQCDB = table_RD_FB[:,1]
 

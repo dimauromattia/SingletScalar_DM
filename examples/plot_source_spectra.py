@@ -46,7 +46,7 @@ plt.yscale('log')
 plt.xscale('linear')
 plt.legend(loc=4,prop={'size':16},numpoints=1, scatterpoints=1, ncol=2)
 fig.tight_layout(pad=0.5)
-plt.savefig('plots/DMspectra_gamma.pdf')
+plt.show()
 
 # %%
 
@@ -69,7 +69,7 @@ plt.yscale('log')
 plt.xscale('linear')
 plt.legend(loc=2,prop={'size':16},numpoints=1, scatterpoints=1, ncol=1)
 fig.tight_layout(pad=0.5)
-plt.savefig('plots/DMspectra_antiprotons.pdf')
+plt.show()
 
 # %%
 
