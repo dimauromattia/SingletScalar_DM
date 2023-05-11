@@ -2,13 +2,6 @@
 Singlet Scalar DM
 =================
 
-This repository should be installed through `pip`, running the following command
-in the root directory.
-
-.. code-block:: bash
-
-    python -m pip install .
-
 Functions
 ---------
 interpolate_Omega

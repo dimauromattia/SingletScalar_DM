@@ -1,5 +1,7 @@
 # SingletScalar_DM
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![arXiv](https://img.shields.io/static/v1?label=arXiv&message=2107.04598&color=red&style=for-the-badge&link=https://arxiv.org/abs/2107.04598&link=https://arxiv.org/abs/2107.04598)
 <!-- Put also the banners for the version of the package, the python version, the arxiv and the licence. -->
 
 This repository contains the code for calculating cross sections, relic density
@@ -13,7 +15,9 @@ Moreover, it depends on the following packages:
 * [`scipy`](https://scipy.org/)
 * [`matplotlib`](https://matplotlib.org/) (to run the examples)
 
-To install the package along its dependencies, download or clone this repository
+To install the package along its dependencies, download a release (for stable
+version) or clone this repository (for development version) and run the following
+command in the package directory:
 and run the following command in the package directory:
 
 ```shell
