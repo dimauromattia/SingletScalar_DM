@@ -11,9 +11,9 @@ Installation
 
 The package supports Python 3.10 and beyond.
 Moreover, it depends on the following packages:
-* .. _`numpy`: https://numpy.org/
-* .. _`scipy`: https://scipy.org/
-* .. _`matplotlib`: https://matplotlib.org/
+
+- |numpy|_
+- |scipy|_
 
 To install the package along its dependencies, download a release (for stable
 version) or clone this repository (for development version) and run the following
@@ -23,21 +23,42 @@ command in the package directory:
 
     python -m pip install .
 
+.. |numpy| replace:: ``numpy``
+.. _numpy: https://numpy.org/
+.. |scipy| replace:: ``scipy``
+.. _scipy: https://scipy.org/
+
+Running the examples
+--------------------
+
+The examples rely on the |matplotlib|_ package in order to show the plots.
+You can install this dependence using the following command in the package root
+directory:
+
+.. code-block:: bash
+
+    python -m pip install '.[examples]'
+
+.. |matplotlib| replace:: ``matplotlib``
+.. _matplotlib: https://matplotlib.org/
+
 Building the documentation
 --------------------------
 
-If you want to rebuild the documentation for yourself, you
-need to use .. _`sphinx`: https://www.sphinx-doc.org/en/master/ with the configuration
-present in the `docs/` folder.
+If you want to rebuild the documentation for yourself, you need to use |sphinx|_
+with the configuration provided in the `docs/` folder.
 
-You can install the required dependencies using this command in the package
+You can install the required dependencies using the following command in the package
 root directory:
 
 .. code-block:: bash
 
     python -m pip install '.[docs]'
 
-Build as usual following the [`sphinx`](https://www.sphinx-doc.org/en/master/) directives.
+Build as usual following the |sphinx|_ directives.
+
+.. |sphinx| replace:: ``sphinx``
+.. _sphinx: https://www.sphinx-doc.org/en/master/
 
 Contents
 ========
@@ -47,7 +68,7 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Contents:
+   :caption: Topics:
 
    modules
    singletscalar_dm
