@@ -52,7 +52,6 @@ sphinx_gallery_conf = {
     'remove_config_comments': True,
 }
 
-templates_path = ['_templates']
 exclude_patterns = []
 
 
@@ -61,4 +60,3 @@ exclude_patterns = []
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'pydata_sphinx_theme'
-html_static_path = ['_static']

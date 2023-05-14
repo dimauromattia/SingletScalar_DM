@@ -133,10 +133,9 @@ fig.tight_layout(pad=0.5)
 plt.show()
 
 # %%
-# The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the module `importlib`.
+# The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the function `import_data_file`.
 
-from importlib.resources import files
-omega_drake_micromegas = files('singletscalar_dm.data').joinpath('Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat')
+omega_drake_micromegas = import_data_file('Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat')
 table = np.loadtxt(omega_drake_micromegas)
 mass_RD = table[:,0]
 lambda_RD_FBQCDA = table[:,1]

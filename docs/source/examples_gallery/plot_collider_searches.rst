@@ -23,16 +23,14 @@ Direct detection
 
 Calculate various direct detection observables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-14
+.. GENERATED FROM PYTHON SOURCE LINES 7-12
 
 .. code-block:: default
 
 
     import matplotlib.pyplot as plt
     import numpy as np
-    from importlib.resources import files
     from singletscalar_dm import *
-    _data_dir = files('singletscalar_dm.data')
 
 
 
@@ -41,12 +39,12 @@ Calculate various direct detection observables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 15-17
+.. GENERATED FROM PYTHON SOURCE LINES 13-15
 
 The constraints from collider searches are calculated using the upper limits on the contribution of invisible Higgs decay. 
 The package calculates the branching ratio in invibile decay with the function `Gamma_inv`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 17-21
+.. GENERATED FROM PYTHON SOURCE LINES 15-19
 
 .. code-block:: default
 
@@ -67,11 +65,11 @@ The package calculates the branching ratio in invibile decay with the function `
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 22-23
+.. GENERATED FROM PYTHON SOURCE LINES 20-21
 
 In the following, we show how to compute the upper limits using collider data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 23-37
+.. GENERATED FROM PYTHON SOURCE LINES 21-35
 
 .. code-block:: default
 
@@ -8101,13 +8099,13 @@ In the following, we show how to compute the upper limits using collider data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-42
+.. GENERATED FROM PYTHON SOURCE LINES 36-40
 
 .. code-block:: default
 
 
-    table_newB = np.loadtxt(_data_dir.joinpath('bounds_collider_SHP_current.dat'))
-    table_newB_p = np.loadtxt(_data_dir.joinpath('bounds_collider_SHP_projection.dat'))
+    table_newB = np.loadtxt(import_data_file('bounds_collider_SHP_current.dat'))
+    table_newB_p = np.loadtxt(import_data_file('bounds_collider_SHP_projection.dat'))
 
 
 
@@ -8116,7 +8114,7 @@ In the following, we show how to compute the upper limits using collider data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 43-62
+.. GENERATED FROM PYTHON SOURCE LINES 41-60
 
 .. code-block:: default
 
@@ -8154,7 +8152,7 @@ In the following, we show how to compute the upper limits using collider data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.856 seconds)
+   **Total running time of the script:** ( 0 minutes  3.051 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_collider_searches.py:

@@ -635,15 +635,14 @@ In the following, we will generate a plot with the values of :math:`m_S` and :ma
 
 .. GENERATED FROM PYTHON SOURCE LINES 136-137
 
-The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the module `importlib`.
+The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the function `import_data_file`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-159
+.. GENERATED FROM PYTHON SOURCE LINES 137-158
 
 .. code-block:: default
 
 
-    from importlib.resources import files
-    omega_drake_micromegas = files('singletscalar_dm.data').joinpath('Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat')
+    omega_drake_micromegas = import_data_file('Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat')
     table = np.loadtxt(omega_drake_micromegas)
     mass_RD = table[:,0]
     lambda_RD_FBQCDA = table[:,1]
@@ -678,7 +677,7 @@ The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  28.663 seconds)
+   **Total running time of the script:** ( 4 minutes  38.698 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_relic_density.py:

@@ -21,7 +21,7 @@
 Annihilation cross section
 ==========================
 
-Calculate the annihilation cross section, :math:`\langle \sigma v angle` for the various annihilation channels of the model.
+Calculate the annihilation cross section, :math:`\langle \sigma v \rangle` for the various annihilation channels of the model.
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-12
 
@@ -210,7 +210,7 @@ Which we can further plot.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  7.056 seconds)
+   **Total running time of the script:** ( 0 minutes  17.099 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_annihilation_cross_section.py:

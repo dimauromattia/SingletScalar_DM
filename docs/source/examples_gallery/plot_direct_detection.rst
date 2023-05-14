@@ -23,7 +23,7 @@ Direct detection
 
 Calculate various direct detection observables.
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-15
+.. GENERATED FROM PYTHON SOURCE LINES 7-13
 
 .. code-block:: default
 
@@ -31,9 +31,7 @@ Calculate various direct detection observables.
     import matplotlib.pyplot as plt
     import numpy as np
     from scipy.interpolate import interp1d
-    from importlib.resources import files
     from singletscalar_dm import *
-    _data_dir = files('singletscalar_dm.data')
 
 
 
@@ -42,13 +40,13 @@ Calculate various direct detection observables.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-19
+.. GENERATED FROM PYTHON SOURCE LINES 14-17
 
 The direct detection part is calculated using the function `SI_noomega`.
 This function performs the calculation of the spin independent cross section analytically assuming that :math:`f_N=0.297`.
 In the following, we sho the calculation of the spin independent cross section for a specific value of DM mass and coupling. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 19-24
+.. GENERATED FROM PYTHON SOURCE LINES 17-22
 
 .. code-block:: default
 
@@ -70,12 +68,12 @@ In the following, we sho the calculation of the spin independent cross section f
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 25-27
+.. GENERATED FROM PYTHON SOURCE LINES 23-25
 
 Instead, in order to find the upper limits for :math:`\lambda_{HS}`, you can use the function `GetUL_DD_Mine_nomega`.
 The example below calculates the upper limits for :math:`\lambda_{HS}` for the LZ and future DARWIN experiments.
 
-.. GENERATED FROM PYTHON SOURCE LINES 27-35
+.. GENERATED FROM PYTHON SOURCE LINES 25-33
 
 .. code-block:: default
 
@@ -94,7 +92,7 @@ The example below calculates the upper limits for :math:`\lambda_{HS}` for the L
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 36-56
+.. GENERATED FROM PYTHON SOURCE LINES 34-54
 
 .. code-block:: default
 
@@ -130,19 +128,19 @@ The example below calculates the upper limits for :math:`\lambda_{HS}` for the L
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-59
+.. GENERATED FROM PYTHON SOURCE LINES 55-57
 
 It is also possible to calculate the direct detection constraints including the rescaling due to the density of dark matter of the :math:`S` particles.
 First, we calculate the :math:`\xi` term which is the relative ratio of :math:`S` particle density over the total dark matter one.
 
-.. GENERATED FROM PYTHON SOURCE LINES 59-77
+.. GENERATED FROM PYTHON SOURCE LINES 57-75
 
 .. code-block:: default
 
 
     Omegah2_best = 0.120
 
-    table = np.loadtxt(_data_dir.joinpath('Omega_MICROMEGAs_zoom_paper.dat'))
+    table = np.loadtxt(import_data_file('Omega_MICROMEGAs_zoom_paper.dat'))
 
     Lambda_vec = np.logspace(-5,1,500)
     csi_vec = np.zeros(len(MassDD_vec)*len(Lambda_vec))
@@ -171,11 +169,11 @@ First, we calculate the :math:`\xi` term which is the relative ratio of :math:`S
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 78-79
+.. GENERATED FROM PYTHON SOURCE LINES 76-77
 
 The we use the function `GetUL_DD` to get the upper limits including also the relic density of :math:`S`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 79-87
+.. GENERATED FROM PYTHON SOURCE LINES 77-85
 
 .. code-block:: default
 
@@ -579,12 +577,12 @@ The we use the function `GetUL_DD` to get the upper limits including also the re
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-100
+.. GENERATED FROM PYTHON SOURCE LINES 86-98
 
 .. code-block:: default
 
 
-    table_RD_FB = np.loadtxt(_data_dir.joinpath('DRAKE_omega_fBE_QCDB_paper.dat'))
+    table_RD_FB = np.loadtxt(import_data_file('DRAKE_omega_fBE_QCDB_paper.dat'))
     mass_RD_FBQCDB = table_RD_FB[:,0]
     lambda_RD_FBQCDB = table_RD_FB[:,1]
 
@@ -602,7 +600,7 @@ The we use the function `GetUL_DD` to get the upper limits including also the re
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 101-124
+.. GENERATED FROM PYTHON SOURCE LINES 99-122
 
 .. code-block:: default
 
@@ -644,7 +642,7 @@ The we use the function `GetUL_DD` to get the upper limits including also the re
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  9.125 seconds)
+   **Total running time of the script:** ( 0 minutes  11.707 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_direct_detection.py:

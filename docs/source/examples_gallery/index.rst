@@ -44,7 +44,7 @@ directory:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Calculate the annihilation cross section, \langle \sigma v angle for the various annihilation ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate the annihilation cross section, \langle \sigma v \rangle for the various annihilation...">
 
 .. only:: html
 

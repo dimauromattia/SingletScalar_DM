@@ -7,9 +7,7 @@ Calculate various direct detection observables.
 
 import matplotlib.pyplot as plt
 import numpy as np
-from importlib.resources import files
 from singletscalar_dm import *
-_data_dir = files('singletscalar_dm.data')
 
 # %%
 # The constraints from collider searches are calculated using the upper limits on the contribution of invisible Higgs decay. 
@@ -36,8 +34,8 @@ for t in range(len(DMmass_vec)):
 
 # %%
 
-table_newB = np.loadtxt(_data_dir.joinpath('bounds_collider_SHP_current.dat'))
-table_newB_p = np.loadtxt(_data_dir.joinpath('bounds_collider_SHP_projection.dat'))
+table_newB = np.loadtxt(import_data_file('bounds_collider_SHP_current.dat'))
+table_newB_p = np.loadtxt(import_data_file('bounds_collider_SHP_projection.dat'))
 
 # %%
 

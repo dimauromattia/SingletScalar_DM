@@ -1,4 +1,4 @@
-'''
+r'''
 Annihilation cross section
 ==========================
 

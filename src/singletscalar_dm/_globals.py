@@ -20,8 +20,10 @@ __all__ = [
     'logenergyx_bins',
     'lambda_vec',
     'lambdahs_vec',
+    'import_data_file'
 ]
 
+import importlib.resources
 import numpy as np
 
 fN = 0.297
@@ -229,3 +231,29 @@ lambda_vec = np.logspace(-2.,1.,13)
 '''  '''
 lambdahs_vec = np.logspace(-4,1,21)
 '''  '''
+
+def import_data_file(file_name):
+    '''Return the path of a data file in singletscalar_dm.data
+
+    Parameters
+    ----------
+    file_name : str
+        The file name.
+
+    Returns
+    -------
+    path : str
+        The path of the specified ``file_name``.
+
+    Raises
+    ------
+    FileNotFoundError
+        If the specified file does not exist in the package data.
+
+    Notes
+    -----
+    It leverages `importlib.resources.path`, which can be used from Python 3.7.
+    '''
+    with importlib.resources.path("singletscalar_dm.data", file_name) as f:
+        path = str(f)
+    return path

@@ -1,5 +1,5 @@
-singletscalar_dm
-================
+src
+===
 
 .. toctree::
    :maxdepth: 4

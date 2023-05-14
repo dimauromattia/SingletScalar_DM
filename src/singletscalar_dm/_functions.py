@@ -1,8 +1,12 @@
-from importlib.resources import files
+'''Main functions
+
+Sub-module containing the main package functions.
+Functions defined here are also present in the ``singletscalar_dm`` namespace.
+
+'''
 import numpy as np
 from scipy.interpolate import (interp1d, interp2d, CubicSpline)
 from scipy.optimize import minimize
-import matplotlib.pyplot as plt
 from ._globals import *
 
 __all__ = [
@@ -22,8 +26,6 @@ __all__ = [
     'Br_inv',
     'Br_inv_UL',
 ]
-
-_data_dir = files('singletscalar_dm.data')
 
 def interpolate_Omega(mass_val,lambda_val,QCDmodel):
     '''Calculates the relic density as Omega h^2 given the mass and lambda.
@@ -51,7 +53,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel):
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
 
         bins=100
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_DRAKE_fBE_%s.dat'%QCDmodel))
+        table = np.loadtxt(import_data_file('tableOmega_DRAKE_fBE_%s.dat'%QCDmodel))
         idx = np.searchsorted(mass_vector_drake, mass_val, side='right')-1
 
         cont1 = idx*bins
@@ -95,7 +97,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel):
 
     else:
         if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-            table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
+            table = np.loadtxt(import_data_file('tableOmega_MicroOMEGAs.dat'))
             Omega_table = table[:,2]
             lambdahs_vec = np.logspace(-5,2,500)
             func  = interp2d(mass_vector_micro,lambdahs_vec,Omega_table)
@@ -126,7 +128,7 @@ def interpolate_Omega_MicrOMEGAs(mass_val,lambda_val):
     '''
 
     if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
+        table = np.loadtxt(import_data_file('tableOmega_MicroOMEGAs.dat'))
         Omega_table = table[:,2]
         lambdahs_vec = np.logspace(-5,2,500)
         func  = interp2d(mass_vector_micro,lambdahs_vec,Omega_table)
@@ -161,7 +163,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel):
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
 
         bins=100
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_DRAKE_fBE_%s.dat'%QCDmodel))
+        table = np.loadtxt(import_data_file('tableOmega_DRAKE_fBE_%s.dat'%QCDmodel))
         idx = np.searchsorted(mass_vector_drake, mass_val, side='right')-1
 
         cont1 = idx*bins
@@ -204,7 +206,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel):
 
     else:
         if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-            table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
+            table = np.loadtxt(import_data_file('tableOmega_MicroOMEGAs.dat'))
             bins = 500
             lambdahs_vec = np.logspace(-5,2,bins)
             bins=len(lambdahs_vec)
@@ -296,7 +298,7 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val):
     '''
 
     if mass_val>mass_vector_micro.min() and mass_val<mass_vector_micro.max():
-        table = np.loadtxt(_data_dir.joinpath('tableOmega_MicroOMEGAs.dat'))
+        table = np.loadtxt(import_data_file('tableOmega_MicroOMEGAs.dat'))
         bins = 500
         lambdahs_vec = np.logspace(-5,2,bins)
         bins=len(lambdahs_vec)
@@ -446,11 +448,11 @@ def sigmav_channels(DMmass_val,lambdahs_val,channel):
     #print(check,np.where((channel_vec[:]==channel)),np.where((channel_vec[:]==channel)))
     #if check==1:
     if channel=='tot':
-        table_int = np.loadtxt(_data_dir.joinpath('SHP_sigmav_table.dat'))
+        table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
         sigmav_val = _lambda2sigmav(DMmass_val,lambdahs_val,table_int)
 
     else:
-        table_int = np.loadtxt(_data_dir.joinpath('SHP_sigmav_%s.dat'%channel))
+        table_int = np.loadtxt(import_data_file('SHP_sigmav_%s.dat'%channel))
         sigmav_val = _lambda2sigmav(DMmass_val,lambdahs_val,table_int)
 
     return sigmav_val
@@ -484,7 +486,7 @@ def DMspectra_inttable(DMmass_val,lambdahs_val,particle,smooth=False):
     add = ''
     if smooth:
         add = '_smooth'
-    tablespectra_int = np.loadtxt(_data_dir.joinpath('SHP_spectra%s_table_%s.dat'%(add,particle)))
+    tablespectra_int = np.loadtxt(import_data_file('SHP_spectra%s_table_%s.dat'%(add,particle)))
 
     if DMmass_val<=massz_vec[164]:
         func_int = interp2d(massz_vec,logenergyx_bins,tablespectra_int[:,5])
@@ -537,7 +539,7 @@ def DMspectra_inttable(DMmass_val,lambdahs_val,particle,smooth=False):
 
 def _LZUL(DMmass):
     ''' Interpolates LZ data on an array of masses. '''
-    table = np.loadtxt(_data_dir.joinpath('LZ_SI_2022_data.dat'))
+    table = np.loadtxt(import_data_file('LZ_SI_2022_data.dat'))
     mass_vec = table[:,0]
     sigma_SI = table[:,1]*1e-48
     if DMmass<mass_vec[0] or DMmass>mass_vec.max():
@@ -548,7 +550,7 @@ def _LZUL(DMmass):
 
 def _DARWINUL(DMmass):
     ''' Interpolates DARWIN data on an array of masses. '''
-    table = np.loadtxt(_data_dir.joinpath('DARWIN_SI_proj.dat'))
+    table = np.loadtxt(import_data_file('DARWIN_SI_proj.dat'))
     mass_vec = table[:,0]
     sigma_SI = table[:,1]*1e-48
     if DMmass<mass_vec[0] or DMmass>mass_vec.max():
