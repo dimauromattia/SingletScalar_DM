@@ -1,0 +1,922 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Relic density calculations &#8212; SingletScalar-DM 1.0.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-codeautolink.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples_gallery/plot_relic_density';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Direct detection" href="plot_direct_detection.html" />
+    <link rel="prev" title="Source spectra" href="plot_source_spectra.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">SingletScalar-DM 1.0.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/dimauromattia/SingletScalar_DM">
+                        Back to Github
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../modules.html">
+                        src
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../singletscalar_dm.html">
+                        singletscalar_dm package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Examples gallery
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/dimauromattia/SingletScalar_DM">
+                        Back to Github
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../modules.html">
+                        src
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../singletscalar_dm.html">
+                        singletscalar_dm package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Examples gallery
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plot_collider_searches.html">Direct detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_source_spectra.html">Source spectra</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relic density calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_direct_detection.html">Direct detection</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Relic density calculations</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-gallery-plot-relic-density-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="relic-density-calculations">
+<span id="sphx-glr-examples-gallery-plot-relic-density-py"></span><h1>Relic density calculations<a class="headerlink" href="#relic-density-calculations" title="Permalink to this heading">#</a></h1>
+<p>Calculate the relic density of the model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">singletscalar_dm</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>In order to calculate the relic density it is possible to use the function <cite>interpolate_Omega</cite>, which uses the code DRAKE near the Higgs resonance and MicrOMEGAs elsewhere.
+For example, let’s compute the relic density, expressed as <span class="math notranslate nohighlight">\(\Omega h^2\)</span> for the QCDA model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># GeV</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">omegah2</span> <span class="o">=</span> <span class="n">interpolate_Omega</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="s1">&#39;QCDA&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">omegah2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.12801745167589393
+</pre></div>
+</div>
+<p>In the following, we compute the relic density using only MicrOMEGAs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">50</span> <span class="c1"># GeV</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">omegah2_micromegas</span> <span class="o">=</span> <span class="n">interpolate_Omega_MicrOMEGAs</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">omegah2_micromegas</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.12855141158870298
+</pre></div>
+</div>
+<p>As expected the results obtained with the functions <cite>interpolate_Omega</cite> and <cite>interpolate_Omega_MicrOMEGAs</cite> are similar for the mass point tested above.
+However, if we test masses close to the Higgs resonance the differences emerge:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># GeV</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">omegah2</span> <span class="o">=</span> <span class="n">interpolate_Omega</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="s1">&#39;QCDA&#39;</span><span class="p">)</span>
+<span class="n">omegah2_micromegas</span> <span class="o">=</span> <span class="n">interpolate_Omega_MicrOMEGAs</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">omegah2</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">omegah2_micromegas</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.06396689881423608
+0.04752675754272283
+</pre></div>
+</div>
+<p>The calculation of the relic density close to the resonance with DRAKE has been done for <cite>lambda_hs</cite> values between 1 and two orders of magnitude below and above the value that gives the correct relic abundance.
+If one tries to calculate the relic density with DRAKE beyond this region a warning will be printed.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># GeV</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">omegah2</span> <span class="o">=</span> <span class="n">interpolate_Omega</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="s1">&#39;QCDA&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">omegah2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning, extrapolating.....
+The relic density with DRAKE has been calculated for lambda_HS between  7.32e-05 0.01464
+46.92619215842866
+</pre></div>
+</div>
+<p>Note that the precomputed results with DRAKE have been done to cover the region which gives the right relic abundance, so investigating region beyond the tested one is not recommended.
+It is also possible to find the <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> value which provides a give relic density.
+In order to do that you can use the function <cite>interpolate_lambda</cite></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">60</span> <span class="c1"># GeV</span>
+<span class="n">Omegah2</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDB&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lambda_hs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.0013339697597695931
+</pre></div>
+</div>
+<p>Note that for dark matter masses below 70 GeV and <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> values larger than 1 the relic density have a turning point.
+See the following plot.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass</span> <span class="o">=</span> <span class="mi">45</span>
+<span class="n">lambda_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mf">4.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+<span class="n">omegah2_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">)):</span>
+    <span class="n">omegah2_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_Omega_MicrOMEGAs</span><span class="p">(</span><span class="n">mass</span><span class="p">,</span><span class="n">lambda_vec</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambda_vec</span><span class="p">,</span><span class="n">omegah2_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;$m_S=45$ GeV&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\Omega h^2$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_</span><span class="si">{HS}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">1e-4</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e2</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_relic_density_001.png" srcset="../_images/sphx_glr_plot_relic_density_001.png" alt="plot relic density" class = "sphx-glr-single-img"/><p>This implies that for <span class="math notranslate nohighlight">\(m_S &lt; 70\)</span> GeV there could be two possible for the <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> which gives a value of the relic density.
+The code prints a warning if this is the case.
+See example below.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">30</span> <span class="c1"># GeV</span>
+<span class="n">Omegah2</span> <span class="o">=</span> <span class="mf">0.001</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDB&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lambda_hs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning, extrapolating.
+For this mass pick a range of lambda between  0.001075 984200.0
+0
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">70</span> <span class="c1"># GeV</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="mf">0.80952387</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="n">interpolate_Omega</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="s1">&#39;QCDA&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lambda_hs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.0009975472734606318
+</pre></div>
+</div>
+<p>In the following, we will generate a plot with the values of <span class="math notranslate nohighlight">\(m_S\)</span> and <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> which provide 100% or 30% of the relic density, showing the calculations performed with the QCDA and QCDB models and with MicrOMEGAs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">lambda_QCDA_100_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
+<span class="n">lambda_QCDB_100_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
+<span class="n">lambda_QCDB_30_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
+<span class="n">lambda_Micro_100_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">)):</span>
+    <span class="n">lambda_QCDA_100_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDA&#39;</span><span class="p">)</span>
+    <span class="n">lambda_QCDB_100_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDB&#39;</span><span class="p">)</span>
+    <span class="n">lambda_QCDB_30_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="mf">0.1</span><span class="o">*</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDB&#39;</span><span class="p">)</span>
+    <span class="n">lambda_Micro_100_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda_MicrOMEGAs</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Omegah2</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning, extrapolating.
+For this mass pick a range of lambda between  0.001577 794200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001577 794200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001577 794200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001577 794200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001545 833400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001545 833400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001545 833400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001545 833400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001518 837000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001518 837000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001518 837000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001518 837000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001494 879700.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001494 879700.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001494 879700.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001494 879700.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001473 925400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001473 925400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001473 925400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001473 925400.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001455 973500.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001455 973500.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001455 973500.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001455 973500.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001438 3964000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001438 3964000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001438 3964000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001438 3964000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001423 3855000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001423 3855000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001423 3855000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001423 3855000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001409 3911000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001409 3911000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001409 3911000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001409 3911000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001395 3729000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001395 3729000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001395 3729000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001395 3729000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001381 3840000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001381 3840000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001381 3840000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001381 3840000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001367 3566000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001367 3566000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001367 3566000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001367 3566000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001352 3377000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001352 3377000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001352 3377000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001352 3377000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001337 3336000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001337 3336000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001337 3336000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001337 3336000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001321 3108000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001321 3108000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001321 3108000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001321 3108000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001304 2844000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001304 2844000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001304 2844000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001304 2844000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001286 2586000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001286 2586000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001286 2586000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001286 2586000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001266 2469000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001266 2469000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001266 2469000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001266 2469000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001244 2201000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001244 2201000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001244 2201000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001244 2201000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00122 1977000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00122 1977000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00122 1977000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00122 1977000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001193 1717000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001193 1717000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001193 1717000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001193 1717000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001163 1506000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001163 1506000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001163 1506000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001163 1506000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00113 1314000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00113 1314000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00113 1314000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00113 1314000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001094 1077000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001094 1077000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001094 1077000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001094 1077000.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001055 895200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001055 895200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001055 895200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001055 895200.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001011 700600.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001011 700600.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001011 700600.0
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.001011 700600.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.0009625 550300.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.0009103 419900.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000856814 9.10934
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000795298 9.09852
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000728411 9.06496
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00066359 8.93342
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000602575 8.43968
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000548469 7.02204
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000516851 4.58233
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00106192 1.27854
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000743161 3.35577
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00101861 1.3272
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00114225 1.52574
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00094685 1.70057
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00111264 1.3937
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.00111264 1.3937
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000430948 20.4273
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000374206 9.49628
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000358035 9.59289
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000368207 9.62518
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000378102 9.38972
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000394914 8.92321
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000421803 8.56096
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000393931 9.24043
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000382666 9.37535
+Warning, extrapolating.
+For this mass pick a range of lambda between  0.000383004 9.37112
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDA_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_30_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDB, $\Omega h^2=0.012$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_Micro_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;MicroOMEGA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_</span><span class="si">{HS}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{S}</span><span class="s1">$ [GeV]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">10.</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">2e0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_relic_density_002.png" srcset="../_images/sphx_glr_plot_relic_density_002.png" alt="plot relic density" class = "sphx-glr-single-img"/><p>The parameters <span class="math notranslate nohighlight">\(m_S\)</span> and <span class="math notranslate nohighlight">\(lambda_{HS}\)</span> which provide the right relic abundance are reported in the file <cite>Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat</cite>, which can be imported through the function <cite>import_data_file</cite>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">omega_drake_micromegas</span> <span class="o">=</span> <span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat&#39;</span><span class="p">)</span>
+<span class="n">table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">omega_drake_micromegas</span><span class="p">)</span>
+<span class="n">mass_RD</span> <span class="o">=</span> <span class="n">table</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lambda_RD_FBQCDA</span> <span class="o">=</span> <span class="n">table</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">lambda_RD_FBQCDB</span> <span class="o">=</span> <span class="n">table</span><span class="p">[:,</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">mass_RD</span><span class="p">,</span><span class="n">lambda_RD_FBQCDA</span><span class="p">,</span><span class="n">lambda_RD_FBQCDB</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;cyan&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_RD</span><span class="p">,</span><span class="n">lambda_RD_FBQCDA</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;DRAKE fBE, $QCD_A$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_RD</span><span class="p">,</span><span class="n">lambda_RD_FBQCDB</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;DRAKE fBE, $QCD_B$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_</span><span class="si">{HS}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{S}</span><span class="s1">$ [GeV]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">50.</span><span class="p">,</span><span class="mi">70</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e-1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">12</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_relic_density_003.png" srcset="../_images/sphx_glr_plot_relic_density_003.png" alt="plot relic density" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 4 minutes  38.698 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-relic-density-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/1291a67c732fd449f9685835f2146429/plot_relic_density.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_relic_density.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/22176386651118756967049e31907fce/plot_relic_density.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_relic_density.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_source_spectra.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Source spectra</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="plot_direct_detection.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Direct detection</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/examples_gallery/plot_relic_density.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Mattia Di Mauro.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

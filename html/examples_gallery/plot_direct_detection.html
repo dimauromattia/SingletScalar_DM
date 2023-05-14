@@ -1,0 +1,967 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>Direct detection &#8212; SingletScalar-DM 1.0.0 documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-codeautolink.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'examples_gallery/plot_direct_detection';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Relic density calculations" href="plot_relic_density.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+<div class="bd-header__inner bd-page-width">
+  <label class="sidebar-toggle primary-toggle" for="__primary">
+    <span class="fa-solid fa-bars"></span>
+  </label>
+  
+  <div class="navbar-header-items__start">
+    
+      <div class="navbar-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">SingletScalar-DM 1.0.0 documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/dimauromattia/SingletScalar_DM">
+                        Back to Github
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../modules.html">
+                        src
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../singletscalar_dm.html">
+                        singletscalar_dm package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Examples gallery
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+        </div>
+      
+      
+        <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+    </div>
+  
+
+  
+    <label class="sidebar-toggle secondary-toggle" for="__secondary">
+      <span class="fa-solid fa-outdent"></span>
+    </label>
+  
+</div>
+
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          <div class="navbar-item"><nav class="navbar-nav">
+  <p class="sidebar-header-items__title"
+     role="heading"
+     aria-level="1"
+     aria-label="Site Navigation">
+    Site Navigation
+  </p>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+                    <li class="nav-item">
+                      <a class="nav-link nav-external" href="https://github.com/dimauromattia/SingletScalar_DM">
+                        Back to Github
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../modules.html">
+                        src
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../singletscalar_dm.html">
+                        singletscalar_dm package
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item current active">
+                      <a class="nav-link nav-internal" href="index.html">
+                        Examples gallery
+                      </a>
+                    </li>
+                
+  </ul>
+</nav></div>
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item"><nav class="bd-docs-nav bd-links"
+     aria-label="Section Navigation">
+  <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
+  <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="plot_collider_searches.html">Direct detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_source_spectra.html">Source spectra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_relic_density.html">Relic density calculations</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Direct detection</a></li>
+</ul>
+</div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item">
+
+
+
+<nav aria-label="Breadcrumbs">
+  <ul class="bd-breadcrumbs" role="navigation" aria-label="Breadcrumb">
+    
+    <li class="breadcrumb-item breadcrumb-home">
+      <a href="../index.html" class="nav-link" aria-label="Home">
+        <i class="fa-solid fa-home"></i>
+      </a>
+    </li>
+    
+    <li class="breadcrumb-item"><a href="index.html" class="nav-link">Examples gallery</a></li>
+    
+    <li class="breadcrumb-item active" aria-current="page">Direct detection</li>
+  </ul>
+</nav>
+</div>
+      
+    </div>
+  
+  
+</div>
+</div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p><a class="reference internal" href="#sphx-glr-download-examples-gallery-plot-direct-detection-py"><span class="std std-ref">Go to the end</span></a>
+to download the full example code</p>
+</div>
+<section class="sphx-glr-example-title" id="direct-detection">
+<span id="sphx-glr-examples-gallery-plot-direct-detection-py"></span><h1>Direct detection<a class="headerlink" href="#direct-detection" title="Permalink to this heading">#</a></h1>
+<p>Calculate various direct detection observables.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">from</span> <span class="nn">scipy.interpolate</span> <span class="kn">import</span> <span class="n">interp1d</span>
+<span class="kn">from</span> <span class="nn">singletscalar_dm</span> <span class="kn">import</span> <span class="o">*</span>
+</pre></div>
+</div>
+<p>The direct detection part is calculated using the function <cite>SI_noomega</cite>.
+This function performs the calculation of the spin independent cross section analytically assuming that <span class="math notranslate nohighlight">\(f_N=0.297\)</span>.
+In the following, we sho the calculation of the spin independent cross section for a specific value of DM mass and coupling.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mS</span> <span class="o">=</span> <span class="mi">70</span> <span class="c1"># GeV</span>
+<span class="n">lambda_hs</span> <span class="o">=</span> <span class="mf">0.01</span>
+<span class="n">SI_noomega</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>1.781425424359045e-46
+</pre></div>
+</div>
+<p>Instead, in order to find the upper limits for <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span>, you can use the function <cite>GetUL_DD_Mine_nomega</cite>.
+The example below calculates the upper limits for <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> for the LZ and future DARWIN experiments.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DMmassDD_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mf">2.</span><span class="p">),</span><span class="mf">4.</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">LambdaDD_LZ_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">))</span>
+<span class="n">LambdaDD_Darwin_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">)):</span>
+    <span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">GetUL_DD_nomega</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="s1">&#39;LZ&#39;</span><span class="p">)</span>
+    <span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">GetUL_DD_nomega</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="s1">&#39;DARWIN&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],</span><span class="n">lw</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;DD, LZ+2022&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],(</span><span class="mf">0.3</span><span class="o">/</span><span class="mf">0.2</span><span class="p">)</span><span class="o">*</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],(</span><span class="mf">0.3</span><span class="o">/</span><span class="mf">0.6</span><span class="p">)</span><span class="o">*</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],</span><span class="mf">1e-10</span><span class="o">*</span><span class="p">(</span><span class="mf">0.3</span><span class="o">/</span><span class="mf">0.2</span><span class="p">)</span><span class="o">*</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="mi">18</span><span class="p">:],</span><span class="n">lw</span><span class="o">=</span><span class="mf">5.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;LZ, $\rho_{\odot}=[0.2,0.6]$ GeV/cm$^3$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">DMmassDD_vec</span><span class="p">[</span><span class="mi">11</span><span class="p">:],</span><span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">[</span><span class="mi">11</span><span class="p">:],</span><span class="n">lw</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;DD, DARWIN proj.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$m_S$ [GeV]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_{\rm</span><span class="si">{HS}</span><span class="s1">}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span><span class="mf">1e4</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_direct_detection_001.png" srcset="../_images/sphx_glr_plot_direct_detection_001.png" alt="plot direct detection" class = "sphx-glr-single-img"/><p>It is also possible to calculate the direct detection constraints including the rescaling due to the density of dark matter of the <span class="math notranslate nohighlight">\(S\)</span> particles.
+First, we calculate the <span class="math notranslate nohighlight">\(\xi\)</span> term which is the relative ratio of <span class="math notranslate nohighlight">\(S\)</span> particle density over the total dark matter one.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Omegah2_best</span> <span class="o">=</span> <span class="mf">0.120</span>
+
+<span class="n">table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;Omega_MICROMEGAs_zoom_paper.dat&#39;</span><span class="p">))</span>
+
+<span class="n">Lambda_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">500</span><span class="p">)</span>
+<span class="n">csi_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">)</span><span class="o">*</span><span class="nb">len</span><span class="p">(</span><span class="n">Lambda_vec</span><span class="p">))</span>
+
+<span class="n">cont</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">Lambda_vec</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">table</span><span class="p">[</span><span class="n">cont</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">&lt;</span><span class="mf">0.</span><span class="p">:</span>
+            <span class="n">table</span><span class="p">[</span><span class="n">cont</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1e6</span>
+        <span class="n">csi_vec</span><span class="p">[</span><span class="n">cont</span><span class="p">]</span> <span class="o">=</span> <span class="n">table</span><span class="p">[</span><span class="n">cont</span><span class="p">,</span><span class="mi">2</span><span class="p">]</span><span class="o">/</span><span class="n">Omegah2_best</span>
+        <span class="n">cont</span> <span class="o">=</span> <span class="n">cont</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">csi_vec</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[1.24166667e+06 1.21250000e+06 1.18416667e+06 ... 2.54083333e-05
+ 2.40916667e-05 2.28333333e-05]
+</pre></div>
+</div>
+<p>The we use the function <cite>GetUL_DD</cite> to get the upper limits including also the relic density of <span class="math notranslate nohighlight">\(S\)</span>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DMmassDD_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="mf">4.</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">LambdaDD_LZ_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">))</span>
+<span class="n">LambdaDD_Darwin_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">)):</span>
+    <span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">GetUL_DD_withomega</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="s1">&#39;LZ&#39;</span><span class="p">)</span>
+    <span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">GetUL_DD_withomega</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="s1">&#39;Darwin&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 24
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 87
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 19
+         Function evaluations: 39
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 24
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 87
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 15
+         Function evaluations: 30
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 24
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 87
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 17
+         Function evaluations: 34
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 23
+         Function evaluations: 46
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 26
+         Function evaluations: 52
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 62
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 24
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 87
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 14
+         Function evaluations: 28
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 34
+         Function evaluations: 68
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 21
+         Function evaluations: 42
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 35
+         Function evaluations: 70
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 27
+         Function evaluations: 54
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 36
+         Function evaluations: 72
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 56
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 36
+         Function evaluations: 72
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 30
+         Function evaluations: 60
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 37
+         Function evaluations: 74
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 62
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 37
+         Function evaluations: 74
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 62
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 32
+         Function evaluations: 64
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 37
+         Function evaluations: 74
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 32
+         Function evaluations: 64
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 32
+         Function evaluations: 64
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 32
+         Function evaluations: 64
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 38
+         Function evaluations: 76
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 39
+         Function evaluations: 78
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 39
+         Function evaluations: 78
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 39
+         Function evaluations: 78
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 17
+         Function evaluations: 36
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 32
+         Function evaluations: 64
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 17
+         Function evaluations: 36
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 40
+         Function evaluations: 80
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 40
+         Function evaluations: 80
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 33
+         Function evaluations: 66
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 18
+         Function evaluations: 37
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 26
+         Function evaluations: 56
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 11
+         Function evaluations: 23
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 63
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 18
+         Function evaluations: 37
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 17
+         Function evaluations: 34
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 25
+         Function evaluations: 55
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 12
+         Function evaluations: 24
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 63
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 18
+         Function evaluations: 37
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 40
+         Function evaluations: 88
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 12
+         Function evaluations: 25
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 61
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 27
+         Function evaluations: 56
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 39
+         Function evaluations: 86
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 13
+         Function evaluations: 27
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 61
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 26
+         Function evaluations: 53
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 34
+         Function evaluations: 72
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 15
+         Function evaluations: 31
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 60
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 27
+         Function evaluations: 55
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 25
+         Function evaluations: 52
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 10
+         Function evaluations: 20
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 60
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 18
+         Function evaluations: 37
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 40
+         Function evaluations: 88
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 16
+         Function evaluations: 34
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 29
+         Function evaluations: 61
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 18
+         Function evaluations: 38
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 37
+         Function evaluations: 102
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 51
+         Function evaluations: 108
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 28
+         Function evaluations: 62
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 44
+         Function evaluations: 116
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 44
+         Function evaluations: 116
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 44
+         Function evaluations: 116
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 44
+         Function evaluations: 116
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 64
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table_RD_FB</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;DRAKE_omega_fBE_QCDB_paper.dat&#39;</span><span class="p">))</span>
+<span class="n">mass_RD_FBQCDB</span> <span class="o">=</span> <span class="n">table_RD_FB</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">lambda_RD_FBQCDB</span> <span class="o">=</span> <span class="n">table_RD_FB</span><span class="p">[:,</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="n">funcint_RD</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">mass_RD_FBQCDB</span><span class="p">,</span><span class="n">lambda_RD_FBQCDB</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">)):</span>
+    <span class="k">if</span> <span class="n">funcint_RD</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">&gt;</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]:</span>
+        <span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="n">funcint_RD</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">funcint_RD</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">])</span><span class="o">&gt;</span><span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]:</span>
+        <span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="n">funcint_RD</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">])</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">mass_RD_FBQCDB</span><span class="p">,</span><span class="n">lambda_RD_FBQCDB</span><span class="o">*</span><span class="mf">1e-6</span><span class="p">,</span><span class="n">lambda_RD_FBQCDB</span><span class="o">*</span><span class="mf">1.05</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;grey&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">funcint_RD</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">),</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">funcint_RD</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">),</span><span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">LambdaDD_LZ_HS_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">3.0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;darkgreen&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;LZ+2022&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">LambdaDD_Darwin_HS_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;DARWIN PROJ.&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_RD_FBQCDB</span><span class="p">,</span><span class="n">lambda_RD_FBQCDB</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">2.0</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;$\Omega_</span><span class="si">{S}</span><span class="s1">h^2=0.12}$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">54.2</span><span class="p">,</span><span class="mf">0.05</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\Omega_</span><span class="si">{S}</span><span class="s1">h^2&lt;0.12}$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">54.2</span><span class="p">,</span><span class="mf">0.003</span><span class="p">,</span><span class="sa">r</span><span class="s1">&#39;$\Omega_</span><span class="si">{S}</span><span class="s1">h^2&gt;0.12}$&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$m_{\rm</span><span class="si">{S}</span><span class="s1">}$ [GeV]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_{\rm</span><span class="si">{HS}</span><span class="s1">}$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">54</span><span class="p">,</span><span class="mi">64</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e1</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;major&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">tick_params</span><span class="p">(</span><span class="s1">&#39;both&#39;</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">which</span><span class="o">=</span><span class="s1">&#39;minor&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">16</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../_images/sphx_glr_plot_direct_detection_002.png" srcset="../_images/sphx_glr_plot_direct_detection_002.png" alt="plot direct detection" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.707 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-direct-detection-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/a44146e2cbe75d387e50d16f28f1f3bb/plot_direct_detection.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_direct_detection.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../_downloads/2d9e236f38e7e340b95cd1fca5a711d1/plot_direct_detection.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_direct_detection.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</section>
+
+
+                </article>
+              
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="plot_relic_density.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Relic density calculations</p>
+      </div>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="tocsection sourcelink">
+    <a href="../_sources/examples_gallery/plot_direct_detection.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+  <p class="copyright">
+    
+      © Copyright 2023, Mattia Di Mauro.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item"><p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.13.3.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>
