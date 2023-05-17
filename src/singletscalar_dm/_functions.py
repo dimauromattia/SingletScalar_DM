@@ -48,14 +48,14 @@ def interpolate_relicdensity(mass_val,QCDmodel):
 
     Notes
     -----
-    The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.
+    The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.
     '''
         
     if QCDmodel=='QCDA':
         column = 1
     elif QCDmodel=='QCDB':
         column = 2
-    table_RD_FB = np.loadtxt(folder+'/Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat')
+    table_RD_FB = np.loadtxt(import_data_file('Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat'))
     mass_vec = table_RD_FB[:,0]
     lambda_vec = table_RD_FB[:,column]
     func = interp1d(mass_vec,lambda_vec)
@@ -82,7 +82,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint):
 
     Notes
     -----
-    The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.
+    The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.
     '''
 
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
@@ -130,7 +130,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint):
                 if warningprint==True:
                     print('Warning, extrapolating.')
                     print('The relic density with DRAKE has been calculated for lambda_HS between ',lambda_mass1.min(),lambda_mass1.max())
-        
+
         func_final = interp1d(np.array([mass_vector_drake[idx],mass_vector_drake[idx+1]]),np.array([np.power(omega1,0.1),np.power(omega2,0.1)]),kind='linear')
         #interpolate with CubicSpline
         #func_final = CubicSpline(np.array([mass_vector_drake[idx],mass_vector_drake[idx+1]]),np.array([np.power(omega1,0.1),np.power(omega2,0.1)]), bc_type='not-a-knot')
@@ -196,7 +196,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint):
     Notes
     -----
     The computation of the parameter uses the computation of the relic density
-    obtained via the code DRAKE and MICROMEGAs.
+    obtained via the code DRAKE and MicrOMEGAs.
     '''
 
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
@@ -468,10 +468,6 @@ def sigmav_channels(DMmass_val,lambdahs_val,channel):
     sigmav : np.ndarray
         The values of the :math:`\sigma v` for the selected channel.
 
-    See Also
-    --------
-    _lambda2sigma
-
     Notes
     -----
     This function internally calls `_lambda2sigmav` passing the ``table_int`` as
@@ -738,7 +734,6 @@ def GetUL_DD_withomega(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
 
     It interpolates the limits on the array of dark matter masses provided.
     Limits are returned in units cm^2.
-    <missing>
 
     Parameters
     ----------
@@ -896,7 +891,7 @@ def func_interpolate(varval,variablevec,funcvec):
     Return
     ------
     value : ndarray
-        Interpolated value
+        Interpolated value.
     '''
     result = 0.
     if varval<variablevec[0]:
@@ -927,13 +922,13 @@ def flux_DM_prompt(Energy,DMmass,lambda_hs):
     flux : ndarray
         gamma-ray flux for the Galactic center excess.
     '''
-    
+
     kpc = pow(10.,3.)*3.0856775*pow(10.,18.) #cm
     rodot = 8.12*kpc #cm
     rhodot = 0.300 #GeV/cm^3
     Jfact = 117.0 #MED for Cholis
-    solidangle = 0.4288
-    
+    # solidangle = 0.4288
+
     if Energy>DMmass:
         return 0.
     else:
@@ -947,7 +942,7 @@ def flux_DM_prompt(Energy,DMmass,lambda_hs):
                 fluxDM_vec[t]=fluxDM_vec[t]
             else:
                 fluxDM_vec[t]=1e-30
-        
+
         dNdE = func_interpolate(Energy,EnergyDM_vec,fluxDM_vec)
-        
+
         return 0.5*(rodot/(4.*np.pi))*pow(rhodot/DMmass,2.)*Jfact*sigmav*dNdE
