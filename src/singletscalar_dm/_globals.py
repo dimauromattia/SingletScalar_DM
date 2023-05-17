@@ -116,12 +116,12 @@ mass_vector_micro = np.array([2.00000000e+00, 2.09622627e+00, 2.19708228e+00, 2.
           1.25011039e+04, 1.31025711e+04, 1.37329769e+04, 1.43937135e+04,
           1.50862401e+04, 1.58120864e+04, 1.65728555e+04, 1.73702275e+04,
           1.82059636e+04, 1.90819095e+04, 2.00000000e+04])
-'''  '''
+''' vector of masses used for the evaluation of the relic density with MICROMEGAs  '''
 
 mass_vector_drake = np.array([36.6147656, 37.4763485, 38.3582052, 39.260813, 40.18466, 41.1302462, 
     42.0980829, 43.0886938, 44.1026148, 45.1403944, 46.202594, 
     47.2897883, 48.4025653, 49.5415271, 50.7072899, 51.9004842, 
-    53.1217557, 54.37, 55.65, 56.96, 58.3, 60., 61., 61.5, 61.8, 62., 
+    53.1217557, 54.37, 55.65, 56.96, 57.63, 58.3, 59.15, 60., 60.5, 61., 61.25, 61.5, 61.65, 61.8, 62., 
     62.2, 62.3, 62.35, 62.4, 62.43, 62.45, 62.46, 62.47, 62.475, 62.48, 
     62.485, 62.49, 62.493, 62.495, 62.497, 62.498, 62.499, 62.5, 62.501, 
     62.502, 62.503, 62.505, 62.507, 62.51, 62.515, 62.52, 62.525, 62.53, 
@@ -129,7 +129,7 @@ mass_vector_drake = np.array([36.6147656, 37.4763485, 38.3582052, 39.260813, 40.
     65.5, 67.03, 68.61, 70.22, 71.88, 73.5675954, 75.2987161, 77.0705719, 
     78.8841212, 80.7403452, 82.640248, 84.5848575, 86.5752256, 
     88.6124291, 90.6975702])
-'''  '''
+'''  vector of masses used for the evaluation of the relic density with MICROMEGAs. '''
 
 massz_vec = np.array([2.00000000e+00, 2.09622627e+00, 2.19708228e+00, 2.30279080e+00,
           2.41358528e+00, 2.52971043e+00, 2.65142273e+00, 2.77899099e+00,
@@ -203,7 +203,7 @@ massz_vec = np.array([2.00000000e+00, 2.09622627e+00, 2.19708228e+00, 2.30279080
           1.25011039e+04, 1.31025711e+04, 1.37329769e+04, 1.43937135e+04,
           1.50862401e+04, 1.58120864e+04, 1.65728555e+04, 1.73702275e+04,
           1.82059636e+04, 1.90819095e+04])
-'''  '''
+'''  vector of masses used for the evaluation of the DM spectra. '''
 
 MassDD_vec = np.array([4.01846600e+01,4.11302462e+01, 4.20980829e+01, 4.30886938e+01, 4.41026148e+01,
          4.51403944e+01, 4.62025940e+01, 4.72897883e+01, 4.84025653e+01,
@@ -223,14 +223,14 @@ MassDD_vec = np.array([4.01846600e+01,4.11302462e+01, 4.20980829e+01, 4.30886938
          6.55000000e+01, 6.70300000e+01, 6.86100000e+01, 7.02200000e+01,
          7.18800000e+01, 7.35675954e+01, 7.52987161e+01, 7.70705719e+01,
          7.88841212e+01, 8.07403452e+01])
-'''  '''
+'''  vector of masses used for the evaluation of the direct detection. '''
 
 logenergyx_bins = np.arange(-8.955,-0.000,0.09)
-'''  '''
+'''  vector of x variable used for the evaluation of the DM spectra. '''
 lambda_vec = np.logspace(-2.,1.,13)
-'''  '''
+'''  vector of lambda_hs variable used for the evaluation of the DM spectra. '''
 lambdahs_vec = np.logspace(-4,1,21)
-'''  '''
+'''  vector of lambda_hs variable used for the evaluation of the DM annihilation cross section. '''
 
 def import_data_file(file_name):
     '''Return the path of a data file in singletscalar_dm.data
@@ -257,3 +257,38 @@ def import_data_file(file_name):
     with importlib.resources.path("singletscalar_dm.data", file_name) as f:
         path = str(f)
     return path
+
+
+def returnsigmav(file_name):
+    '''Returns the sigmav value in the files MadDM_results.txt written in the output folder by MaDDM.
+
+    Parameters
+    ----------
+    file_name : str
+        The file name.
+
+    Returns
+    -------
+    path : np.ndarray
+        The value of the annihilation cross section.
+
+    Raises
+    ------
+    FileNotFoundError
+        If the specified file does not exist in the package data.
+
+    Notes
+    -----
+    '''
+    '''
+    
+    '''
+    sep = ","
+    x = 'Total_xsec                    = ['
+    f = open(file_name)
+    sigmav_value=0
+    for line in f:
+      if x in line:
+        matches = [l[l.find(x)+len(x):] for l in line.split(sep) if l[l.find(x)+len(x):]]
+        sigmav_value = float(matches[0])
+    return sigmav_value

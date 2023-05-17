@@ -1,0 +1,99 @@
+################################################
+#                 MadDM v. 3.2                 #
+################################################
+
+
+
+################################################
+# Indirect Detection                           #
+################################################
+# Results in brackets display [prediction, upper limit]
+
+# Annihilation cross section computed with the method: madevent
+# <sigma v>[cm^3 s^-1] of continuum spectrum final states and Fermi dSph limits (if available, else -1)
+n1n1_llll                     = [5.17e-42,-1.00e+00]          
+n1n1_dtdxtx                   = [2.04e-44,-1.00e+00]          
+n1n1_cbsxtx                   = [2.45e-43,-1.00e+00]          
+n1n1_cscxsx                   = [2.76e-40,-1.00e+00]          
+n1n1_vlcsxtam                 = [7.81e-41,-1.00e+00]          
+n1n1_lvllvl                   = [1.36e-40,-1.00e+00]          
+n1n1_ubuxbx                   = [3.93e-41,-1.00e+00]          
+n1n1_ddxtamtap                = [1.13e-41,-1.00e+00]          
+n1n1_vlbtxtap                 = [8.02e-44,-1.00e+00]          
+n1n1_vlvlccx                  = [5.09e-41,-1.00e+00]          
+n1n1_llddx                    = [2.28e-41,-1.00e+00]          
+n1n1_llbbx                    = [2.25e-41,-1.00e+00]          
+n1n1_uuuxux                   = [1.51e-41,-1.00e+00]          
+n1n1_lluux                    = [1.77e-41,-1.00e+00]          
+n1n1_ccxtamtap                = [1.17e-41,-1.00e+00]          
+n1n1_ttxtamtap                = [1.31e-41,-1.00e+00]          
+n1n1_ctcxtx                   = [4.66e-42,-1.00e+00]          
+n1n1_lvlcsx                   = [1.57e-40,-1.00e+00]          
+n1n1_usuxsx                   = [3.85e-41,-1.00e+00]          
+n1n1_vlvlvlvl                 = [4.72e-41,-1.00e+00]          
+n1n1_llssx                    = [2.28e-41,-1.00e+00]          
+n1n1_tbtxbx                   = [5.23e-41,-1.00e+00]          
+n1n1_vltbxtam                 = [8.27e-44,-1.00e+00]          
+n1n1_ubdxtx                   = [2.41e-43,-1.00e+00]          
+n1n1_vllscx                   = [1.58e-40,-1.00e+00]          
+n1n1_vlvlttx                  = [2.81e-44,-1.00e+00]          
+n1n1_uuxtamtap                = [8.72e-42,-1.00e+00]          
+n1n1_vlscxtap                 = [7.84e-41,-1.00e+00]          
+n1n1_cbcxbx                   = [5.03e-41,-1.00e+00]          
+n1n1_vlvluux                  = [5.22e-41,-1.00e+00]          
+1000022.1000022>5.-5          = [1.13e-46,-1.00e+00]          
+n1n1_stcxbx                   = [2.49e-43,-1.00e+00]          
+n1n1_dcuxsx                   = [2.38e-40,-1.00e+00]          
+n1n1_lltamtap                 = [5.25e-42,-1.00e+00]          
+n1n1_vlvlbbx                  = [6.72e-41,-1.00e+00]          
+n1n1_vlvlssx                  = [6.58e-41,-1.00e+00]          
+n1n1_dsdxsx                   = [4.97e-41,-1.00e+00]          
+n1n1_bbxtamtap                = [4.82e-41,-1.00e+00]          
+1000022.1000022>4.-4          = [9.77e-48,-1.00e+00]          
+n1n1_lvltbx                   = [1.65e-43,-1.00e+00]          
+n1n1_dtuxbx                   = [2.48e-43,-1.00e+00]          
+n1n1_vllbtx                   = [1.60e-43,-1.00e+00]          
+n1n1_vlldux                   = [1.55e-40,-1.00e+00]          
+n1n1_vlvltamtap               = [4.19e-41,-1.00e+00]          
+n1n1_vllvltam                 = [5.19e-41,-1.00e+00]          
+n1n1_tttxtx                   = [8.82e-42,-1.00e+00]          
+n1n1_ucuxcx                   = [3.04e-41,-1.00e+00]          
+n1n1_bbbxbx                   = [9.43e-41,-1.00e+00]          
+n1n1_llttx                    = [9.42e-45,-1.00e+00]          
+1000022.1000022>-15.15        = [2.84e-47,-1.00e+00]          
+n1n1_vlvlddx                  = [6.58e-41,-1.00e+00]          
+1000022.1000022>21.21         = [1.32e-47,-1.00e+00]          
+n1n1_vlduxtap                 = [7.86e-41,-1.00e+00]          
+n1n1_ssxtamtap                = [1.13e-41,-1.00e+00]          
+n1n1_dddxdx                   = [2.56e-41,-1.00e+00]          
+n1n1_sssxsx                   = [2.47e-41,-1.00e+00]          
+n1n1_sbsxbx                   = [4.84e-41,-1.00e+00]          
+n1n1_uduxdx                   = [2.75e-40,-1.00e+00]          
+n1n1_utuxtx                   = [1.57e-44,-1.00e+00]          
+n1n1_vludxtam                 = [7.81e-41,-1.00e+00]          
+n1n1_lvludx                   = [1.58e-40,-1.00e+00]          
+n1n1_usdxcx                   = [2.34e-40,-1.00e+00]          
+1000022.1000022>6.-6          = [6.31e-43,-1.00e+00]          
+n1n1_lvlvltap                 = [5.23e-41,-1.00e+00]          
+n1n1_dcdxcx                   = [3.88e-41,-1.00e+00]          
+n1n1_dbdxbx                   = [5.03e-41,-1.00e+00]          
+n1n1_cccxcx                   = [1.57e-41,-1.00e+00]          
+n1n1_stsxtx                   = [2.04e-44,-1.00e+00]          
+n1n1_llccx                    = [1.76e-41,-1.00e+00]          
+n1n1_tamtamtaptap             = [5.79e-42,-1.00e+00]          
+
+# Global Fermi dSph Limit computed with pythia8 spectra
+Total_xsec                    = [3.41e-39,-1.00e+00]          
+Fermi_Likelihood              = -1.00e+00                     
+Fermi_pvalue                  = -1.00e+00                     
+
+#################################################
+# CR Flux at Earth [particles cm^-2 s^-1 sr^-1) #
+#################################################
+
+# Fluxes calculated using the spectra from dragon
+
+Flux_neutrinos_e              = 4.75e-29                      
+Flux_neutrinos_mu             = 5.19e-29                      
+Flux_neutrinos_tau            = 4.68e-29                      
+Flux_gammas                   = 3.04e-25                      
