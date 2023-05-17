@@ -62,7 +62,7 @@ def interpolate_relicdensity(mass_val,QCDmodel):
     return func(mass_val)
 
 
-def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint):
+def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
     '''Calculates the relic density as Omega h^2 given the mass and lambda.
 
     Parameters
@@ -73,6 +73,8 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint):
         Values of the lambda_HS parameter.
     QCDmodel : {'QCDA', 'QCDB'}
         Model for the QCD phase transition.
+    warningprint : True, optional
+        Whether to print a warning when extrapolating.
 
     Return
     ------
@@ -176,7 +178,7 @@ def interpolate_Omega_MicrOMEGAs(mass_val,lambda_val):
     else:
         print('Warning, mass should be between',mass_vector_micro.min(),mass_vector_micro.max())
 
-def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint):
+def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
     '''Calculates the lambda_HS parameter for given relic density and mass values.
 
     Parameters
@@ -187,6 +189,8 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint):
         The values of the relic density interpolated on the 2d grid of mass
     QCDmodel : {'QCDA', 'QCDB'}
         Model for the QCD phase transition.
+    warningprint : True, optional
+        Whether to print a warning when extrapolating.
 
     Return
     ------
@@ -313,7 +317,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint):
             print('Warning, mass should be between',mass_vector_micro.min(),mass_vector_micro.max())
 
 
-def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint):
+def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint=True):
     '''Calculates the lambda_HS parameter for given relic density and mass values.
 
     Parameters
@@ -322,6 +326,8 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint):
         Dark matter mass values in GeV.
     Omega_val : np.ndarray
         The value of the relic density interpolated on the 2d grid of mass
+    warningprint : True, optional
+        Whether to print a warning when extrapolating.
 
     Return
     ------
@@ -606,8 +612,14 @@ def provide_ULEXP(DMmass,Exp):
     ul : ndarray
         The upper limit values sampled at the provided masses.
 
+    Notes
+    -----
+    The upper limits are taken from the following references: LZ [LZ22]_, DARWIN [DARWIN16]_.
+
     Ref
     ---
+    .. [LZ22] \ J. Aalbers et al. (LZ) (2022), 2207.03764
+    .. [DARWIN16] \ J. Aalbers et al. (DARWIN), JCAP 11, 017 (2016), 1606.07001
     '''
     if Exp=='LZ':
         SI_exp = _LZUL(DMmass)
