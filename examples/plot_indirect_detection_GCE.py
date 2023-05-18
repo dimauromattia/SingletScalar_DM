@@ -1,6 +1,6 @@
 '''
-Indirect detection calculation
-==========================
+Indirect detection calculation for GCE
+======================================
 
 This script calculates the gamma-ray flux for the Galactic center excess.
 '''
@@ -14,9 +14,9 @@ from scipy.interpolate import interp1d
 # In order to calculate the relic density it is possible to use the function `interpolate_Omega`, which uses the code DRAKE near the Higgs resonance and MicrOMEGAs elsewhere.
 # For examplte, let's compute the relic density, expressed as :math:`\Omega h^2` for the QCDA model.
 
-table_best  = np.loadtxt('/Users/mattiadimauro/Dropbox/FERMI-LAT/GC_PSRDM/ZENODO_FILES/Figures_12_and_14_GCE_Spectra/GCE_BestFitModel_flux_Inner40x40_masked_disk.dat')
-table_up  = np.loadtxt('/Users/mattiadimauro/Dropbox/FERMI-LAT/GC_PSRDM/ZENODO_FILES/GCE_band_up.txt')
-table_down  = np.loadtxt('/Users/mattiadimauro/Dropbox/FERMI-LAT/GC_PSRDM/ZENODO_FILES/GCE_band_down.txt')
+table_best  = np.loadtxt(import_data_file('GCE_BestFitModel_flux_Inner40x40_masked_disk.dat'))
+table_up  = np.loadtxt(import_data_file('GCE_band_up.txt'))
+table_down  = np.loadtxt(import_data_file('GCE_band_down.txt'))
 #func_best = interp1d(table_best[:,0],table_best[:,1])
 func_min = interp1d(table_down[:,0],table_down[:,1])
 func_max = interp1d(table_up[:,0],table_up[:,1])
