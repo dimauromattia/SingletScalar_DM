@@ -17,7 +17,7 @@ sigmav = _lambda2sigmav(DMmass,lambda_hs,table_int)
 # %%
 # Here we create the likelihood profile for dwarf.
 
-table_dwarf = np.loadtxt(import_data_file('likelihood/LogLike_stacked_paper_SHP.txt'))
+table_dwarf = np.loadtxt(import_data_file('LogLike_stacked_paper_SHP.txt'))
 LogLike_table_dwarf = np.zeros(shape=(len(sigmav_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(sigmav_vec)):
@@ -34,7 +34,7 @@ for t in range(len(mass_vec)):
 # %%
 # Here we create the likelihood profile for dwarf.
 
-table_pbar = np.loadtxt(import_data_file('likelihood/LogLike_Manconi2021_pbar_paper.txt'))
+table_pbar = np.loadtxt(import_data_file('LogLike_Manconi2021_pbar_paper.txt'))
 LogLike_table_pbar = np.zeros(shape=(len(sigmav_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(sigmav_vec)):
@@ -51,7 +51,7 @@ for t in range(len(mass_vec)):
 # %%
 # Here we consider the :math:`\chi^2` for the GCE, relative to the MED model.
 
-table_gce = np.loadtxt(import_data_file('likelihood/Chi_table_Cholis_GCE_MED_paper.txt'))
+table_gce = np.loadtxt(import_data_file('Chi_table_Cholis_GCE_MED_paper.txt'))
 LogLike_table_gce = np.zeros(shape=(len(sigmav_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(sigmav_vec)):
