@@ -15,7 +15,7 @@ from singletscalar_dm import *
 
 print('TESTING INTERPOLATION WITH MICROMEGAS RESULTS')
 
-table_Micro = np.loadtxt('/Users/mattiadimauro/Dropbox/MadDM/MG5_aMC_v2_9_9/SHP_paper_data_scripts/code/SingletScalar_DM/src/singletscalar_dm/data/test_omega_MicroOMEGAs_interpolation.txt')
+table_Micro = np.loadtxt('/Users/mattiadimauro/Dropbox/MadDM/MG5_aMC_v2_9_9/SHP_paper_data_scripts/code/SingletScalar_DM/src/singletscalar_dm/data/test_omega_MicroOMEGAs_interpolation.dat')
 mass_Micro = table_Micro[:,0]
 lambda_Micro = table_Micro[:,1]
 omega_Micro = table_Micro[:,2]
@@ -51,7 +51,7 @@ This script performes a test to verify that the relic density calculation in the
 
 print('TESTING INTERPOLATION WITH DRAKE RESULTS (QCDA)')
 
-table_Micro = np.loadtxt('/Users/mattiadimauro/Dropbox/MadDM/MG5_aMC_v2_9_9/SHP_paper_data_scripts/code/SingletScalar_DM/src/singletscalar_dm/data/test_DRAKE_omega_fBE_QCDA_testinterp.txt')
+table_Micro = np.loadtxt('/Users/mattiadimauro/Dropbox/MadDM/MG5_aMC_v2_9_9/SHP_paper_data_scripts/code/SingletScalar_DM/src/singletscalar_dm/data/test_DRAKE_omega_fBE_QCDA_testinterp.dat')
 mass_Micro = table_Micro[:,0]
 lambda_Micro = table_Micro[:,1]
 omega_Micro = table_Micro[:,2]
@@ -89,7 +89,7 @@ Error is 0.006 for omegah2 and 0.085 for lambda
 
 print('TESTING INTERPOLATION WITH DRAKE RESULTS (QCDB)')
 
-table_Micro = np.loadtxt('/Users/mattiadimauro/Dropbox/MadDM/MG5_aMC_v2_9_9/SHP_paper_data_scripts/code/SingletScalar_DM/src/singletscalar_dm/data/test_DRAKE_omega_fBE_QCDB_testinterp.txt')
+table_Micro = np.loadtxt('/Users/mattiadimauro/Dropbox/MadDM/MG5_aMC_v2_9_9/SHP_paper_data_scripts/code/SingletScalar_DM/src/singletscalar_dm/data/test_DRAKE_omega_fBE_QCDB_testinterp.dat')
 mass_Micro = table_Micro[:,0]
 lambda_Micro = table_Micro[:,1]
 omega_Micro = table_Micro[:,2]
@@ -100,8 +100,8 @@ print('Checking ', end="", flush=True)
 for t in range(len(mass_Micro)):
     if t % 10 ==0 and t!=0:
         print('.', end="", flush=True)
-    Omega_vec_int[t] = interpolate_Omega(mass_Micro[t],lambda_Micro[t],'QCDB',False)
-    lambdahs_vec_int[t] = interpolate_lambda(mass_Micro[t],omega_Micro[t],'QCDB',False)
+    Omega_vec_int[t] = interpolate_Omega(mass_Micro[t],lambda_Micro[t],'QCDB',True)
+    lambdahs_vec_int[t] = interpolate_lambda(mass_Micro[t],omega_Micro[t],'QCDB',True)
     if abs((Omega_vec_int[t]-omega_Micro[t])/omega_Micro[t])>0.05 or abs((lambda_Micro[t]-lambdahs_vec_int[t])/lambda_Micro[t])>0.05:
         print(r'WARNING IMPRECISE CALCULATION FOR')
         print(r'm_S=%.3f and lambdahs=%.3e'%(mass_Micro[t],lambda_Micro[t]))
