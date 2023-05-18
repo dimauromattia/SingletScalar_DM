@@ -27,7 +27,7 @@ directory:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Calculate various direct detection observables.">
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate various colliders&#x27; constraints.">
 
 .. only:: html
 
@@ -38,7 +38,24 @@ directory:
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Direct detection</div>
+      <div class="sphx-glr-thumbnail-title">Collider searches</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This script calculates the gamma-ray flux for the Galactic center excess.">
+
+.. only:: html
+
+  .. image:: /examples_gallery/images/thumb/sphx_glr_plot_indirect_detection_GCE_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_gallery_plot_indirect_detection_GCE.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Indirect detection calculation for GCE</div>
     </div>
 
 
@@ -78,23 +95,6 @@ directory:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Calculate the relic density of the model.">
-
-.. only:: html
-
-  .. image:: /examples_gallery/images/thumb/sphx_glr_plot_relic_density_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_examples_gallery_plot_relic_density.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Relic density calculations</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="Calculate various direct detection observables.">
 
 .. only:: html
@@ -112,6 +112,40 @@ directory:
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate the relic density of the model.">
+
+.. only:: html
+
+  .. image:: /examples_gallery/images/thumb/sphx_glr_plot_relic_density_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_gallery_plot_relic_density.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Relic density calculations</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="This example studies the likelihoods for different indirect detection searches.">
+
+.. only:: html
+
+  .. image:: /examples_gallery/images/thumb/sphx_glr_plot_indirect_detection_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_gallery_plot_indirect_detection.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Indirect detection</div>
+    </div>
+
+
+.. raw:: html
+
     </div>
 
 
@@ -119,10 +153,12 @@ directory:
    :hidden:
 
    /examples_gallery/plot_collider_searches
+   /examples_gallery/plot_indirect_detection_GCE
    /examples_gallery/plot_annihilation_cross_section
    /examples_gallery/plot_source_spectra
-   /examples_gallery/plot_relic_density
    /examples_gallery/plot_direct_detection
+   /examples_gallery/plot_relic_density
+   /examples_gallery/plot_indirect_detection
 
 
 

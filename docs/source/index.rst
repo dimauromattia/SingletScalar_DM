@@ -31,6 +31,12 @@ command in the package directory:
 Running the examples
 --------------------
 
+We provide an examples gallery, where it is possible to see many applications
+of the routines contained in the package to plot relevant phenomenological
+quantities.
+It also enables the possibility of downloading every example either as `.py`
+scripts or `.ipynb` notebooks.
+
 The examples rely on the |matplotlib|_ package in order to show the plots.
 You can install this dependence using the following command in the package root
 directory:

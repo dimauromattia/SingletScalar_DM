@@ -18,10 +18,10 @@
 .. _sphx_glr_examples_gallery_plot_collider_searches.py:
 
 
-Direct detection
-================
+Collider searches
+=================
 
-Calculate various direct detection observables.
+Calculate various colliders' constraints.
 
 .. GENERATED FROM PYTHON SOURCE LINES 7-12
 
@@ -8152,7 +8152,7 @@ In the following, we show how to compute the upper limits using collider data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  3.051 seconds)
+   **Total running time of the script:** ( 0 minutes  4.988 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_collider_searches.py:

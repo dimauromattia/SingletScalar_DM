@@ -13,17 +13,6 @@ These data files can be obtained by using the function `import_data_file`:
 
 >>> from singletscalar_dm import import_data_file
 ... data_path = import_data_file('SHP_sigmav_bb.dat')
-
-References
-----------
-
-
-Examples
---------
-The ``examples`` folder contains python examples ready to be run to plot relevant
-phenomenological quantities, leveraging the functions defined in this module.
-The online documentation provides an handy way of browsing these examples,
-enabling the possibility of downloading them as `.py` scripts or `.ipynb` notebooks.
 '''
 
 from . import _globals
