@@ -1,56 +1,120 @@
 '''
-Indirect detection calculation
+Relic density calculations
 ==========================
 
-This script calculates the gamma-ray flux for the Galactic center excess.
+Calculate the relic density of the model.
 '''
 
 import matplotlib.pyplot as plt
 import numpy as np
 from singletscalar_dm import *
-from scipy.interpolate import interp1d
+
+table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
+        sigmav = _lambda2sigmav(DMmass,lambda_hs,table_int)
 
 # %%
-# In order to calculate the relic density it is possible to use the function `interpolate_Omega`, which uses the code DRAKE near the Higgs resonance and MicrOMEGAs elsewhere.
-# For examplte, let's compute the relic density, expressed as :math:`\Omega h^2` for the QCDA model.
+# Here we create the likelihood profile for dwarf.
 
-table_best  = np.loadtxt('/Users/mattiadimauro/Dropbox/FERMI-LAT/GC_PSRDM/ZENODO_FILES/Figures_12_and_14_GCE_Spectra/GCE_BestFitModel_flux_Inner40x40_masked_disk.dat')
-table_up  = np.loadtxt('/Users/mattiadimauro/Dropbox/FERMI-LAT/GC_PSRDM/ZENODO_FILES/GCE_band_up.txt')
-table_down  = np.loadtxt('/Users/mattiadimauro/Dropbox/FERMI-LAT/GC_PSRDM/ZENODO_FILES/GCE_band_down.txt')
-#func_best = interp1d(table_best[:,0],table_best[:,1])
-func_min = interp1d(table_down[:,0],table_down[:,1])
-func_max = interp1d(table_up[:,0],table_up[:,1])
-energy_C_vec = np.logspace(np.log10(0.315),np.log10(34.0),100)
-energy_Cerr_vec = table_best[:,0]
-#flux_C_best = func_best(energy_C_vec)
-flux_C_min = func_min(energy_C_vec)
-flux_C_max = func_max(energy_C_vec)
-flux_Cerr_min = func_min(energy_Cerr_vec)
-flux_Cerr_max = func_max(energy_Cerr_vec)
-flux_av = table_best[:,1]
+table_dwarf = np.loadtxt(import_data_file('likelihood/LogLike_stacked_paper_SHP.txt'))
+LogLike_table_dwarf = np.zeros(shape=(len(sigmav_vec),len(mass_vec)))
+for t in range(len(mass_vec)):
+    for u in range(len(sigmav_vec)):
+        LogLike_table_dwarf[u,t] = -2.*table_dwarf[t*len(sigmav_vec)+u,3]
+funcint_dwarf = interp2d(mass_vec,sigmav_vec,LogLike_table_dwarf)
 
-DMmass=62.485
-lambda_hs=2e-4
-energy_vec = np.logspace(-1.,2.,100)
-flux_DM = np.zeros(len(energy_vec))
-for i in range(len(energy_vec)):
-    flux_DM[i] = flux_DM_prompt(energy_vec[i],DMmass,lambda_hs)
+LogLikel_table_dwarf = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
+for t in range(len(mass_vec)):
+    for u in range(len(lambdap_vec)):
+        sigmav_val = func_lambda2sigmav(mass_vec[t],lambdap_vec[u])
+        LogLikel_table_dwarf[u,t] = funcint_dwarf(mass_vec[t],sigmav_val)
 
-fig = plt.figure(figsize=(8,6))
-plt.plot(energy_vec,flux_DM*np.power(energy_vec,2.), lw=5.0, ls='--', color='blue', label=r'SHP model')
-plt.fill_between(energy_C_vec,flux_C_min,flux_C_max,alpha=0.5,color="grey")
-plt.errorbar(table_best[:,0], table_best[:,1], yerr=[table_best[:,1]-table_best[:,2],table_best[:,3]-table_best[:,1]], fmt='*', color='black',label=r'Cholis+2022')
-#plt.errorbar(energy_av, flux_ul, yerr=flux_ul*0.2, xerr=[energy_min,energy_max], fmt='*', color='black', upltims=True)
-plt.ylabel(r'$E^2 \frac{dN}{dE}$ [GeV/cm$^2$/s/sr]', fontsize=18)
-plt.xlabel(r'$E$ [GeV]', fontsize=18)
-plt.axis([0.1,100,8.e-8,3e-6])
-plt.xticks(fontsize=18)
-plt.yticks(fontsize=18)
-plt.tick_params('both', length=7, width=2, which='major')
-plt.tick_params('both', length=5, width=2, which='minor')
-plt.grid(True)
-plt.yscale('log')
-plt.xscale('log')
-plt.legend(loc=2,prop={'size':16},numpoints=1, scatterpoints=1, ncol=1)
+
+#####pbar
+table_pbar = np.loadtxt(import_data_file('likelihood/LogLike_Manconi2021_pbar_paper.txt'))
+LogLike_table_pbar = np.zeros(shape=(len(sigmav_vec),len(mass_vec)))
+for t in range(len(mass_vec)):
+    for u in range(len(sigmav_vec)):
+        LogLike_table_pbar[u,t] = table_pbar[t*len(sigmav_vec)+u,2]
+funcint_pbar = interp2d(mass_vec,sigmav_vec,LogLike_table_pbar)
+
+LogLikel_table_pbar = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
+for t in range(len(mass_vec)):
+    for u in range(len(lambdap_vec)):
+        sigmav_val = func_lambda2sigmav(mass_vec[t],lambdap_vec[u])
+        LogLikel_table_pbar[u,t] = funcint_pbar(mass_vec[t],sigmav_val)
+        
+
+#####GCE
+table_gce = np.loadtxt(import_data_file('likelihood/Chi_table_Cholis_GCE_MED_paper.txt'))
+LogLike_table_gce = np.zeros(shape=(len(sigmav_vec),len(mass_vec)))
+for t in range(len(mass_vec)):
+    for u in range(len(sigmav_vec)):
+        LogLike_table_gce[u,t] = -table_gce[t*len(sigmav_vec)+u,2]
+funcint_gce = interp2d(mass_vec,sigmav_vec,LogLike_table_gce)
+
+LogLikel_table_gce = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
+for t in range(len(mass_vec)):
+    for u in range(len(lambdap_vec)):
+        sigmav_val = func_lambda2sigmav(mass_vec[t],lambdap_vec[u])
+        LogLikel_table_gce[u,t] = funcint_gce(mass_vec[t],sigmav_val)
+        
+
+#####Combined
+LogLike_table_combined = LogLike_table_gce+LogLike_table_pbar+LogLike_table_dwarf
+LogLikel_table_combined = LogLikel_table_gce+LogLikel_table_pbar+LogLikel_table_dwarf
+
+
+fig, ax = pl.subplots(figsize=(8,6))
+
+dlin = ( 80+2 )/30.
+scale_vec = np.arange( -80,2, dlin )
+scale_cb = np.arange( -80,2, dlin*10.)
+
+cf = ax.contourf(mass_vec, lambdap_vec, LogLikel_table_combined-LogLikel_table_combined.max(), 30, levels=list(scale_vec), cmap='seismic')
+#ax.set_xlabel(r'$\lambda_{HS}$', fontsize=18)
+#ax.set_ylabel(r'$m_{S}$ [GeV]', fontsize=18)
+cbar = fig.colorbar(cf, ax = ax)
+cbar.ax.set_ylabel(r'$-\Delta\chi^2$ Combined AstroP', fontsize="large")
+
+#plt.colorbar()
+pl.ylabel(r'$\lambda_{HS}$', fontsize=18)
+pl.xlabel(r'$m_{S}$ [GeV]', fontsize=18)
+pl.axis([35.,90,1e-4,1.0])
+pl.xticks(fontsize=16)
+pl.yticks(fontsize=16)
+pl.grid(True)
+pl.yscale('log')
+pl.xscale('linear') 
+pl.legend(loc=1,prop={'size':15},numpoints=1, scatterpoints=1, ncol=2)
 fig.tight_layout(pad=0.5)
-plt.show()
+pl.savefig(folder+"contour_lambda_combined_test_MED_zoom_paper.pdf")
+
+
+
+fig, ax = pl.subplots(figsize=(8,6))
+
+dlin = ( 80+2 )/30.
+scale_vec = np.arange( -80,2, dlin )
+scale_cb = np.arange( -80,2, dlin*10.)
+
+cf = ax.contourf(mass_vec-62.50, lambdap_vec, LogLikel_table_combined-LogLikel_table_combined.max(), 30, levels=list(scale_vec), cmap='seismic')
+#ax.set_xlabel(r'$\lambda_{HS}$', fontsize=18)
+#ax.set_ylabel(r'$m_{S}$ [GeV]', fontsize=18)
+cbar = fig.colorbar(cf, ax = ax)
+cbar.ax.set_ylabel(r'$-\Delta\chi^2$ Combined AstroP', fontsize="large")
+
+pl.text(0.11,2e-5,'MED', fontsize=18)
+
+#plt.colorbar()
+pl.ylabel(r'$\lambda_{HS}$', fontsize=18)
+pl.xlabel(r'$m_{S}-m_h/2$ [GeV]', fontsize=18)
+pl.axis([-0.2,0.2,1e-5,0.005])
+pl.xticks(fontsize=16)
+pl.yticks(fontsize=16)
+pl.grid(True)
+pl.yscale('log')
+pl.xscale('linear') 
+pl.legend(loc=2,prop={'size':16},numpoints=1, scatterpoints=1, ncol=1)
+fig.tight_layout(pad=0.5)
+pl.savefig(folder+"contour_lambda_combined_test_MED_superzoom_paper.pdf")
+
