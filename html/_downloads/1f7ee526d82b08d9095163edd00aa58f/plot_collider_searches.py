@@ -1,8 +1,8 @@
 '''
-Direct detection
-================
+Collider searches
+=================
 
-Calculate various direct detection observables.
+Calculate various colliders' constraints.
 '''
 
 import matplotlib.pyplot as plt

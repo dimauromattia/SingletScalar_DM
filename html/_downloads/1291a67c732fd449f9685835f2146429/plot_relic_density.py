@@ -102,11 +102,12 @@ print(lambda_hs)
 # %%
 # In the following, we will generate a plot with the values of :math:`m_S` and :math:`\lambda_{HS}` which provide 100% or 30% of the relic density, showing the calculations performed with the QCDA and QCDB models and with MicrOMEGAs. 
 
-mass_vec = np.logspace(1.,3.,100)
+mass_vec = massz_vec
 lambda_QCDA_100_vec = np.zeros(len(mass_vec))
 lambda_QCDB_100_vec = np.zeros(len(mass_vec))
 lambda_QCDB_30_vec = np.zeros(len(mass_vec))
 lambda_Micro_100_vec = np.zeros(len(mass_vec))
+Omegah2 = 0.120
 for t in range(len(mass_vec)):
     lambda_QCDA_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDA')
     lambda_QCDB_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDB')
@@ -117,7 +118,7 @@ for t in range(len(mass_vec)):
 
 fig = plt.figure(figsize=(8,6))
 plt.plot(mass_vec,lambda_QCDA_100_vec,lw=1.5,ls='--',color='black',label='DRAKE QCDA, $\Omega h^2=0.12$')
-plt.plot(mass_vec,lambda_QCDB_100_vec,lw=1.5,ls='-',color='blue',label='DRAKE QCDA, $\Omega h^2=0.12$')
+plt.plot(mass_vec,lambda_QCDB_100_vec,lw=1.5,ls='-',color='blue',label='DRAKE QCDB, $\Omega h^2=0.12$')
 plt.plot(mass_vec,lambda_QCDB_30_vec,lw=1.5,ls=':',color='red',label='DRAKE QCDB, $\Omega h^2=0.012$')
 plt.plot(mass_vec,lambda_Micro_100_vec,lw=1.5,ls='-.',color='green', label=r'MicroOMEGA, $\Omega h^2=0.12$')
 plt.ylabel(r'$\lambda_{HS}$', fontsize=18)
@@ -132,8 +133,25 @@ plt.legend(loc=4,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
 fig.tight_layout(pad=0.5)
 plt.show()
 
+fig = plt.figure(figsize=(8,6))
+plt.plot(mass_vec,lambda_QCDA_100_vec,lw=1.5,ls='--',color='black',label='DRAKE QCDA, $\Omega h^2=0.12$')
+plt.plot(mass_vec,lambda_QCDB_100_vec,lw=1.5,ls='-',color='blue',label='DRAKE QCDB, $\Omega h^2=0.12$')
+plt.plot(mass_vec,lambda_QCDB_30_vec,lw=1.5,ls=':',color='red',label='DRAKE QCDB, $\Omega h^2=0.012$')
+plt.plot(mass_vec,lambda_Micro_100_vec,lw=1.5,ls='-.',color='green', label=r'MicroOMEGA, $\Omega h^2=0.12$')
+plt.ylabel(r'$\lambda_{HS}$', fontsize=18)
+plt.xlabel(r'$m_{S}$ [GeV]', fontsize=18)
+plt.axis([40.,80,1e-4,1e0])
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.grid(True)
+plt.yscale('log')
+plt.xscale('log') 
+plt.legend(loc=3,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
+fig.tight_layout(pad=0.5)
+plt.show()
+
 # %%
-# The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the function `import_data_file`.
+# The parameters :math:`m_S` and :math:`\lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the function `import_data_file`.
 
 omega_drake_micromegas = import_data_file('Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat')
 table = np.loadtxt(omega_drake_micromegas)

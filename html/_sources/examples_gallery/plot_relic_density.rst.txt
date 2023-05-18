@@ -89,7 +89,7 @@ In the following, we compute the relic density using only MicrOMEGAs.
 
  .. code-block:: none
 
-    0.12855141158870298
+    0.12796691577839414
 
 
 
@@ -120,7 +120,7 @@ However, if we test masses close to the Higgs resonance the differences emerge:
  .. code-block:: none
 
     0.06396689881423608
-    0.04752675754272283
+    0.047495662241396217
 
 
 
@@ -263,7 +263,7 @@ See example below.
  .. code-block:: none
 
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001075 984200.0
+    For this mass pick a range of Omegah^2 between  0.001075 984200.0
     0
 
 
@@ -296,16 +296,17 @@ See example below.
 
 In the following, we will generate a plot with the values of :math:`m_S` and :math:`\lambda_{HS}` which provide 100% or 30% of the relic density, showing the calculations performed with the QCDA and QCDB models and with MicrOMEGAs. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 104-116
+.. GENERATED FROM PYTHON SOURCE LINES 104-117
 
 .. code-block:: default
 
 
-    mass_vec = np.logspace(1.,3.,100)
+    mass_vec = massz_vec
     lambda_QCDA_100_vec = np.zeros(len(mass_vec))
     lambda_QCDB_100_vec = np.zeros(len(mass_vec))
     lambda_QCDB_30_vec = np.zeros(len(mass_vec))
     lambda_Micro_100_vec = np.zeros(len(mass_vec))
+    Omegah2 = 0.120
     for t in range(len(mass_vec)):
         lambda_QCDA_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDA')
         lambda_QCDB_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDB')
@@ -320,293 +321,151 @@ In the following, we will generate a plot with the values of :math:`m_S` and :ma
 
  .. code-block:: none
 
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001577 794200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001577 794200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001577 794200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001577 794200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001545 833400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001545 833400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001545 833400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001545 833400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001518 837000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001518 837000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001518 837000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001518 837000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001494 879700.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001494 879700.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001494 879700.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001494 879700.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001473 925400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001473 925400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001473 925400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001473 925400.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001455 973500.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001455 973500.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001455 973500.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001455 973500.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001438 3964000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001438 3964000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001438 3964000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001438 3964000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001423 3855000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001423 3855000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001423 3855000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001423 3855000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001409 3911000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001409 3911000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001409 3911000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001409 3911000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001395 3729000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001395 3729000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001395 3729000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001395 3729000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001381 3840000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001381 3840000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001381 3840000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001381 3840000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001367 3566000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001367 3566000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001367 3566000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001367 3566000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001352 3377000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001352 3377000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001352 3377000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001352 3377000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001337 3336000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001337 3336000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001337 3336000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001337 3336000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001321 3108000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001321 3108000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001321 3108000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001321 3108000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001304 2844000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001304 2844000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001304 2844000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001304 2844000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001286 2586000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001286 2586000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001286 2586000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001286 2586000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001266 2469000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001266 2469000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001266 2469000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001266 2469000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001244 2201000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001244 2201000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001244 2201000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001244 2201000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00122 1977000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00122 1977000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00122 1977000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00122 1977000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001193 1717000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001193 1717000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001193 1717000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001193 1717000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001163 1506000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001163 1506000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001163 1506000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001163 1506000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00113 1314000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00113 1314000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00113 1314000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00113 1314000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001094 1077000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001094 1077000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001094 1077000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001094 1077000.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001055 895200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001055 895200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001055 895200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001055 895200.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001011 700600.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001011 700600.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001011 700600.0
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.001011 700600.0
+    Warning, mass should be between 2.0 20000.0
+    Warning, mass should be between 2.0 20000.0
+    Warning, mass should be between 2.0 20000.0
+    Warning, mass should be between 2.0 20000.0
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.0009625 550300.0
+    For this mass pick a range of Omegah^2 between  0.03362 300000.0
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.0009103 419900.0
+    For this mass pick a range of Omegah^2 between  0.03137 300000.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000856814 9.10934
+    For this mass pick a range of Omegah^2 between  0.02936 300000.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000795298 9.09852
+    For this mass pick a range of Omegah^2 between  0.02763 300000.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000728411 9.06496
+    For this mass pick a range of Omegah^2 between  0.02612 320400.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00066359 8.93342
+    For this mass pick a range of Omegah^2 between  0.02478 344200.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000602575 8.43968
+    For this mass pick a range of Omegah^2 between  0.02355 369600.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000548469 7.02204
+    For this mass pick a range of Omegah^2 between  0.02242 396300.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000516851 4.58233
+    For this mass pick a range of Omegah^2 between  0.02134 440000.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00106192 1.27854
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000743161 3.35577
+    For this mass pick a range of Omegah^2 between  0.02031 485600.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00101861 1.3272
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00114225 1.52574
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00094685 1.70057
+    For this mass pick a range of Omegah^2 between  0.0193 513500.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00111264 1.3937
+    For this mass pick a range of Omegah^2 between  0.01834 558000.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.00111264 1.3937
+    For this mass pick a range of Omegah^2 between  0.01745 600100.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000430948 20.4273
+    For this mass pick a range of Omegah^2 between  0.01664 617200.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000374206 9.49628
+    For this mass pick a range of Omegah^2 between  0.0159 626900.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000358035 9.59289
+    For this mass pick a range of Omegah^2 between  0.01515 648000.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
     Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000368207 9.62518
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000378102 9.38972
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000394914 8.92321
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000421803 8.56096
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000393931 9.24043
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000382666 9.37535
-    Warning, extrapolating.
-    For this mass pick a range of lambda between  0.000383004 9.37112
+    For this mass pick a range of Omegah^2 between  0.01353 634600.0
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-135
+.. GENERATED FROM PYTHON SOURCE LINES 118-153
 
 .. code-block:: default
 
 
     fig = plt.figure(figsize=(8,6))
     plt.plot(mass_vec,lambda_QCDA_100_vec,lw=1.5,ls='--',color='black',label='DRAKE QCDA, $\Omega h^2=0.12$')
-    plt.plot(mass_vec,lambda_QCDB_100_vec,lw=1.5,ls='-',color='blue',label='DRAKE QCDA, $\Omega h^2=0.12$')
+    plt.plot(mass_vec,lambda_QCDB_100_vec,lw=1.5,ls='-',color='blue',label='DRAKE QCDB, $\Omega h^2=0.12$')
     plt.plot(mass_vec,lambda_QCDB_30_vec,lw=1.5,ls=':',color='red',label='DRAKE QCDB, $\Omega h^2=0.012$')
     plt.plot(mass_vec,lambda_Micro_100_vec,lw=1.5,ls='-.',color='green', label=r'MicroOMEGA, $\Omega h^2=0.12$')
     plt.ylabel(r'$\lambda_{HS}$', fontsize=18)
@@ -621,23 +480,52 @@ In the following, we will generate a plot with the values of :math:`m_S` and :ma
     fig.tight_layout(pad=0.5)
     plt.show()
 
+    fig = plt.figure(figsize=(8,6))
+    plt.plot(mass_vec,lambda_QCDA_100_vec,lw=1.5,ls='--',color='black',label='DRAKE QCDA, $\Omega h^2=0.12$')
+    plt.plot(mass_vec,lambda_QCDB_100_vec,lw=1.5,ls='-',color='blue',label='DRAKE QCDB, $\Omega h^2=0.12$')
+    plt.plot(mass_vec,lambda_QCDB_30_vec,lw=1.5,ls=':',color='red',label='DRAKE QCDB, $\Omega h^2=0.012$')
+    plt.plot(mass_vec,lambda_Micro_100_vec,lw=1.5,ls='-.',color='green', label=r'MicroOMEGA, $\Omega h^2=0.12$')
+    plt.ylabel(r'$\lambda_{HS}$', fontsize=18)
+    plt.xlabel(r'$m_{S}$ [GeV]', fontsize=18)
+    plt.axis([40.,80,1e-4,1e0])
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.grid(True)
+    plt.yscale('log')
+    plt.xscale('log') 
+    plt.legend(loc=3,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
+    fig.tight_layout(pad=0.5)
+    plt.show()
 
 
 
-.. image-sg:: /examples_gallery/images/sphx_glr_plot_relic_density_002.png
-   :alt: plot relic density
-   :srcset: /examples_gallery/images/sphx_glr_plot_relic_density_002.png
-   :class: sphx-glr-single-img
+
+.. rst-class:: sphx-glr-horizontal
+
+
+    *
+
+      .. image-sg:: /examples_gallery/images/sphx_glr_plot_relic_density_002.png
+         :alt: plot relic density
+         :srcset: /examples_gallery/images/sphx_glr_plot_relic_density_002.png
+         :class: sphx-glr-multi-img
+
+    *
+
+      .. image-sg:: /examples_gallery/images/sphx_glr_plot_relic_density_003.png
+         :alt: plot relic density
+         :srcset: /examples_gallery/images/sphx_glr_plot_relic_density_003.png
+         :class: sphx-glr-multi-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 136-137
+.. GENERATED FROM PYTHON SOURCE LINES 154-155
 
-The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the function `import_data_file`.
+The parameters :math:`m_S` and :math:`\lambda_{HS}` which provide the right relic abundance are reported in the file `Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat`, which can be imported through the function `import_data_file`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-158
+.. GENERATED FROM PYTHON SOURCE LINES 155-176
 
 .. code-block:: default
 
@@ -665,9 +553,9 @@ The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic
 
 
 
-.. image-sg:: /examples_gallery/images/sphx_glr_plot_relic_density_003.png
+.. image-sg:: /examples_gallery/images/sphx_glr_plot_relic_density_004.png
    :alt: plot relic density
-   :srcset: /examples_gallery/images/sphx_glr_plot_relic_density_003.png
+   :srcset: /examples_gallery/images/sphx_glr_plot_relic_density_004.png
    :class: sphx-glr-single-img
 
 
@@ -677,7 +565,7 @@ The parameters :math:`m_S` and :math:`lambda_{HS}` which provide the right relic
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 4 minutes  38.698 seconds)
+   **Total running time of the script:** ( 11 minutes  34.334 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_relic_density.py:

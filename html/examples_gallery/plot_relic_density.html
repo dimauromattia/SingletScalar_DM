@@ -50,8 +50,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'examples_gallery/plot_relic_density';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Direct detection" href="plot_direct_detection.html" />
-    <link rel="prev" title="Source spectra" href="plot_source_spectra.html" />
+    <link rel="next" title="Indirect detection" href="plot_indirect_detection.html" />
+    <link rel="prev" title="Direct detection" href="plot_direct_detection.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -293,11 +293,13 @@ document.write(`
      aria-label="Section Navigation">
   <p class="bd-links__title" role="heading" aria-level="1">Section Navigation</p>
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="plot_collider_searches.html">Direct detection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_collider_searches.html">Collider searches</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_indirect_detection_GCE.html">Indirect detection calculation for GCE</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_source_spectra.html">Source spectra</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relic density calculations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_direct_detection.html">Direct detection</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Relic density calculations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_indirect_detection.html">Indirect detection</a></li>
 </ul>
 </div>
 </nav></div>
@@ -386,7 +388,7 @@ For example, let’s compute the relic density, expressed as <span class="math n
 <span class="nb">print</span><span class="p">(</span><span class="n">omegah2_micromegas</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.12855141158870298
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.12796691577839414
 </pre></div>
 </div>
 <p>As expected the results obtained with the functions <cite>interpolate_Omega</cite> and <cite>interpolate_Omega_MicrOMEGAs</cite> are similar for the mass point tested above.
@@ -400,7 +402,7 @@ However, if we test masses close to the Higgs resonance the differences emerge:<
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>0.06396689881423608
-0.04752675754272283
+0.047495662241396217
 </pre></div>
 </div>
 <p>The calculation of the relic density close to the resonance with DRAKE has been done for <cite>lambda_hs</cite> values between 1 and two orders of magnitude below and above the value that gives the correct relic abundance.
@@ -462,7 +464,7 @@ See example below.</p>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning, extrapolating.
-For this mass pick a range of lambda between  0.001075 984200.0
+For this mass pick a range of Omegah^2 between  0.001075 984200.0
 0
 </pre></div>
 </div>
@@ -476,11 +478,12 @@ For this mass pick a range of lambda between  0.001075 984200.0
 </pre></div>
 </div>
 <p>In the following, we will generate a plot with the values of <span class="math notranslate nohighlight">\(m_S\)</span> and <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> which provide 100% or 30% of the relic density, showing the calculations performed with the QCDA and QCDB models and with MicrOMEGAs.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="mf">1.</span><span class="p">,</span><span class="mf">3.</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mass_vec</span> <span class="o">=</span> <span class="n">massz_vec</span>
 <span class="n">lambda_QCDA_100_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
 <span class="n">lambda_QCDB_100_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
 <span class="n">lambda_QCDB_30_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
 <span class="n">lambda_Micro_100_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">))</span>
+<span class="n">Omegah2</span> <span class="o">=</span> <span class="mf">0.120</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">)):</span>
     <span class="n">lambda_QCDA_100_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDA&#39;</span><span class="p">)</span>
     <span class="n">lambda_QCDB_100_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Omegah2</span><span class="p">,</span><span class="s1">&#39;QCDB&#39;</span><span class="p">)</span>
@@ -488,286 +491,144 @@ For this mass pick a range of lambda between  0.001075 984200.0
     <span class="n">lambda_Micro_100_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">interpolate_lambda_MicrOMEGAs</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Omegah2</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning, extrapolating.
-For this mass pick a range of lambda between  0.001577 794200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001577 794200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001577 794200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001577 794200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001545 833400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001545 833400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001545 833400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001545 833400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001518 837000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001518 837000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001518 837000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001518 837000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001494 879700.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001494 879700.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001494 879700.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001494 879700.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001473 925400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001473 925400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001473 925400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001473 925400.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001455 973500.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001455 973500.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001455 973500.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001455 973500.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001438 3964000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001438 3964000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001438 3964000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001438 3964000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001423 3855000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001423 3855000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001423 3855000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001423 3855000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001409 3911000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001409 3911000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001409 3911000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001409 3911000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001395 3729000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001395 3729000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001395 3729000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001395 3729000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001381 3840000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001381 3840000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001381 3840000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001381 3840000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001367 3566000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001367 3566000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001367 3566000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001367 3566000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001352 3377000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001352 3377000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001352 3377000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001352 3377000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001337 3336000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001337 3336000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001337 3336000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001337 3336000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001321 3108000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001321 3108000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001321 3108000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001321 3108000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001304 2844000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001304 2844000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001304 2844000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001304 2844000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001286 2586000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001286 2586000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001286 2586000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001286 2586000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001266 2469000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001266 2469000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001266 2469000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001266 2469000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001244 2201000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001244 2201000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001244 2201000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001244 2201000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00122 1977000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00122 1977000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00122 1977000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00122 1977000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001193 1717000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001193 1717000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001193 1717000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001193 1717000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001163 1506000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001163 1506000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001163 1506000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001163 1506000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00113 1314000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00113 1314000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00113 1314000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00113 1314000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001094 1077000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001094 1077000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001094 1077000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001094 1077000.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001055 895200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001055 895200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001055 895200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001055 895200.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001011 700600.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001011 700600.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001011 700600.0
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.001011 700600.0
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Warning, mass should be between 2.0 20000.0
+Warning, mass should be between 2.0 20000.0
+Warning, mass should be between 2.0 20000.0
+Warning, mass should be between 2.0 20000.0
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.0009625 550300.0
+For this mass pick a range of Omegah^2 between  0.03362 300000.0
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.0009103 419900.0
+For this mass pick a range of Omegah^2 between  0.03137 300000.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000856814 9.10934
+For this mass pick a range of Omegah^2 between  0.02936 300000.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000795298 9.09852
+For this mass pick a range of Omegah^2 between  0.02763 300000.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000728411 9.06496
+For this mass pick a range of Omegah^2 between  0.02612 320400.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.00066359 8.93342
+For this mass pick a range of Omegah^2 between  0.02478 344200.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000602575 8.43968
+For this mass pick a range of Omegah^2 between  0.02355 369600.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000548469 7.02204
+For this mass pick a range of Omegah^2 between  0.02242 396300.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000516851 4.58233
+For this mass pick a range of Omegah^2 between  0.02134 440000.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.00106192 1.27854
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000743161 3.35577
+For this mass pick a range of Omegah^2 between  0.02031 485600.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.00101861 1.3272
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00114225 1.52574
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.00094685 1.70057
+For this mass pick a range of Omegah^2 between  0.0193 513500.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.00111264 1.3937
+For this mass pick a range of Omegah^2 between  0.01834 558000.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.00111264 1.3937
+For this mass pick a range of Omegah^2 between  0.01745 600100.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000430948 20.4273
+For this mass pick a range of Omegah^2 between  0.01664 617200.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000374206 9.49628
+For this mass pick a range of Omegah^2 between  0.0159 626900.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000358035 9.59289
+For this mass pick a range of Omegah^2 between  0.01515 648000.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 Warning, extrapolating.
-For this mass pick a range of lambda between  0.000368207 9.62518
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000378102 9.38972
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000394914 8.92321
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000421803 8.56096
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000393931 9.24043
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000382666 9.37535
-Warning, extrapolating.
-For this mass pick a range of lambda between  0.000383004 9.37112
+For this mass pick a range of Omegah^2 between  0.01353 634600.0
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
 </pre></div>
 </div>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDA_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDB, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_30_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDB, $\Omega h^2=0.012$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_Micro_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;MicroOMEGA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_</span><span class="si">{HS}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
@@ -781,9 +642,30 @@ For this mass pick a range of lambda between  0.000383004 9.37112
 <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDA_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDB, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_QCDB_30_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span><span class="n">label</span><span class="o">=</span><span class="s1">&#39;DRAKE QCDB, $\Omega h^2=0.012$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_Micro_100_vec</span><span class="p">,</span><span class="n">lw</span><span class="o">=</span><span class="mf">1.5</span><span class="p">,</span><span class="n">ls</span><span class="o">=</span><span class="s1">&#39;-.&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">&#39;MicroOMEGA, $\Omega h^2=0.12$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$\lambda_</span><span class="si">{HS}</span><span class="s1">$&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$m_</span><span class="si">{S}</span><span class="s1">$ [GeV]&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mf">40.</span><span class="p">,</span><span class="mi">80</span><span class="p">,</span><span class="mf">1e-4</span><span class="p">,</span><span class="mf">1e0</span><span class="p">])</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xscale</span><span class="p">(</span><span class="s1">&#39;log&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span><span class="n">prop</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;size&#39;</span><span class="p">:</span><span class="mi">14</span><span class="p">},</span><span class="n">numpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scatterpoints</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncol</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">tight_layout</span><span class="p">(</span><span class="n">pad</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_relic_density_002.png" srcset="../_images/sphx_glr_plot_relic_density_002.png" alt="plot relic density" class = "sphx-glr-single-img"/><p>The parameters <span class="math notranslate nohighlight">\(m_S\)</span> and <span class="math notranslate nohighlight">\(lambda_{HS}\)</span> which provide the right relic abundance are reported in the file <cite>Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat</cite>, which can be imported through the function <cite>import_data_file</cite>.</p>
+<ul class="sphx-glr-horizontal">
+<li><img src="../_images/sphx_glr_plot_relic_density_002.png" srcset="../_images/sphx_glr_plot_relic_density_002.png" alt="plot relic density" class = "sphx-glr-multi-img"/></li>
+<li><img src="../_images/sphx_glr_plot_relic_density_003.png" srcset="../_images/sphx_glr_plot_relic_density_003.png" alt="plot relic density" class = "sphx-glr-multi-img"/></li>
+</ul>
+<p>The parameters <span class="math notranslate nohighlight">\(m_S\)</span> and <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span> which provide the right relic abundance are reported in the file <cite>Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat</cite>, which can be imported through the function <cite>import_data_file</cite>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">omega_drake_micromegas</span> <span class="o">=</span> <span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;Omega_MicroOMEGAs_DRAKE_QCDB_QCDA.dat&#39;</span><span class="p">)</span>
 <span class="n">table</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">omega_drake_micromegas</span><span class="p">)</span>
 <span class="n">mass_RD</span> <span class="o">=</span> <span class="n">table</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
@@ -806,7 +688,7 @@ For this mass pick a range of lambda between  0.000383004 9.37112
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_relic_density_003.png" srcset="../_images/sphx_glr_plot_relic_density_003.png" alt="plot relic density" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 4 minutes  38.698 seconds)</p>
+<img src="../_images/sphx_glr_plot_relic_density_004.png" srcset="../_images/sphx_glr_plot_relic_density_004.png" alt="plot relic density" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 11 minutes  34.334 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-relic-density-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/1291a67c732fd449f9685835f2146429/plot_relic_density.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_relic_density.py</span></code></a></p>
@@ -830,20 +712,20 @@ For this mass pick a range of lambda between  0.000383004 9.37112
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_source_spectra.html"
+       href="plot_direct_detection.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Source spectra</p>
+        <p class="prev-next-title">Direct detection</p>
       </div>
     </a>
     <a class="right-next"
-       href="plot_direct_detection.html"
+       href="plot_indirect_detection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Direct detection</p>
+        <p class="prev-next-title">Indirect detection</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
