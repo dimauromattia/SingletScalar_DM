@@ -23,7 +23,7 @@ command in the package directory:
 and run the following command in the package directory:
 
 ```shell
-python3.10 -m pip install .
+python -m pip install .
 ```
 ### Running the examples
 
