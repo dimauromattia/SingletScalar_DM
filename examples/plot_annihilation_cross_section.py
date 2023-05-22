@@ -89,3 +89,26 @@ plt.xscale('log')
 plt.legend(loc=4,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
 fig.tight_layout(pad=0.5)
 plt.show()
+
+
+table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
+        
+
+sigmav_relic = np.zeros(len(massz_vec))
+for t in range(len(massz_vec)):
+    lambda_val =  interpolate_relicdensity(massz_vec[t],'QCDB')
+    sigmav_relic[t] = lambda2sigmav(massz_vec[t],lambda_val,table_int)
+
+fig = plt.figure(figsize=(8,6))
+plt.plot(massz_vec,sigmav_relic, color='black', ls='--', lw=2.0, label=r'Thermal cross section' )
+plt.ylabel(r'$\langle \sigma v \rangle$ [cm$^3$/s]', fontsize=18)
+plt.xlabel(r'$m_{\rm{S}}$ [GeV]', fontsize=18)
+plt.axis([2,1e4,0.5*sigmav_relic.min(),2*sigmav_relic.max()])
+plt.xticks(fontsize=16)
+plt.yticks(fontsize=16)
+plt.grid(True)
+plt.yscale('log')
+plt.xscale('log') 
+plt.legend(loc=4,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
+fig.tight_layout(pad=0.5)
+plt.show()

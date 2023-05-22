@@ -10,11 +10,12 @@ from scipy.optimize import minimize
 from ._globals import *
 
 __all__ = [
+    'interpolate_relicdensity',
     'interpolate_Omega',
     'interpolate_Omega_MicrOMEGAs',
     'interpolate_lambda',
     'interpolate_lambda_MicrOMEGAs',
-    '_lambda2sigmav',
+    'lambda2sigmav',
     'sigmav_channels',
     'DMspectra_inttable',
     'provide_ULEXP',
@@ -48,7 +49,7 @@ def interpolate_relicdensity(mass_val,QCDmodel):
 
     Notes
     -----
-    The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.
+    The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.
     '''
         
     if QCDmodel=='QCDA':
@@ -62,8 +63,8 @@ def interpolate_relicdensity(mass_val,QCDmodel):
     return func(mass_val)
 
 
-def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
-    '''Calculates the relic density as Omega h^2 given the mass and lambda.
+def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint):
+    '''Calculates the relic density as Omega h^2 given the dark matter mass and lambda_hs.
 
     Parameters
     ----------
@@ -73,8 +74,6 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
         Values of the lambda_HS parameter.
     QCDmodel : {'QCDA', 'QCDB'}
         Model for the QCD phase transition.
-    warningprint : True, optional
-        Whether to print a warning when extrapolating.
 
     Return
     ------
@@ -84,7 +83,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
 
     Notes
     -----
-    The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.
+    The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.
     '''
 
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
@@ -113,6 +112,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
             if warningprint==True:
                 print('Warning, extrapolating.....')
                 print('The relic density with DRAKE has been calculated for lambda_HS between ',lambda_mass1.min(),lambda_mass1.max())
+                print('Following Value of lambda_HS is given',lambda_val)
             func1 = CubicSpline(lambda_mass1,np.sqrt(Omega_mass1), bc_type='not-a-knot')
             omega1 = np.power(float(func1(lambda_val)),2.)
             check = 1
@@ -132,7 +132,8 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
                 if warningprint==True:
                     print('Warning, extrapolating.')
                     print('The relic density with DRAKE has been calculated for lambda_HS between ',lambda_mass1.min(),lambda_mass1.max())
-
+                    print('Following Value of lambda_HS is given',lambda_val)
+        
         func_final = interp1d(np.array([mass_vector_drake[idx],mass_vector_drake[idx+1]]),np.array([np.power(omega1,0.1),np.power(omega2,0.1)]),kind='linear')
         #interpolate with CubicSpline
         #func_final = CubicSpline(np.array([mass_vector_drake[idx],mass_vector_drake[idx+1]]),np.array([np.power(omega1,0.1),np.power(omega2,0.1)]), bc_type='not-a-knot')
@@ -147,6 +148,7 @@ def interpolate_Omega(mass_val,lambda_val,QCDmodel,warningprint=True):
             return float(func(mass_val,lambda_val))
         else:
             print('Warning, mass should be between',mass_vector_micro.min(),mass_vector_micro.max())
+            print('Following Value of mass is given',mass_val)
 
 def interpolate_Omega_MicrOMEGAs(mass_val,lambda_val):
     '''Calculates the relic density as Omega h^2 given the mass and lambda.
@@ -177,8 +179,9 @@ def interpolate_Omega_MicrOMEGAs(mass_val,lambda_val):
         return float(func(mass_val,lambda_val))
     else:
         print('Warning, mass should be between',mass_vector_micro.min(),mass_vector_micro.max())
+        print('Following Value of mass is given',mass_val)
 
-def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
+def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint):
     '''Calculates the lambda_HS parameter for given relic density and mass values.
 
     Parameters
@@ -189,8 +192,8 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
         The values of the relic density interpolated on the 2d grid of mass
     QCDmodel : {'QCDA', 'QCDB'}
         Model for the QCD phase transition.
-    warningprint : True, optional
-        Whether to print a warning when extrapolating.
+    warningprint : {True, False}
+        Flag to decide if you want to print the warning messages or not
 
     Return
     ------
@@ -200,7 +203,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
     Notes
     -----
     The computation of the parameter uses the computation of the relic density
-    obtained via the code DRAKE and MicrOMEGAs.
+    obtained via the code DRAKE and MICROMEGAs.
     '''
 
     if mass_val>mass_vector_drake.min() and mass_val<mass_vector_drake.max():
@@ -224,6 +227,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
             if warningprint==True:
                 print('Warning, extrapolating.',mass_val)
                 print('For this mass pick a range of Omegah^2 between ',Omega_mass1.min(),Omega_mass1.max())
+                print('Following Value of Omegah^2 is given ',Omega_val)
             check = 1
             #func1 = CubicSpline(Omega_mass1,np.log10(lambda_mass1), bc_type='not-a-knot')
             #lambda1 = float(func1(Omega_val))
@@ -236,6 +240,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
                 if warningprint==True:
                     print('Warning, extrapolating.',mass_val)
                     print('For this mass pick a range of Omegah^2 between ',Omega_mass2.min(),Omega_mass2.max())
+                    print('Following Value of Omegah^2 is given ',Omega_val)
                 check = 1
                 #func2 = CubicSpline(Omega_mass2,lambda_mass2, bc_type='not-a-knot')
                 #lambda2 = float(func2(Omega_val))
@@ -278,6 +283,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
                 if warningprint==True:
                     print('Warning, extrapolating.')
                     print('For this mass pick a range of Omegah^2 between ',Omega_mass1.min(),Omega_mass1.max())
+                    print('Following Value of Omegah^2 is given ',Omega_val)
                 check = 1
                 #func1 = CubicSpline(Omega_mass1,np.log10(lambda_mass1), bc_type='not-a-knot')
                 #lambda1 = float(func1(Omega_val))
@@ -299,6 +305,7 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
                     if warningprint==True:
                         print('Warning, extrapolating.')
                         print('For this mass pick a range of Omegah^2 between ',Omega_mass2.min(),Omega_mass2.max())
+                        print('Following Value of Omegah^2 is given ',Omega_val)
                     check = 1
                     #func2 = CubicSpline(Omega_mass2,lambda_mass2, bc_type='not-a-knot')
                     #lambda2 = float(func2(Omega_val))
@@ -315,9 +322,10 @@ def interpolate_lambda(mass_val,Omega_val,QCDmodel,warningprint=True):
                 #return lambda_val
         else:
             print('Warning, mass should be between',mass_vector_micro.min(),mass_vector_micro.max())
+            print('Following Value of mass is given',mass_val)
 
 
-def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint=True):
+def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint):
     '''Calculates the lambda_HS parameter for given relic density and mass values.
 
     Parameters
@@ -326,8 +334,8 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint=True):
         Dark matter mass values in GeV.
     Omega_val : np.ndarray
         The value of the relic density interpolated on the 2d grid of mass
-    warningprint : True, optional
-        Whether to print a warning when extrapolating.
+    warningprint : {True, False}
+        Flag to decide if you want to print the warning messages or not
 
     Return
     ------
@@ -370,6 +378,7 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint=True):
             if warningprint==True:
                 print('Warning, extrapolating.')
                 print('For this mass pick a range of Omegah^2 between ',Omega_mass1.min(),Omega_mass1.max())
+                print('Following Value of Omegah^2 is given ',Omega_val)
             check = 1
             #func1 = CubicSpline(Omega_mass1,np.log10(lambda_mass1), bc_type='not-a-knot')
             #lambda1 = float(func1(Omega_val))
@@ -389,6 +398,7 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint=True):
                 if warningprint==True:
                     print('Warning, extrapolating.')
                     print('For this mass pick a range of Omegah^2 between ',Omega_mass2.min(),Omega_mass2.max())
+                    print('Following Value of Omegah^2 is given ',Omega_val)
                 check = 1
                 #func2 = CubicSpline(Omega_mass2,lambda_mass2, bc_type='not-a-knot')
                 #lambda2 = float(func2(Omega_val))
@@ -405,10 +415,11 @@ def interpolate_lambda_MicrOMEGAs(mass_val,Omega_val,warningprint=True):
             #return lambda_val
     else:
         print('Warning, mass should be between',mass_vector_micro.min(),mass_vector_micro.max())
+        print('Following Value of mass is given',mass_val)
 
 
 
-def _lambda2sigmav(DMmass_val,lambdahs_val,table_int):
+def lambda2sigmav(DMmass_val,lambdahs_val,table_int):
     '''Returns the interpolated :math:`\sigma v` value on mass and coupling.
 
     The value is given in units of cm^3/s.
@@ -474,9 +485,13 @@ def sigmav_channels(DMmass_val,lambdahs_val,channel):
     sigmav : np.ndarray
         The values of the :math:`\sigma v` for the selected channel.
 
+    See Also
+    --------
+    _lambda2sigma
+
     Notes
     -----
-    This function internally calls `_lambda2sigmav` passing the ``table_int`` as
+    This function internally calls `lambda2sigmav` passing the ``table_int`` as
     the content of the data file related to the ``channel`` specified.
     '''
     #check = np.shape(np.where((channel_vec[:]==channel))[0])
@@ -484,11 +499,11 @@ def sigmav_channels(DMmass_val,lambdahs_val,channel):
     #if check==1:
     if channel=='tot':
         table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
-        sigmav_val = _lambda2sigmav(DMmass_val,lambdahs_val,table_int)
+        sigmav_val = lambda2sigmav(DMmass_val,lambdahs_val,table_int)
 
     else:
         table_int = np.loadtxt(import_data_file('SHP_sigmav_%s.dat'%channel))
-        sigmav_val = _lambda2sigmav(DMmass_val,lambdahs_val,table_int)
+        sigmav_val = lambda2sigmav(DMmass_val,lambdahs_val,table_int)
 
     return sigmav_val
     #else:
@@ -612,20 +627,14 @@ def provide_ULEXP(DMmass,Exp):
     ul : ndarray
         The upper limit values sampled at the provided masses.
 
-    Notes
-    -----
-    The upper limits are taken from the following references: LZ [LZ22]_, DARWIN [DARWIN16]_.
-
     Ref
     ---
-    .. [LZ22] \ J. Aalbers et al. (LZ) (2022), 2207.03764
-    .. [DARWIN16] \ J. Aalbers et al. (DARWIN), JCAP 11, 017 (2016), 1606.07001
     '''
     if Exp=='LZ':
-        SI_exp = _LZUL(DMmass)
+        ul = _LZUL(DMmass)
     elif Exp== 'Darwin':
-        SI_exp = _DARWINUL(DMmass)
-    return SI_exp
+        ul = _DARWINUL(DMmass)
+    return ul
 
 def SI_noomega(DMmass_val,lambdahs_val):
     '''Provides the spin-independent cross-section for direct detection in cm^2.
@@ -645,8 +654,8 @@ def SI_noomega(DMmass_val,lambdahs_val):
         The values of the spin-independent cross-section.
     '''
     mu = (mN*DMmass_val)/(mN+DMmass_val)
-    val = np.power(lambdahs_val*fN*mu*mN,2.)/(4.*np.pi*pow(mh,4.)*np.power(DMmass_val,2.))
-    return GeVm2tocm2*val
+    sigma_si = GeVm2tocm2*np.power(lambdahs_val*fN*mu*mN,2.)/(4.*np.pi*pow(mh,4.)*np.power(DMmass_val,2.))
+    return sigma_si
 
 def SI_withomega(DMmass,lambda_hs,Lambda_vec,Mass_vec,csi_vec):
     '''Provides the spin-independent cross-section for direct detection in cm^2.
@@ -656,10 +665,10 @@ def SI_withomega(DMmass,lambda_hs,Lambda_vec,Mass_vec,csi_vec):
 
     Parameters
     ----------
-    DMmass_val : np.ndarray
-        Dark matter mass values in GeV.
     lambdahs_val : np.ndarray
         Values of the lambda_HS parameter.
+    DMmass_val : np.ndarray
+        Dark matter mass values in GeV.
     Lambda_vec : np.ndarray
         Vector of the values of lambda_hs used for the calculation of the relic density
     Mass_vec : np.ndarray
@@ -676,7 +685,8 @@ def SI_withomega(DMmass,lambda_hs,Lambda_vec,Mass_vec,csi_vec):
     val = np.power(lambda_hs*fN*mu*mN,2.)/(4.*np.pi*pow(mh,4.)*np.power(DMmass,2.))
     func_int_csi = interp2d(Mass_vec,Lambda_vec,csi_vec)
     csi_val = func_int_csi(DMmass,lambda_hs)[0]
-    return GeVm2tocm2*val*csi_val
+    sigma_si = GeVm2tocm2*val*csi_val
+    return sigma_si
 
 def GetUL_DD_nomega(DMmass_val,Exp):
     '''Provides the direct detection sigma SI upper limits for specified experiment.
@@ -697,18 +707,18 @@ def GetUL_DD_nomega(DMmass_val,Exp):
     ul : ndarray
         The upper limit values sampled at the provided masses.
     '''
-    value = 0
+    ul = 0
     if Exp=='LZ':
-        value = np.sqrt(_LZUL(DMmass_val)/SI_noomega(DMmass_val,1.0))
-        return value
+        ul = np.sqrt(_LZUL(DMmass_val)/SI_noomega(DMmass_val,1.0))
+        return ul
     elif Exp== 'DARWIN':
-        value = np.sqrt(_DARWINUL(DMmass_val)/SI_noomega(DMmass_val,1.0))
-        return value
+        ul = np.sqrt(_DARWINUL(DMmass_val)/SI_noomega(DMmass_val,1.0))
+        return ul
     else:
         print('WARNING: Wrong parameter for the experiment.')
         print('Choose among LZ and DARWIN')
 
-def _tominimize_DD(DMmass,Lambda_val,Lambda_vec,Mass_vec,csi_vec,Exp):
+def _tominimize_DD(Lambda_val,DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
     ''' Function to minimize the difference between the theoretically calculated and measured cross section
     
     Parameters
@@ -737,15 +747,15 @@ def _tominimize_DD(DMmass,Lambda_val,Lambda_vec,Mass_vec,csi_vec,Exp):
     SI_theory = SI_withomega(DMmass,Lambda_val,Lambda_vec,Mass_vec,csi_vec)
     SI_exp = provide_ULEXP(DMmass,Exp)
 
-    #print(Lambda_val,SI_exp,SI_theory,abs(SI_exp-SI_theory)/SI_theory)
-    #return abs(func_LuxUL(DMmass)-SI_theory)/SI_theory
-    return np.abs(SI_exp-SI_theory)
+    ul = np.abs(SI_exp-SI_theory)
+    return ul
 
 def GetUL_DD_withomega(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
     '''Provides the direct detection sigma SI upper limits for specified experiment.
 
     It interpolates the limits on the array of dark matter masses provided.
     Limits are returned in units cm^2.
+    <missing>
 
     Parameters
     ----------
@@ -767,7 +777,6 @@ def GetUL_DD_withomega(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
     '''
     SI_theory = SI_withomega(DMmass,Lambda_vec,Lambda_vec,Mass_vec,csi_vec)
     SI_exp = provide_ULEXP(DMmass,Exp)
-    #print(SI_theory,SI_theory.max(),SI_theory.min(),SI_exp)
     if SI_theory.max()<SI_exp:
         return Lambda_vec.max()
 
@@ -776,33 +785,31 @@ def GetUL_DD_withomega(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp):
 
     else:
         lambda_0 = 1e-2
-        #print(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)
-        #print(minimize(tominimize_DD, lambda_0, method='nelder-mead', bounds=(1e-5,1e1), options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)))
-        value = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
-        SI_theory = SI_withomega(value,DMmass,Lambda_vec,Mass_vec,csi_vec)
+        ul = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
+        SI_theory = SI_withomega(DMmass,ul,Lambda_vec,Mass_vec,csi_vec)
         SI_exp = provide_ULEXP(DMmass,Exp)
 
         if abs(SI_exp-SI_theory) > 1e-47:
             lambda_0 = 1e0
-            value = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
-            SI_theory = SI_withomega(value,DMmass,Lambda_vec,Mass_vec,csi_vec)
+            ul = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
+            SI_theory = SI_withomega(DMmass,ul,Lambda_vec,Mass_vec,csi_vec)
             SI_exp = provide_ULEXP(DMmass,Exp)
 
             if abs(SI_exp-SI_theory) > 1e-47:
                 lambda_0 = 1e-4
-                value = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
-                SI_theory = SI_withomega(value,DMmass,Lambda_vec,Mass_vec,csi_vec)
+                ul = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
+                SI_theory = SI_withomega(DMmass,ul,Lambda_vec,Mass_vec,csi_vec)
                 SI_exp = provide_ULEXP(DMmass,Exp)
 
                 if abs(SI_exp-SI_theory) > 1e-47:
                     lambda_0 = 1e1
-                    value = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
-                    SI_theory = SI_withomega(value,DMmass,Lambda_vec,Mass_vec,csi_vec)
+                    ul = minimize(_tominimize_DD, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)).x[0]
+                    SI_theory = SI_withomega(DMmass,ul,Lambda_vec,Mass_vec,csi_vec)
                     SI_exp = provide_ULEXP(DMmass,Exp)
 
                     if abs(SI_exp-SI_theory) > 1e-47:
-                        value = 0.
-        return value
+                        ul = 0.
+        return ul
 
 def Br_inv_UL(lambda_hs,DMmass,Gamma_H,Gamma_inv_measured):
     '''Calculates the upper limit on the Branching ratio of Higgs boson to invisible particles.
@@ -823,7 +830,8 @@ def Br_inv_UL(lambda_hs,DMmass,Gamma_H,Gamma_inv_measured):
     Br_inv_ul : ndarray
         The upper limit on Branching ratio of Higgs to invisible particles.
     '''
-    return np.abs(Br_inv(lambda_hs,DMmass,Gamma_H)-Gamma_inv_measured)/Gamma_inv_measured
+    Br_inv_ul= np.abs(Br_inv(lambda_hs,DMmass,Gamma_H)-Gamma_inv_measured)/Gamma_inv_measured
+    return Br_inv_ul
 
 def minimize_br_inv(DMmass,Gamma_H,Gamma_inv_measured):
     '''Returns the upper limits for lambda_hs given the upper limits for the branching ratio of the Higgs boson into invisible particles
@@ -846,8 +854,8 @@ def minimize_br_inv(DMmass,Gamma_H,Gamma_inv_measured):
         Upper limit for lambda_hs found with collider constraints.
     '''
     lambda_0 = 0.01
-    lambda_val = minimize(Br_inv_UL, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Gamma_H,Gamma_inv_measured)).x[0]
-    return lambda_val 
+    lambda_ul = minimize(Br_inv_UL, lambda_0, method='nelder-mead', options={'xatol': 1e-8, 'disp': True}, args=(DMmass,Gamma_H,Gamma_inv_measured)).x[0]
+    return lambda_ul 
 
 def Gamma_inv(DMmass,lambda_hs):
     '''Calculates the invisible width of the Higgs boson in GeV.
@@ -889,21 +897,21 @@ def Br_inv(lambda_hs,DMmass,Gamma_H):
     return Br_inv
 
 def func_interpolate(varval,variablevec,funcvec):
-    '''This is a generic function to perform an interpolation
+    '''This function is a generic 1D interpolator that can be used for every vectors variablevec,funcvec
 
     Parameters
     ----------
     varval : np.ndarray
-        Value of the variable for which we want the interpolated value
+        Value at which the interpolation is performed
     variablevec : np.ndarray
-        Vector for the independent variable
+        Vector of the indipendent variable
     funcvec : np.ndarray
-        Vector for the dependent variable.
+        Vector of the dependent variable
 
     Return
     ------
-    value : ndarray
-        Interpolated value.
+    result : ndarray
+        Result of the interpolation at varval
     '''
     result = 0.
     if varval<variablevec[0]:
@@ -917,35 +925,40 @@ def func_interpolate(varval,variablevec,funcvec):
         result = pow(10.,  np.log10(funcvec[binval]) + (np.log10(funcvec[binval+1])-np.log10(funcvec[binval]))*(np.log10(varval)-np.log10(variablevec[binval]))/(np.log10(variablevec[binval+1])-np.log10(variablevec[binval]))  )
     return result
 
-def flux_DM_prompt(Energy,DMmass,lambda_hs):
-    '''Calculates the gamma-ray flux for the Galactic center excess.
+def flux_DM_prompt(Energy,DMmass,lambda_hs,warningprint):
+    '''Calculates prompt flux of gamma rays from dark matter annihilation for a given dark matter mass and lambda_hs.
 
     Parameters
     ----------
     Energy : np.ndarray
-        Gamma-ray energy in GeV
+       The gamma-ray energy in GeV
     DMmass : np.ndarray
         Dark matter mass values in GeV.
     lambda_hs : np.ndarray
         The coupling between Higgs boson and the dark matter.
+    warningprint : {True, False}
+        Flag to decide if you want to print the warning messages or not
+   
 
     Return
     ------
-    flux : ndarray
-        gamma-ray flux for the Galactic center excess.
+    dNdE : ndarray
+        The prompt flux of gamma rays from dark matter annihilation
     '''
-
+    
     kpc = pow(10.,3.)*3.0856775*pow(10.,18.) #cm
     rodot = 8.12*kpc #cm
     rhodot = 0.300 #GeV/cm^3
     Jfact = 117.0 #MED for Cholis
-    # solidangle = 0.4288
-
+    solidangle = 0.4288
+    
     if Energy>DMmass:
+        if warningprint==True:
+            print('WARNING: gamma-ray energy larger than dark matter mass')
         return 0.
     else:
         table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
-        sigmav = _lambda2sigmav(DMmass,lambda_hs,table_int)
+        sigmav = lambda2sigmav(DMmass,lambda_hs,table_int)
         x_vec,fluxDM_x = DMspectra_inttable(DMmass,lambda_hs,'gammas',smooth=False)
         EnergyDM_vec = pow(10.,x_vec)*DMmass
         fluxDM_vec = fluxDM_x/(np.log(10.)*np.power(10.,x_vec)*DMmass)
@@ -954,7 +967,8 @@ def flux_DM_prompt(Energy,DMmass,lambda_hs):
                 fluxDM_vec[t]=fluxDM_vec[t]
             else:
                 fluxDM_vec[t]=1e-30
-
+        
         dNdE = func_interpolate(Energy,EnergyDM_vec,fluxDM_vec)
-
-        return 0.5*(rodot/(4.*np.pi))*pow(rhodot/DMmass,2.)*Jfact*sigmav*dNdE
+        
+        flux = 0.5*(rodot/(4.*np.pi))*pow(rhodot/DMmass,2.)*Jfact*sigmav*dNdE
+        return flux
