@@ -61,23 +61,6 @@ directory:
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Calculate the annihilation cross section, \langle \sigma v \rangle for the various annihilation...">
-
-.. only:: html
-
-  .. image:: /examples_gallery/images/thumb/sphx_glr_plot_annihilation_cross_section_thumb.png
-    :alt:
-
-  :ref:`sphx_glr_examples_gallery_plot_annihilation_cross_section.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Annihilation cross section</div>
-    </div>
-
-
-.. raw:: html
-
     <div class="sphx-glr-thumbcontainer" tooltip="Calculate the source spectra.">
 
 .. only:: html
@@ -90,6 +73,23 @@ directory:
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Source spectra</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Calculate the annihilation cross section, \langle \sigma v \rangle for the various annihilation...">
+
+.. only:: html
+
+  .. image:: /examples_gallery/images/thumb/sphx_glr_plot_annihilation_cross_section_thumb.png
+    :alt:
+
+  :ref:`sphx_glr_examples_gallery_plot_annihilation_cross_section.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Annihilation cross section</div>
     </div>
 
 
@@ -154,8 +154,8 @@ directory:
 
    /examples_gallery/plot_collider_searches
    /examples_gallery/plot_indirect_detection_GCE
-   /examples_gallery/plot_annihilation_cross_section
    /examples_gallery/plot_source_spectra
+   /examples_gallery/plot_annihilation_cross_section
    /examples_gallery/plot_direct_detection
    /examples_gallery/plot_relic_density
    /examples_gallery/plot_indirect_detection

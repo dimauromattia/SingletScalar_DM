@@ -74,6 +74,7 @@ print(csi_vec)
 
 val = GetUL_DD_withomega(60,Lambda_vec,MassDD_vec,csi_vec,'LZ')
 print(val)
+
 # %%
 # The we use the function `GetUL_DD` to get the upper limits including also the relic density of :math:`S`.
 

@@ -97,7 +97,7 @@ It is possible to specify `'tot'` to take into account all the previous channels
 
 .. GENERATED FROM PYTHON SOURCE LINES 31-32
 
-This is equivalent to summing all the different channels togheter.
+This is equivalent to summing all the different channels together.
 
 .. GENERATED FROM PYTHON SOURCE LINES 32-41
 
@@ -168,7 +168,7 @@ It is possible to calculate the relative contribution of the different channels 
 
 Which we can further plot.
 
-.. GENERATED FROM PYTHON SOURCE LINES 69-92
+.. GENERATED FROM PYTHON SOURCE LINES 69-93
 
 .. code-block:: default
 
@@ -198,6 +198,7 @@ Which we can further plot.
 
 
 
+
 .. image-sg:: /examples_gallery/images/sphx_glr_plot_annihilation_cross_section_001.png
    :alt: plot annihilation cross section
    :srcset: /examples_gallery/images/sphx_glr_plot_annihilation_cross_section_001.png
@@ -207,10 +208,67 @@ Which we can further plot.
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 94-96
+
+Furthermore, it is interesting to have a look at the thermal cross section.
+We import the data file.
+
+.. GENERATED FROM PYTHON SOURCE LINES 96-103
+
+.. code-block:: default
+
+
+    table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
+    sigmav_relic = np.zeros(len(massz_vec))
+    for t in range(len(massz_vec)):
+        lambda_val =  interpolate_relicdensity(massz_vec[t],'QCDB')
+        sigmav_relic[t] = lambda2sigmav(massz_vec[t],lambda_val,table_int)
+
+
+
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 104-105
+
+And we plot the :math:`\langle \sigma v \rangle` as a function of :math:`m_S`.
+
+.. GENERATED FROM PYTHON SOURCE LINES 105-119
+
+.. code-block:: default
+
+
+    fig = plt.figure(figsize=(8,6))
+    plt.plot(massz_vec,sigmav_relic, color='black', ls='--', lw=2.0, label=r'Thermal cross section' )
+    plt.ylabel(r'$\langle \sigma v \rangle$ [cm$^3$/s]', fontsize=18)
+    plt.xlabel(r'$m_{\rm{S}}$ [GeV]', fontsize=18)
+    plt.axis([2,1e4,0.5*sigmav_relic.min(),2*sigmav_relic.max()])
+    plt.xticks(fontsize=16)
+    plt.yticks(fontsize=16)
+    plt.grid(True)
+    plt.yscale('log')
+    plt.xscale('log') 
+    plt.legend(loc=4,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
+    fig.tight_layout(pad=0.5)
+    plt.show()
+
+
+
+.. image-sg:: /examples_gallery/images/sphx_glr_plot_annihilation_cross_section_002.png
+   :alt: plot annihilation cross section
+   :srcset: /examples_gallery/images/sphx_glr_plot_annihilation_cross_section_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  17.099 seconds)
+   **Total running time of the script:** ( 0 minutes  17.877 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_annihilation_cross_section.py:

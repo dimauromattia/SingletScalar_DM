@@ -51,7 +51,7 @@ For example, let's compute the relic density, expressed as :math:`\Omega h^2` fo
 
     mS = 50 # GeV
     lambda_hs = 0.1
-    omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA')
+    omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA',True)
     print(omegah2)
 
 
@@ -106,7 +106,7 @@ However, if we test masses close to the Higgs resonance the differences emerge:
 
     mS = 60 # GeV
     lambda_hs = 0.001
-    omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA')
+    omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA',True)
     omegah2_micromegas = interpolate_Omega_MicrOMEGAs(mS,lambda_hs)
     print(omegah2)
     print(omegah2_micromegas)
@@ -137,7 +137,7 @@ If one tries to calculate the relic density with DRAKE beyond this region a warn
 
     mS = 60 # GeV
     lambda_hs = 0.1
-    omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA')
+    omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA',True)
     print(omegah2)
 
 
@@ -150,6 +150,7 @@ If one tries to calculate the relic density with DRAKE beyond this region a warn
 
     Warning, extrapolating.....
     The relic density with DRAKE has been calculated for lambda_HS between  7.32e-05 0.01464
+    Following Value of lambda_HS is given 0.1
     46.92619215842866
 
 
@@ -168,7 +169,7 @@ In order to do that you can use the function `interpolate_lambda`
 
     mS = 60 # GeV
     Omegah2 = 0.1
-    lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB')
+    lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB',True)
     print(lambda_hs)
 
 
@@ -251,7 +252,7 @@ See example below.
 
     mS = 30 # GeV
     Omegah2 = 0.001
-    lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB')
+    lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB',True)
     print(lambda_hs)
 
 
@@ -264,6 +265,7 @@ See example below.
 
     Warning, extrapolating.
     For this mass pick a range of Omegah^2 between  0.001075 984200.0
+    Following Value of Omegah^2 is given  0.001
     0
 
 
@@ -276,7 +278,7 @@ See example below.
 
     mS = 70 # GeV
     lambda_hs = 0.80952387
-    lambda_hs = interpolate_Omega(mS,lambda_hs,'QCDA')
+    lambda_hs = interpolate_Omega(mS,lambda_hs,'QCDA',True)
     print(lambda_hs)
 
 
@@ -308,10 +310,10 @@ In the following, we will generate a plot with the values of :math:`m_S` and :ma
     lambda_Micro_100_vec = np.zeros(len(mass_vec))
     Omegah2 = 0.120
     for t in range(len(mass_vec)):
-        lambda_QCDA_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDA')
-        lambda_QCDB_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDB')
-        lambda_QCDB_30_vec[t] = interpolate_lambda(mass_vec[t],0.1*Omegah2,'QCDB')
-        lambda_Micro_100_vec[t] = interpolate_lambda_MicrOMEGAs(mass_vec[t],Omegah2)
+        lambda_QCDA_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDA',False)
+        lambda_QCDB_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDB',False)
+        lambda_QCDB_30_vec[t] = interpolate_lambda(mass_vec[t],0.1*Omegah2,'QCDB',False)
+        lambda_Micro_100_vec[t] = interpolate_lambda_MicrOMEGAs(mass_vec[t],Omegah2,False)
 
 
 
@@ -322,138 +324,13 @@ In the following, we will generate a plot with the values of :math:`m_S` and :ma
  .. code-block:: none
 
     Warning, mass should be between 2.0 20000.0
+    Following Value of mass is given 2.0
     Warning, mass should be between 2.0 20000.0
+    Following Value of mass is given 2.0
     Warning, mass should be between 2.0 20000.0
+    Following Value of mass is given 2.0
     Warning, mass should be between 2.0 20000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.03362 300000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.03137 300000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02936 300000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02763 300000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02612 320400.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02478 344200.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02355 369600.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02242 396300.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02134 440000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.02031 485600.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.0193 513500.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.01834 558000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.01745 600100.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.01664 617200.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.0159 626900.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.01515 648000.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning, extrapolating.
-    For this mass pick a range of Omegah^2 between  0.01353 634600.0
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
-    Warning the problem f(lambda)=Omega h^2 could have two solutions for lambda
+    Following Value of mass is given 2.0
 
 
 
@@ -565,7 +442,7 @@ The parameters :math:`m_S` and :math:`\lambda_{HS}` which provide the right reli
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 11 minutes  34.334 seconds)
+   **Total running time of the script:** ( 11 minutes  37.779 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_relic_density.py:

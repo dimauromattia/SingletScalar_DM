@@ -15,7 +15,7 @@ from singletscalar_dm import *
 
 mS = 50 # GeV
 lambda_hs = 0.1
-omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA')
+omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA',True)
 print(omegah2)
 
 # %%
@@ -32,7 +32,7 @@ print(omegah2_micromegas)
 
 mS = 60 # GeV
 lambda_hs = 0.001
-omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA')
+omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA',True)
 omegah2_micromegas = interpolate_Omega_MicrOMEGAs(mS,lambda_hs)
 print(omegah2)
 print(omegah2_micromegas)
@@ -43,7 +43,7 @@ print(omegah2_micromegas)
 
 mS = 60 # GeV
 lambda_hs = 0.1
-omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA')
+omegah2 = interpolate_Omega(mS,lambda_hs,'QCDA',True)
 print(omegah2)
 
 # %%
@@ -53,7 +53,7 @@ print(omegah2)
 
 mS = 60 # GeV
 Omegah2 = 0.1
-lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB')
+lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB',True)
 print(lambda_hs)
 
 # %%
@@ -89,14 +89,14 @@ plt.show()
 
 mS = 30 # GeV
 Omegah2 = 0.001
-lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB')
+lambda_hs = interpolate_lambda(mS,Omegah2,'QCDB',True)
 print(lambda_hs)
 
 # %%
 
 mS = 70 # GeV
 lambda_hs = 0.80952387
-lambda_hs = interpolate_Omega(mS,lambda_hs,'QCDA')
+lambda_hs = interpolate_Omega(mS,lambda_hs,'QCDA',True)
 print(lambda_hs)
 
 # %%
@@ -109,10 +109,10 @@ lambda_QCDB_30_vec = np.zeros(len(mass_vec))
 lambda_Micro_100_vec = np.zeros(len(mass_vec))
 Omegah2 = 0.120
 for t in range(len(mass_vec)):
-    lambda_QCDA_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDA')
-    lambda_QCDB_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDB')
-    lambda_QCDB_30_vec[t] = interpolate_lambda(mass_vec[t],0.1*Omegah2,'QCDB')
-    lambda_Micro_100_vec[t] = interpolate_lambda_MicrOMEGAs(mass_vec[t],Omegah2)
+    lambda_QCDA_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDA',False)
+    lambda_QCDB_100_vec[t] = interpolate_lambda(mass_vec[t],Omegah2,'QCDB',False)
+    lambda_QCDB_30_vec[t] = interpolate_lambda(mass_vec[t],0.1*Omegah2,'QCDB',False)
+    lambda_Micro_100_vec[t] = interpolate_lambda_MicrOMEGAs(mass_vec[t],Omegah2,False)
 
 # %%
 

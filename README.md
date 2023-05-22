@@ -7,7 +7,7 @@ This repository contains the code for calculating cross sections, relic density
 and source spectra for the singlet scalar model of dark matter.
 
 The package relies on pre-computed data obtained according to several codes:
-MadDM \[[1](#maddm-1)&ndash;[4](#maddm-4)\], DRAKE \[[5](#drake)\] and MicrOMEGAs \[[6](#micromegas-1)&ndash;[11](#micromegas-6)\].
+MadDM \[[1](#maddm-1)&ndash;[4](#maddm-4)\], DRAKE \[[5](#drake)\] and micrOMEGAs \[[6](#micromegas-1)&ndash;[11](#micromegas-6)\].
 
 ## Installation
 
@@ -22,7 +22,7 @@ version) or clone this repository (for development version) and run the followin
 command in the package directory:
 and run the following command in the package directory:
 
-```shell
+```bash
 python -m pip install .
 ```
 ### Running the examples
@@ -31,7 +31,7 @@ The examples rely on the [`matplotlib`](https://matplotlib.org/) package in orde
 You can install this dependence using the following command in the package root
 directory:
 
-```shell
+```bash
 python -m pip install '.[examples]'
 ```
 
@@ -43,11 +43,41 @@ with the configuration provided in the `docs/` folder.
 You can install the required dependencies using the following command in the package
 root directory:
 
-```shell
+```bash
 python -m pip install '.[docs]'
 ```
 
-Build as usual following the [`sphinx`](https://www.sphinx-doc.org/en/master/).
+Build using [`sphinx`](https://www.sphinx-doc.org/en/master/).
+You can run the following commands inside the `docs/` directory.
+
+If you want to update the source documentation:
+
+```bash
+make rst
+```
+
+If you want to build the documentation in a certain format, specifying a 
+``<builder>`` among the [available builders](https://www.sphinx-doc.org/en/master/usage/builders/index.html):
+
+```bash
+make <builder>
+```
+
+Notice that it can take a while to build the whole documentation, given it will
+run all the examples.
+
+### Install in development mode
+
+If you wish to change something in the data files or in the code, we advise you
+to install the package in *development* or *editable* mode, using the following
+command in the package root directory:
+
+```bash
+python -m pip install --editable .
+```
+
+In this way you are free to modify anything inside the `src/` folder and the changes
+will be immediately reflected in the installed package once you re-import it.
 
 ### Usage
 

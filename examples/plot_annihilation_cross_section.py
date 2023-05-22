@@ -28,7 +28,7 @@ sigmav_tot = sigmav_channels(mS,lambda_hs,'tot')
 print(sigmav_tot)
 
 # %%
-# This is equivalent to summing all the different channels togheter.
+# This is equivalent to summing all the different channels together.
 
 mS = 200 # GeV
 lambda_hs = 0.01
@@ -90,14 +90,18 @@ plt.legend(loc=4,prop={'size':14},numpoints=1, scatterpoints=1, ncol=1)
 fig.tight_layout(pad=0.5)
 plt.show()
 
+# %%
+# Furthermore, it is interesting to have a look at the thermal cross section.
+# We import the data file.
 
 table_int = np.loadtxt(import_data_file('SHP_sigmav_table.dat'))
-        
-
 sigmav_relic = np.zeros(len(massz_vec))
 for t in range(len(massz_vec)):
     lambda_val =  interpolate_relicdensity(massz_vec[t],'QCDB')
     sigmav_relic[t] = lambda2sigmav(massz_vec[t],lambda_val,table_int)
+
+# %%
+# And we plot the :math:`\langle \sigma v \rangle` as a function of :math:`m_S`.
 
 fig = plt.figure(figsize=(8,6))
 plt.plot(massz_vec,sigmav_relic, color='black', ls='--', lw=2.0, label=r'Thermal cross section' )

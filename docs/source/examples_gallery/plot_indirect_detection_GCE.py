@@ -32,7 +32,7 @@ lambda_hs=2e-4
 energy_vec = np.logspace(-1.,2.,100)
 flux_DM = np.zeros(len(energy_vec))
 for i in range(len(energy_vec)):
-    flux_DM[i] = flux_DM_prompt(energy_vec[i],DMmass,lambda_hs)
+    flux_DM[i] = flux_DM_prompt(energy_vec[i],DMmass,lambda_hs,False)
 
 # %%
 # Now we create the plot.
