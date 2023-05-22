@@ -56,7 +56,7 @@ If you want to update the source documentation:
 make rst
 ```
 
-If you want to build the documentation in a certain format, specifying a 
+If you want to build the documentation in a certain format, you can specify a 
 ``<builder>`` among the [available builders](https://www.sphinx-doc.org/en/master/usage/builders/index.html):
 
 ```bash
