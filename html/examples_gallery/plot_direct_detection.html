@@ -51,7 +51,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Relic density calculations" href="plot_relic_density.html" />
-    <link rel="prev" title="Source spectra" href="plot_source_spectra.html" />
+    <link rel="prev" title="Annihilation cross section" href="plot_annihilation_cross_section.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -295,8 +295,8 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="plot_collider_searches.html">Collider searches</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_indirect_detection_GCE.html">Indirect detection calculation for GCE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_source_spectra.html">Source spectra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Direct detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_relic_density.html">Relic density calculations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_indirect_detection.html">Indirect detection</a></li>
@@ -379,7 +379,7 @@ In the following, we sho the calculation of the spin independent cross section f
 <span class="n">SI_noomega</span><span class="p">(</span><span class="n">mS</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>1.781425424359045e-46
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>1.7814254243590454e-46
 </pre></div>
 </div>
 <p>Instead, in order to find the upper limits for <span class="math notranslate nohighlight">\(\lambda_{HS}\)</span>, you can use the function <cite>GetUL_DD_Mine_nomega</cite>.
@@ -430,15 +430,22 @@ First, we calculate the <span class="math notranslate nohighlight">\(\xi\)</span
         <span class="n">cont</span> <span class="o">=</span> <span class="n">cont</span> <span class="o">+</span> <span class="mi">1</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">csi_vec</span><span class="p">)</span>
+
+<span class="n">val</span> <span class="o">=</span> <span class="n">GetUL_DD_withomega</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="s1">&#39;LZ&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">val</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[1.24166667e+06 1.21250000e+06 1.18416667e+06 ... 2.54083333e-05
  2.40916667e-05 2.28333333e-05]
+Optimization terminated successfully.
+         Current function value: 0.000000
+         Iterations: 31
+         Function evaluations: 62
+0.13446874237060566
 </pre></div>
 </div>
 <p>The we use the function <cite>GetUL_DD</cite> to get the upper limits including also the relic density of <span class="math notranslate nohighlight">\(S\)</span>.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">DMmassDD_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="mi">5</span><span class="p">),</span><span class="mf">4.</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
-<span class="n">LambdaDD_LZ_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">LambdaDD_LZ_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">))</span>
 <span class="n">LambdaDD_Darwin_HS_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">)):</span>
     <span class="n">LambdaDD_LZ_HS_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span> <span class="o">=</span> <span class="n">GetUL_DD_withomega</span><span class="p">(</span><span class="n">MassDD_vec</span><span class="p">[</span><span class="n">t</span><span class="p">],</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">MassDD_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="s1">&#39;LZ&#39;</span><span class="p">)</span>
@@ -863,7 +870,7 @@ Optimization terminated successfully.
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_direct_detection_002.png" srcset="../_images/sphx_glr_plot_direct_detection_002.png" alt="plot direct detection" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  11.707 seconds)</p>
+<img src="../_images/sphx_glr_plot_direct_detection_002.png" srcset="../_images/sphx_glr_plot_direct_detection_002.png" alt="plot direct detection" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  12.147 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-direct-detection-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/a44146e2cbe75d387e50d16f28f1f3bb/plot_direct_detection.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_direct_detection.py</span></code></a></p>
@@ -887,12 +894,12 @@ Optimization terminated successfully.
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="plot_source_spectra.html"
+       href="plot_annihilation_cross_section.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Source spectra</p>
+        <p class="prev-next-title">Annihilation cross section</p>
       </div>
     </a>
     <a class="right-next"

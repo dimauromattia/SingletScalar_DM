@@ -1,15 +1,14 @@
 {
+  "examples_gallery/plot_source_spectra": [],
+  "modules": [],
+  "examples_gallery/index": [],
   "examples_gallery/plot_annihilation_cross_section": [],
   "examples_gallery/plot_collider_searches": [],
   "examples_gallery/plot_direct_detection": [],
-  "examples_gallery/plot_source_spectra": [],
-  "modules": [],
   "examples_gallery/plot_indirect_detection": [],
   "examples_gallery/plot_indirect_detection_GCE": [],
-  "examples_gallery/index": [],
   "examples_gallery/plot_relic_density": [],
   "examples_gallery/sg_execution_times": [],
-  "index": [],
   "singletscalar_dm": [
     {
       "source": ">>> from singletscalar_dm import import_data_file\n... data_path = import_data_file('SHP_sigmav_bb.dat')",
@@ -58,5 +57,6 @@
       },
       "doc_lineno": 14
     }
-  ]
+  ],
+  "index": []
 }

@@ -345,11 +345,12 @@ document.write(`
 <span class="kn">from</span> <span class="nn">._globals</span> <span class="kn">import</span> <span class="o">*</span>
 
 <span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;interpolate_relicdensity&#39;</span><span class="p">,</span>
     <span class="s1">&#39;interpolate_Omega&#39;</span><span class="p">,</span>
     <span class="s1">&#39;interpolate_Omega_MicrOMEGAs&#39;</span><span class="p">,</span>
     <span class="s1">&#39;interpolate_lambda&#39;</span><span class="p">,</span>
     <span class="s1">&#39;interpolate_lambda_MicrOMEGAs&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;_lambda2sigmav&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lambda2sigmav&#39;</span><span class="p">,</span>
     <span class="s1">&#39;sigmav_channels&#39;</span><span class="p">,</span>
     <span class="s1">&#39;DMspectra_inttable&#39;</span><span class="p">,</span>
     <span class="s1">&#39;provide_ULEXP&#39;</span><span class="p">,</span>
@@ -366,7 +367,7 @@ document.write(`
 <span class="p">]</span>
 
 
-<span class="k">def</span> <span class="nf">interpolate_relicdensity</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">QCDmodel</span><span class="p">):</span>
+<div class="viewcode-block" id="interpolate_relicdensity"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_relicdensity">[docs]</a><span class="k">def</span> <span class="nf">interpolate_relicdensity</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">QCDmodel</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the lambda_hs value for which we obtain the observed DM relic density (Omegah^2=0.120).</span>
 
 <span class="sd">    Parameters</span>
@@ -383,7 +384,7 @@ document.write(`
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.</span>
+<span class="sd">    The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
         
     <span class="k">if</span> <span class="n">QCDmodel</span><span class="o">==</span><span class="s1">&#39;QCDA&#39;</span><span class="p">:</span>
@@ -394,11 +395,11 @@ document.write(`
     <span class="n">mass_vec</span> <span class="o">=</span> <span class="n">table_RD_FB</span><span class="p">[:,</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">lambda_vec</span> <span class="o">=</span> <span class="n">table_RD_FB</span><span class="p">[:,</span><span class="n">column</span><span class="p">]</span>
     <span class="n">func</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">mass_vec</span><span class="p">,</span><span class="n">lambda_vec</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">mass_val</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="n">mass_val</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="interpolate_Omega"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_Omega">[docs]</a><span class="k">def</span> <span class="nf">interpolate_Omega</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">,</span><span class="n">QCDmodel</span><span class="p">,</span><span class="n">warningprint</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the relic density as Omega h^2 given the mass and lambda.</span>
+<div class="viewcode-block" id="interpolate_Omega"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_Omega">[docs]</a><span class="k">def</span> <span class="nf">interpolate_Omega</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">,</span><span class="n">QCDmodel</span><span class="p">,</span><span class="n">warningprint</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the relic density as Omega h^2 given the dark matter mass and lambda_hs.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -408,8 +409,6 @@ document.write(`
 <span class="sd">        Values of the lambda_HS parameter.</span>
 <span class="sd">    QCDmodel : {&#39;QCDA&#39;, &#39;QCDB&#39;}</span>
 <span class="sd">        Model for the QCD phase transition.</span>
-<span class="sd">    warningprint : True, optional</span>
-<span class="sd">        Whether to print a warning when extrapolating.</span>
 
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
@@ -419,7 +418,7 @@ document.write(`
 
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.</span>
+<span class="sd">    The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">mass_val</span><span class="o">&gt;</span><span class="n">mass_vector_drake</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="ow">and</span> <span class="n">mass_val</span><span class="o">&lt;</span><span class="n">mass_vector_drake</span><span class="o">.</span><span class="n">max</span><span class="p">():</span>
@@ -448,6 +447,7 @@ document.write(`
             <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.....&#39;</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The relic density with DRAKE has been calculated for lambda_HS between &#39;</span><span class="p">,</span><span class="n">lambda_mass1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">lambda_mass1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of lambda_HS is given&#39;</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">)</span>
             <span class="n">func1</span> <span class="o">=</span> <span class="n">CubicSpline</span><span class="p">(</span><span class="n">lambda_mass1</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">Omega_mass1</span><span class="p">),</span> <span class="n">bc_type</span><span class="o">=</span><span class="s1">&#39;not-a-knot&#39;</span><span class="p">)</span>
             <span class="n">omega1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">func1</span><span class="p">(</span><span class="n">lambda_val</span><span class="p">)),</span><span class="mf">2.</span><span class="p">)</span>
             <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
@@ -467,7 +467,8 @@ document.write(`
                 <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">)</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The relic density with DRAKE has been calculated for lambda_HS between &#39;</span><span class="p">,</span><span class="n">lambda_mass1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">lambda_mass1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
-
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of lambda_HS is given&#39;</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">)</span>
+        
         <span class="n">func_final</span> <span class="o">=</span> <span class="n">interp1d</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">mass_vector_drake</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span><span class="n">mass_vector_drake</span><span class="p">[</span><span class="n">idx</span><span class="o">+</span><span class="mi">1</span><span class="p">]]),</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">omega1</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">omega2</span><span class="p">,</span><span class="mf">0.1</span><span class="p">)]),</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;linear&#39;</span><span class="p">)</span>
         <span class="c1">#interpolate with CubicSpline</span>
         <span class="c1">#func_final = CubicSpline(np.array([mass_vector_drake[idx],mass_vector_drake[idx+1]]),np.array([np.power(omega1,0.1),np.power(omega2,0.1)]), bc_type=&#39;not-a-knot&#39;)</span>
@@ -481,7 +482,8 @@ document.write(`
             <span class="n">func</span>  <span class="o">=</span> <span class="n">interp2d</span><span class="p">(</span><span class="n">mass_vector_micro</span><span class="p">,</span><span class="n">lambdahs_vec</span><span class="p">,</span><span class="n">Omega_table</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
             <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">))</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of mass is given&#39;</span><span class="p">,</span><span class="n">mass_val</span><span class="p">)</span></div>
 
 <div class="viewcode-block" id="interpolate_Omega_MicrOMEGAs"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_Omega_MicrOMEGAs">[docs]</a><span class="k">def</span> <span class="nf">interpolate_Omega_MicrOMEGAs</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the relic density as Omega h^2 given the mass and lambda.</span>
@@ -511,9 +513,10 @@ document.write(`
         <span class="n">func</span>  <span class="o">=</span> <span class="n">interp2d</span><span class="p">(</span><span class="n">mass_vector_micro</span><span class="p">,</span><span class="n">lambdahs_vec</span><span class="p">,</span><span class="n">Omega_table</span><span class="p">,</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;cubic&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="n">func</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">lambda_val</span><span class="p">))</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of mass is given&#39;</span><span class="p">,</span><span class="n">mass_val</span><span class="p">)</span></div>
 
-<div class="viewcode-block" id="interpolate_lambda"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_lambda">[docs]</a><span class="k">def</span> <span class="nf">interpolate_lambda</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">,</span><span class="n">QCDmodel</span><span class="p">,</span><span class="n">warningprint</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="interpolate_lambda"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_lambda">[docs]</a><span class="k">def</span> <span class="nf">interpolate_lambda</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">,</span><span class="n">QCDmodel</span><span class="p">,</span><span class="n">warningprint</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the lambda_HS parameter for given relic density and mass values.</span>
 
 <span class="sd">    Parameters</span>
@@ -524,8 +527,8 @@ document.write(`
 <span class="sd">        The values of the relic density interpolated on the 2d grid of mass</span>
 <span class="sd">    QCDmodel : {&#39;QCDA&#39;, &#39;QCDB&#39;}</span>
 <span class="sd">        Model for the QCD phase transition.</span>
-<span class="sd">    warningprint : True, optional</span>
-<span class="sd">        Whether to print a warning when extrapolating.</span>
+<span class="sd">    warningprint : {True, False}</span>
+<span class="sd">        Flag to decide if you want to print the warning messages or not</span>
 
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
@@ -535,7 +538,7 @@ document.write(`
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
 <span class="sd">    The computation of the parameter uses the computation of the relic density</span>
-<span class="sd">    obtained via the code DRAKE and MicrOMEGAs.</span>
+<span class="sd">    obtained via the code DRAKE and MICROMEGAs.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 
     <span class="k">if</span> <span class="n">mass_val</span><span class="o">&gt;</span><span class="n">mass_vector_drake</span><span class="o">.</span><span class="n">min</span><span class="p">()</span> <span class="ow">and</span> <span class="n">mass_val</span><span class="o">&lt;</span><span class="n">mass_vector_drake</span><span class="o">.</span><span class="n">max</span><span class="p">():</span>
@@ -559,6 +562,7 @@ document.write(`
             <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">,</span><span class="n">mass_val</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For this mass pick a range of Omegah^2 between &#39;</span><span class="p">,</span><span class="n">Omega_mass1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Omega_mass1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of Omegah^2 is given &#39;</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">)</span>
             <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="c1">#func1 = CubicSpline(Omega_mass1,np.log10(lambda_mass1), bc_type=&#39;not-a-knot&#39;)</span>
             <span class="c1">#lambda1 = float(func1(Omega_val))</span>
@@ -571,6 +575,7 @@ document.write(`
                 <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">,</span><span class="n">mass_val</span><span class="p">)</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For this mass pick a range of Omegah^2 between &#39;</span><span class="p">,</span><span class="n">Omega_mass2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Omega_mass2</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of Omegah^2 is given &#39;</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">)</span>
                 <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
                 <span class="c1">#func2 = CubicSpline(Omega_mass2,lambda_mass2, bc_type=&#39;not-a-knot&#39;)</span>
                 <span class="c1">#lambda2 = float(func2(Omega_val))</span>
@@ -613,6 +618,7 @@ document.write(`
                 <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">)</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For this mass pick a range of Omegah^2 between &#39;</span><span class="p">,</span><span class="n">Omega_mass1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Omega_mass1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of Omegah^2 is given &#39;</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">)</span>
                 <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
                 <span class="c1">#func1 = CubicSpline(Omega_mass1,np.log10(lambda_mass1), bc_type=&#39;not-a-knot&#39;)</span>
                 <span class="c1">#lambda1 = float(func1(Omega_val))</span>
@@ -634,6 +640,7 @@ document.write(`
                     <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">)</span>
                         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For this mass pick a range of Omegah^2 between &#39;</span><span class="p">,</span><span class="n">Omega_mass2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Omega_mass2</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of Omegah^2 is given &#39;</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">)</span>
                     <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
                     <span class="c1">#func2 = CubicSpline(Omega_mass2,lambda_mass2, bc_type=&#39;not-a-knot&#39;)</span>
                     <span class="c1">#lambda2 = float(func2(Omega_val))</span>
@@ -649,10 +656,11 @@ document.write(`
                 <span class="c1">#lambda_val = float(func_final(mass_val))</span>
                 <span class="c1">#return lambda_val</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span></div>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of mass is given&#39;</span><span class="p">,</span><span class="n">mass_val</span><span class="p">)</span></div>
 
 
-<div class="viewcode-block" id="interpolate_lambda_MicrOMEGAs"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_lambda_MicrOMEGAs">[docs]</a><span class="k">def</span> <span class="nf">interpolate_lambda_MicrOMEGAs</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">,</span><span class="n">warningprint</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<div class="viewcode-block" id="interpolate_lambda_MicrOMEGAs"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.interpolate_lambda_MicrOMEGAs">[docs]</a><span class="k">def</span> <span class="nf">interpolate_lambda_MicrOMEGAs</span><span class="p">(</span><span class="n">mass_val</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">,</span><span class="n">warningprint</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the lambda_HS parameter for given relic density and mass values.</span>
 
 <span class="sd">    Parameters</span>
@@ -661,8 +669,8 @@ document.write(`
 <span class="sd">        Dark matter mass values in GeV.</span>
 <span class="sd">    Omega_val : np.ndarray</span>
 <span class="sd">        The value of the relic density interpolated on the 2d grid of mass</span>
-<span class="sd">    warningprint : True, optional</span>
-<span class="sd">        Whether to print a warning when extrapolating.</span>
+<span class="sd">    warningprint : {True, False}</span>
+<span class="sd">        Flag to decide if you want to print the warning messages or not</span>
 
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
@@ -705,6 +713,7 @@ document.write(`
             <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">)</span>
                 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For this mass pick a range of Omegah^2 between &#39;</span><span class="p">,</span><span class="n">Omega_mass1</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Omega_mass1</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of Omegah^2 is given &#39;</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">)</span>
             <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
             <span class="c1">#func1 = CubicSpline(Omega_mass1,np.log10(lambda_mass1), bc_type=&#39;not-a-knot&#39;)</span>
             <span class="c1">#lambda1 = float(func1(Omega_val))</span>
@@ -724,6 +733,7 @@ document.write(`
                 <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, extrapolating.&#39;</span><span class="p">)</span>
                     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For this mass pick a range of Omegah^2 between &#39;</span><span class="p">,</span><span class="n">Omega_mass2</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">Omega_mass2</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+                    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of Omegah^2 is given &#39;</span><span class="p">,</span><span class="n">Omega_val</span><span class="p">)</span>
                 <span class="n">check</span> <span class="o">=</span> <span class="mi">1</span>
                 <span class="c1">#func2 = CubicSpline(Omega_mass2,lambda_mass2, bc_type=&#39;not-a-knot&#39;)</span>
                 <span class="c1">#lambda2 = float(func2(Omega_val))</span>
@@ -739,11 +749,12 @@ document.write(`
             <span class="c1">#lambda_val = float(func_final(mass_val))</span>
             <span class="c1">#return lambda_val</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span></div>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Warning, mass should be between&#39;</span><span class="p">,</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span><span class="n">mass_vector_micro</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Following Value of mass is given&#39;</span><span class="p">,</span><span class="n">mass_val</span><span class="p">)</span></div>
 
 
 
-<div class="viewcode-block" id="_lambda2sigmav"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm._lambda2sigmav">[docs]</a><span class="k">def</span> <span class="nf">_lambda2sigmav</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">,</span><span class="n">table_int</span><span class="p">):</span>
+<div class="viewcode-block" id="lambda2sigmav"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.lambda2sigmav">[docs]</a><span class="k">def</span> <span class="nf">lambda2sigmav</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">,</span><span class="n">table_int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Returns the interpolated :math:`\sigma v` value on mass and coupling.</span>
 
 <span class="sd">    The value is given in units of cm^3/s.</span>
@@ -809,9 +820,13 @@ document.write(`
 <span class="sd">    sigmav : np.ndarray</span>
 <span class="sd">        The values of the :math:`\sigma v` for the selected channel.</span>
 
+<span class="sd">    See Also</span>
+<span class="sd">    --------</span>
+<span class="sd">    _lambda2sigma</span>
+
 <span class="sd">    Notes</span>
 <span class="sd">    -----</span>
-<span class="sd">    This function internally calls `_lambda2sigmav` passing the ``table_int`` as</span>
+<span class="sd">    This function internally calls `lambda2sigmav` passing the ``table_int`` as</span>
 <span class="sd">    the content of the data file related to the ``channel`` specified.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="c1">#check = np.shape(np.where((channel_vec[:]==channel))[0])</span>
@@ -819,11 +834,11 @@ document.write(`
     <span class="c1">#if check==1:</span>
     <span class="k">if</span> <span class="n">channel</span><span class="o">==</span><span class="s1">&#39;tot&#39;</span><span class="p">:</span>
         <span class="n">table_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;SHP_sigmav_table.dat&#39;</span><span class="p">))</span>
-        <span class="n">sigmav_val</span> <span class="o">=</span> <span class="n">_lambda2sigmav</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">,</span><span class="n">table_int</span><span class="p">)</span>
+        <span class="n">sigmav_val</span> <span class="o">=</span> <span class="n">lambda2sigmav</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">,</span><span class="n">table_int</span><span class="p">)</span>
 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">table_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;SHP_sigmav_</span><span class="si">%s</span><span class="s1">.dat&#39;</span><span class="o">%</span><span class="n">channel</span><span class="p">))</span>
-        <span class="n">sigmav_val</span> <span class="o">=</span> <span class="n">_lambda2sigmav</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">,</span><span class="n">table_int</span><span class="p">)</span>
+        <span class="n">sigmav_val</span> <span class="o">=</span> <span class="n">lambda2sigmav</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">,</span><span class="n">table_int</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">sigmav_val</span></div>
     <span class="c1">#else:</span>
@@ -947,20 +962,14 @@ document.write(`
 <span class="sd">    ul : ndarray</span>
 <span class="sd">        The upper limit values sampled at the provided masses.</span>
 
-<span class="sd">    Notes</span>
-<span class="sd">    -----</span>
-<span class="sd">    The upper limits are taken from the following references: LZ [LZ22]_, DARWIN [DARWIN16]_.</span>
-
 <span class="sd">    Ref</span>
 <span class="sd">    ---</span>
-<span class="sd">    .. [LZ22] \ J. Aalbers et al. (LZ) (2022), 2207.03764</span>
-<span class="sd">    .. [DARWIN16] \ J. Aalbers et al. (DARWIN), JCAP 11, 017 (2016), 1606.07001</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">if</span> <span class="n">Exp</span><span class="o">==</span><span class="s1">&#39;LZ&#39;</span><span class="p">:</span>
-        <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">_LZUL</span><span class="p">(</span><span class="n">DMmass</span><span class="p">)</span>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">_LZUL</span><span class="p">(</span><span class="n">DMmass</span><span class="p">)</span>
     <span class="k">elif</span> <span class="n">Exp</span><span class="o">==</span> <span class="s1">&#39;Darwin&#39;</span><span class="p">:</span>
-        <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">_DARWINUL</span><span class="p">(</span><span class="n">DMmass</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">SI_exp</span></div>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">_DARWINUL</span><span class="p">(</span><span class="n">DMmass</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ul</span></div>
 
 <div class="viewcode-block" id="SI_noomega"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.SI_noomega">[docs]</a><span class="k">def</span> <span class="nf">SI_noomega</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">lambdahs_val</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Provides the spin-independent cross-section for direct detection in cm^2.</span>
@@ -980,8 +989,8 @@ document.write(`
 <span class="sd">        The values of the spin-independent cross-section.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">mu</span> <span class="o">=</span> <span class="p">(</span><span class="n">mN</span><span class="o">*</span><span class="n">DMmass_val</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">mN</span><span class="o">+</span><span class="n">DMmass_val</span><span class="p">)</span>
-    <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">lambdahs_val</span><span class="o">*</span><span class="n">fN</span><span class="o">*</span><span class="n">mu</span><span class="o">*</span><span class="n">mN</span><span class="p">,</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">mh</span><span class="p">,</span><span class="mf">4.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="mf">2.</span><span class="p">))</span>
-    <span class="k">return</span> <span class="n">GeVm2tocm2</span><span class="o">*</span><span class="n">val</span></div>
+    <span class="n">sigma_si</span> <span class="o">=</span> <span class="n">GeVm2tocm2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">lambdahs_val</span><span class="o">*</span><span class="n">fN</span><span class="o">*</span><span class="n">mu</span><span class="o">*</span><span class="n">mN</span><span class="p">,</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">mh</span><span class="p">,</span><span class="mf">4.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="mf">2.</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">sigma_si</span></div>
 
 <div class="viewcode-block" id="SI_withomega"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.SI_withomega">[docs]</a><span class="k">def</span> <span class="nf">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Provides the spin-independent cross-section for direct detection in cm^2.</span>
@@ -991,10 +1000,10 @@ document.write(`
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
-<span class="sd">    DMmass_val : np.ndarray</span>
-<span class="sd">        Dark matter mass values in GeV.</span>
 <span class="sd">    lambdahs_val : np.ndarray</span>
 <span class="sd">        Values of the lambda_HS parameter.</span>
+<span class="sd">    DMmass_val : np.ndarray</span>
+<span class="sd">        Dark matter mass values in GeV.</span>
 <span class="sd">    Lambda_vec : np.ndarray</span>
 <span class="sd">        Vector of the values of lambda_hs used for the calculation of the relic density</span>
 <span class="sd">    Mass_vec : np.ndarray</span>
@@ -1011,7 +1020,8 @@ document.write(`
     <span class="n">val</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">lambda_hs</span><span class="o">*</span><span class="n">fN</span><span class="o">*</span><span class="n">mu</span><span class="o">*</span><span class="n">mN</span><span class="p">,</span><span class="mf">2.</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">mh</span><span class="p">,</span><span class="mf">4.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="mf">2.</span><span class="p">))</span>
     <span class="n">func_int_csi</span> <span class="o">=</span> <span class="n">interp2d</span><span class="p">(</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
     <span class="n">csi_val</span> <span class="o">=</span> <span class="n">func_int_csi</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">GeVm2tocm2</span><span class="o">*</span><span class="n">val</span><span class="o">*</span><span class="n">csi_val</span></div>
+    <span class="n">sigma_si</span> <span class="o">=</span> <span class="n">GeVm2tocm2</span><span class="o">*</span><span class="n">val</span><span class="o">*</span><span class="n">csi_val</span>
+    <span class="k">return</span> <span class="n">sigma_si</span></div>
 
 <div class="viewcode-block" id="GetUL_DD_nomega"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.GetUL_DD_nomega">[docs]</a><span class="k">def</span> <span class="nf">GetUL_DD_nomega</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="n">Exp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Provides the direct detection sigma SI upper limits for specified experiment.</span>
@@ -1032,18 +1042,18 @@ document.write(`
 <span class="sd">    ul : ndarray</span>
 <span class="sd">        The upper limit values sampled at the provided masses.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="n">value</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">ul</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">if</span> <span class="n">Exp</span><span class="o">==</span><span class="s1">&#39;LZ&#39;</span><span class="p">:</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">_LZUL</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">)</span><span class="o">/</span><span class="n">SI_noomega</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="mf">1.0</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">value</span>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">_LZUL</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">)</span><span class="o">/</span><span class="n">SI_noomega</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="mf">1.0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ul</span>
     <span class="k">elif</span> <span class="n">Exp</span><span class="o">==</span> <span class="s1">&#39;DARWIN&#39;</span><span class="p">:</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">_DARWINUL</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">)</span><span class="o">/</span><span class="n">SI_noomega</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="mf">1.0</span><span class="p">))</span>
-        <span class="k">return</span> <span class="n">value</span>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">_DARWINUL</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">)</span><span class="o">/</span><span class="n">SI_noomega</span><span class="p">(</span><span class="n">DMmass_val</span><span class="p">,</span><span class="mf">1.0</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">ul</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: Wrong parameter for the experiment.&#39;</span><span class="p">)</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Choose among LZ and DARWIN&#39;</span><span class="p">)</span></div>
 
-<span class="k">def</span> <span class="nf">_tominimize_DD</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_val</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">_tominimize_DD</span><span class="p">(</span><span class="n">Lambda_val</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39; Function to minimize the difference between the theoretically calculated and measured cross section</span>
 <span class="sd">    </span>
 <span class="sd">    Parameters</span>
@@ -1072,15 +1082,15 @@ document.write(`
     <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_val</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
     <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">provide_ULEXP</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Exp</span><span class="p">)</span>
 
-    <span class="c1">#print(Lambda_val,SI_exp,SI_theory,abs(SI_exp-SI_theory)/SI_theory)</span>
-    <span class="c1">#return abs(func_LuxUL(DMmass)-SI_theory)/SI_theory</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">SI_exp</span><span class="o">-</span><span class="n">SI_theory</span><span class="p">)</span>
+    <span class="n">ul</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">SI_exp</span><span class="o">-</span><span class="n">SI_theory</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ul</span>
 
 <div class="viewcode-block" id="GetUL_DD_withomega"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.GetUL_DD_withomega">[docs]</a><span class="k">def</span> <span class="nf">GetUL_DD_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Provides the direct detection sigma SI upper limits for specified experiment.</span>
 
 <span class="sd">    It interpolates the limits on the array of dark matter masses provided.</span>
 <span class="sd">    Limits are returned in units cm^2.</span>
+<span class="sd">    &lt;missing&gt;</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
@@ -1102,7 +1112,6 @@ document.write(`
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
     <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">provide_ULEXP</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Exp</span><span class="p">)</span>
-    <span class="c1">#print(SI_theory,SI_theory.max(),SI_theory.min(),SI_exp)</span>
     <span class="k">if</span> <span class="n">SI_theory</span><span class="o">.</span><span class="n">max</span><span class="p">()</span><span class="o">&lt;</span><span class="n">SI_exp</span><span class="p">:</span>
         <span class="k">return</span> <span class="n">Lambda_vec</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 
@@ -1111,33 +1120,31 @@ document.write(`
 
     <span class="k">else</span><span class="p">:</span>
         <span class="n">lambda_0</span> <span class="o">=</span> <span class="mf">1e-2</span>
-        <span class="c1">#print(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)</span>
-        <span class="c1">#print(minimize(tominimize_DD, lambda_0, method=&#39;nelder-mead&#39;, bounds=(1e-5,1e1), options={&#39;xatol&#39;: 1e-8, &#39;disp&#39;: True}, args=(DMmass,Lambda_vec,Mass_vec,csi_vec,Exp)))</span>
-        <span class="n">value</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-        <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
+        <span class="n">ul</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">ul</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
         <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">provide_ULEXP</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Exp</span><span class="p">)</span>
 
         <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">SI_exp</span><span class="o">-</span><span class="n">SI_theory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-47</span><span class="p">:</span>
             <span class="n">lambda_0</span> <span class="o">=</span> <span class="mf">1e0</span>
-            <span class="n">value</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-            <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
+            <span class="n">ul</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+            <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">ul</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
             <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">provide_ULEXP</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Exp</span><span class="p">)</span>
 
             <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">SI_exp</span><span class="o">-</span><span class="n">SI_theory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-47</span><span class="p">:</span>
                 <span class="n">lambda_0</span> <span class="o">=</span> <span class="mf">1e-4</span>
-                <span class="n">value</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
+                <span class="n">ul</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">ul</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
                 <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">provide_ULEXP</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Exp</span><span class="p">)</span>
 
                 <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">SI_exp</span><span class="o">-</span><span class="n">SI_theory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-47</span><span class="p">:</span>
                     <span class="n">lambda_0</span> <span class="o">=</span> <span class="mf">1e1</span>
-                    <span class="n">value</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-                    <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">value</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
+                    <span class="n">ul</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">_tominimize_DD</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">,</span><span class="n">Exp</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+                    <span class="n">SI_theory</span> <span class="o">=</span> <span class="n">SI_withomega</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">ul</span><span class="p">,</span><span class="n">Lambda_vec</span><span class="p">,</span><span class="n">Mass_vec</span><span class="p">,</span><span class="n">csi_vec</span><span class="p">)</span>
                     <span class="n">SI_exp</span> <span class="o">=</span> <span class="n">provide_ULEXP</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Exp</span><span class="p">)</span>
 
                     <span class="k">if</span> <span class="nb">abs</span><span class="p">(</span><span class="n">SI_exp</span><span class="o">-</span><span class="n">SI_theory</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mf">1e-47</span><span class="p">:</span>
-                        <span class="n">value</span> <span class="o">=</span> <span class="mf">0.</span>
-        <span class="k">return</span> <span class="n">value</span></div>
+                        <span class="n">ul</span> <span class="o">=</span> <span class="mf">0.</span>
+        <span class="k">return</span> <span class="n">ul</span></div>
 
 <div class="viewcode-block" id="Br_inv_UL"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.Br_inv_UL">[docs]</a><span class="k">def</span> <span class="nf">Br_inv_UL</span><span class="p">(</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Gamma_H</span><span class="p">,</span><span class="n">Gamma_inv_measured</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the upper limit on the Branching ratio of Higgs boson to invisible particles.</span>
@@ -1158,7 +1165,8 @@ document.write(`
 <span class="sd">    Br_inv_ul : ndarray</span>
 <span class="sd">        The upper limit on Branching ratio of Higgs to invisible particles.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br_inv</span><span class="p">(</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Gamma_H</span><span class="p">)</span><span class="o">-</span><span class="n">Gamma_inv_measured</span><span class="p">)</span><span class="o">/</span><span class="n">Gamma_inv_measured</span></div>
+    <span class="n">Br_inv_ul</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">Br_inv</span><span class="p">(</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Gamma_H</span><span class="p">)</span><span class="o">-</span><span class="n">Gamma_inv_measured</span><span class="p">)</span><span class="o">/</span><span class="n">Gamma_inv_measured</span>
+    <span class="k">return</span> <span class="n">Br_inv_ul</span></div>
 
 <div class="viewcode-block" id="minimize_br_inv"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.minimize_br_inv">[docs]</a><span class="k">def</span> <span class="nf">minimize_br_inv</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Gamma_H</span><span class="p">,</span><span class="n">Gamma_inv_measured</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Returns the upper limits for lambda_hs given the upper limits for the branching ratio of the Higgs boson into invisible particles</span>
@@ -1181,8 +1189,8 @@ document.write(`
 <span class="sd">        Upper limit for lambda_hs found with collider constraints.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">lambda_0</span> <span class="o">=</span> <span class="mf">0.01</span>
-    <span class="n">lambda_val</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">Br_inv_UL</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Gamma_H</span><span class="p">,</span><span class="n">Gamma_inv_measured</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">lambda_val</span> </div>
+    <span class="n">lambda_ul</span> <span class="o">=</span> <span class="n">minimize</span><span class="p">(</span><span class="n">Br_inv_UL</span><span class="p">,</span> <span class="n">lambda_0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;nelder-mead&#39;</span><span class="p">,</span> <span class="n">options</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;xatol&#39;</span><span class="p">:</span> <span class="mf">1e-8</span><span class="p">,</span> <span class="s1">&#39;disp&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">},</span> <span class="n">args</span><span class="o">=</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">Gamma_H</span><span class="p">,</span><span class="n">Gamma_inv_measured</span><span class="p">))</span><span class="o">.</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">lambda_ul</span> </div>
 
 <div class="viewcode-block" id="Gamma_inv"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.Gamma_inv">[docs]</a><span class="k">def</span> <span class="nf">Gamma_inv</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the invisible width of the Higgs boson in GeV.</span>
@@ -1224,21 +1232,21 @@ document.write(`
     <span class="k">return</span> <span class="n">Br_inv</span></div>
 
 <div class="viewcode-block" id="func_interpolate"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.func_interpolate">[docs]</a><span class="k">def</span> <span class="nf">func_interpolate</span><span class="p">(</span><span class="n">varval</span><span class="p">,</span><span class="n">variablevec</span><span class="p">,</span><span class="n">funcvec</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;This is a generic function to perform an interpolation</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;This function is a generic 1D interpolator that can be used for every vectors variablevec,funcvec</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    varval : np.ndarray</span>
-<span class="sd">        Value of the variable for which we want the interpolated value</span>
+<span class="sd">        Value at which the interpolation is performed</span>
 <span class="sd">    variablevec : np.ndarray</span>
-<span class="sd">        Vector for the independent variable</span>
+<span class="sd">        Vector of the indipendent variable</span>
 <span class="sd">    funcvec : np.ndarray</span>
-<span class="sd">        Vector for the dependent variable.</span>
+<span class="sd">        Vector of the dependent variable</span>
 
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
-<span class="sd">    value : ndarray</span>
-<span class="sd">        Interpolated value.</span>
+<span class="sd">    result : ndarray</span>
+<span class="sd">        Result of the interpolation at varval</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="mf">0.</span>
     <span class="k">if</span> <span class="n">varval</span><span class="o">&lt;</span><span class="n">variablevec</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
@@ -1252,35 +1260,40 @@ document.write(`
         <span class="n">result</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span>  <span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">funcvec</span><span class="p">[</span><span class="n">binval</span><span class="p">])</span> <span class="o">+</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">funcvec</span><span class="p">[</span><span class="n">binval</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">funcvec</span><span class="p">[</span><span class="n">binval</span><span class="p">]))</span><span class="o">*</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">varval</span><span class="p">)</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">variablevec</span><span class="p">[</span><span class="n">binval</span><span class="p">]))</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">variablevec</span><span class="p">[</span><span class="n">binval</span><span class="o">+</span><span class="mi">1</span><span class="p">])</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log10</span><span class="p">(</span><span class="n">variablevec</span><span class="p">[</span><span class="n">binval</span><span class="p">]))</span>  <span class="p">)</span>
     <span class="k">return</span> <span class="n">result</span></div>
 
-<div class="viewcode-block" id="flux_DM_prompt"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.flux_DM_prompt">[docs]</a><span class="k">def</span> <span class="nf">flux_DM_prompt</span><span class="p">(</span><span class="n">Energy</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates the gamma-ray flux for the Galactic center excess.</span>
+<div class="viewcode-block" id="flux_DM_prompt"><a class="viewcode-back" href="../../singletscalar_dm.html#singletscalar_dm.flux_DM_prompt">[docs]</a><span class="k">def</span> <span class="nf">flux_DM_prompt</span><span class="p">(</span><span class="n">Energy</span><span class="p">,</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">warningprint</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;Calculates prompt flux of gamma rays from dark matter annihilation for a given dark matter mass and lambda_hs.</span>
 
 <span class="sd">    Parameters</span>
 <span class="sd">    ----------</span>
 <span class="sd">    Energy : np.ndarray</span>
-<span class="sd">        Gamma-ray energy in GeV</span>
+<span class="sd">       The gamma-ray energy in GeV</span>
 <span class="sd">    DMmass : np.ndarray</span>
 <span class="sd">        Dark matter mass values in GeV.</span>
 <span class="sd">    lambda_hs : np.ndarray</span>
 <span class="sd">        The coupling between Higgs boson and the dark matter.</span>
+<span class="sd">    warningprint : {True, False}</span>
+<span class="sd">        Flag to decide if you want to print the warning messages or not</span>
+<span class="sd">   </span>
 
 <span class="sd">    Return</span>
 <span class="sd">    ------</span>
-<span class="sd">    flux : ndarray</span>
-<span class="sd">        gamma-ray flux for the Galactic center excess.</span>
+<span class="sd">    dNdE : ndarray</span>
+<span class="sd">        The prompt flux of gamma rays from dark matter annihilation</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-
+    
     <span class="n">kpc</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="mf">3.</span><span class="p">)</span><span class="o">*</span><span class="mf">3.0856775</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="mf">18.</span><span class="p">)</span> <span class="c1">#cm</span>
     <span class="n">rodot</span> <span class="o">=</span> <span class="mf">8.12</span><span class="o">*</span><span class="n">kpc</span> <span class="c1">#cm</span>
     <span class="n">rhodot</span> <span class="o">=</span> <span class="mf">0.300</span> <span class="c1">#GeV/cm^3</span>
     <span class="n">Jfact</span> <span class="o">=</span> <span class="mf">117.0</span> <span class="c1">#MED for Cholis</span>
-    <span class="c1"># solidangle = 0.4288</span>
-
+    <span class="n">solidangle</span> <span class="o">=</span> <span class="mf">0.4288</span>
+    
     <span class="k">if</span> <span class="n">Energy</span><span class="o">&gt;</span><span class="n">DMmass</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">warningprint</span><span class="o">==</span><span class="kc">True</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;WARNING: gamma-ray energy larger than dark matter mass&#39;</span><span class="p">)</span>
         <span class="k">return</span> <span class="mf">0.</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">table_int</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">loadtxt</span><span class="p">(</span><span class="n">import_data_file</span><span class="p">(</span><span class="s1">&#39;SHP_sigmav_table.dat&#39;</span><span class="p">))</span>
-        <span class="n">sigmav</span> <span class="o">=</span> <span class="n">_lambda2sigmav</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">table_int</span><span class="p">)</span>
+        <span class="n">sigmav</span> <span class="o">=</span> <span class="n">lambda2sigmav</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="n">table_int</span><span class="p">)</span>
         <span class="n">x_vec</span><span class="p">,</span><span class="n">fluxDM_x</span> <span class="o">=</span> <span class="n">DMspectra_inttable</span><span class="p">(</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="s1">&#39;gammas&#39;</span><span class="p">,</span><span class="n">smooth</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
         <span class="n">EnergyDM_vec</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="n">x_vec</span><span class="p">)</span><span class="o">*</span><span class="n">DMmass</span>
         <span class="n">fluxDM_vec</span> <span class="o">=</span> <span class="n">fluxDM_x</span><span class="o">/</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mf">10.</span><span class="p">)</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">power</span><span class="p">(</span><span class="mf">10.</span><span class="p">,</span><span class="n">x_vec</span><span class="p">)</span><span class="o">*</span><span class="n">DMmass</span><span class="p">)</span>
@@ -1289,10 +1302,11 @@ document.write(`
                 <span class="n">fluxDM_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="n">fluxDM_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span>
             <span class="k">else</span><span class="p">:</span>
                 <span class="n">fluxDM_vec</span><span class="p">[</span><span class="n">t</span><span class="p">]</span><span class="o">=</span><span class="mf">1e-30</span>
-
+        
         <span class="n">dNdE</span> <span class="o">=</span> <span class="n">func_interpolate</span><span class="p">(</span><span class="n">Energy</span><span class="p">,</span><span class="n">EnergyDM_vec</span><span class="p">,</span><span class="n">fluxDM_vec</span><span class="p">)</span>
-
-        <span class="k">return</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">rodot</span><span class="o">/</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">rhodot</span><span class="o">/</span><span class="n">DMmass</span><span class="p">,</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">Jfact</span><span class="o">*</span><span class="n">sigmav</span><span class="o">*</span><span class="n">dNdE</span></div>
+        
+        <span class="n">flux</span> <span class="o">=</span> <span class="mf">0.5</span><span class="o">*</span><span class="p">(</span><span class="n">rodot</span><span class="o">/</span><span class="p">(</span><span class="mf">4.</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">))</span><span class="o">*</span><span class="nb">pow</span><span class="p">(</span><span class="n">rhodot</span><span class="o">/</span><span class="n">DMmass</span><span class="p">,</span><span class="mf">2.</span><span class="p">)</span><span class="o">*</span><span class="n">Jfact</span><span class="o">*</span><span class="n">sigmav</span><span class="o">*</span><span class="n">dNdE</span>
+        <span class="k">return</span> <span class="n">flux</span></div>
 </pre></div>
 
                 </article>

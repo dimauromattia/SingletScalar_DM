@@ -50,7 +50,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = 'examples_gallery/plot_indirect_detection_GCE';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Annihilation cross section" href="plot_annihilation_cross_section.html" />
+    <link rel="next" title="Source spectra" href="plot_source_spectra.html" />
     <link rel="prev" title="Collider searches" href="plot_collider_searches.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -295,8 +295,8 @@ document.write(`
   <div class="bd-toc-item navbar-nav"><ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="plot_collider_searches.html">Collider searches</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Indirect detection calculation for GCE</a></li>
-<li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_source_spectra.html">Source spectra</a></li>
+<li class="toctree-l1"><a class="reference internal" href="plot_annihilation_cross_section.html">Annihilation cross section</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_direct_detection.html">Direct detection</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_relic_density.html">Relic density calculations</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_indirect_detection.html">Indirect detection</a></li>
@@ -391,7 +391,7 @@ For examplte, let’s compute the relic density, expressed as <span class="math 
 <span class="n">energy_vec</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mf">1.</span><span class="p">,</span><span class="mf">2.</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">flux_DM</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">energy_vec</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">energy_vec</span><span class="p">)):</span>
-    <span class="n">flux_DM</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">flux_DM_prompt</span><span class="p">(</span><span class="n">energy_vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">)</span>
+    <span class="n">flux_DM</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">flux_DM_prompt</span><span class="p">(</span><span class="n">energy_vec</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">DMmass</span><span class="p">,</span><span class="n">lambda_hs</span><span class="p">,</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 <p>Now we create the plot.</p>
@@ -414,7 +414,7 @@ For examplte, let’s compute the relic density, expressed as <span class="math 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_indirect_detection_GCE_001.png" srcset="../_images/sphx_glr_plot_indirect_detection_GCE_001.png" alt="plot indirect detection GCE" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  32.989 seconds)</p>
+<img src="../_images/sphx_glr_plot_indirect_detection_GCE_001.png" srcset="../_images/sphx_glr_plot_indirect_detection_GCE_001.png" alt="plot indirect detection GCE" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  33.187 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-examples-gallery-plot-indirect-detection-gce-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/0cba3291d97ffe0d3be515fbd367188f/plot_indirect_detection_GCE.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_indirect_detection_GCE.py</span></code></a></p>
@@ -447,11 +447,11 @@ For examplte, let’s compute the relic density, expressed as <span class="math 
       </div>
     </a>
     <a class="right-next"
-       href="plot_annihilation_cross_section.html"
+       href="plot_source_spectra.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Annihilation cross section</p>
+        <p class="prev-next-title">Source spectra</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

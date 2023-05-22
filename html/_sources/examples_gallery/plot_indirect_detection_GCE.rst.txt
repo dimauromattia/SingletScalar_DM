@@ -68,7 +68,7 @@ For examplte, let's compute the relic density, expressed as :math:`\Omega h^2` f
     energy_vec = np.logspace(-1.,2.,100)
     flux_DM = np.zeros(len(energy_vec))
     for i in range(len(energy_vec)):
-        flux_DM[i] = flux_DM_prompt(energy_vec[i],DMmass,lambda_hs)
+        flux_DM[i] = flux_DM_prompt(energy_vec[i],DMmass,lambda_hs,False)
 
 
 
@@ -118,7 +118,7 @@ Now we create the plot.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  32.989 seconds)
+   **Total running time of the script:** ( 0 minutes  33.187 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_indirect_detection_GCE.py:

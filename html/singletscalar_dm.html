@@ -335,7 +335,8 @@ The relic relic density and local dark matter density is the one of DM.</p>
 <span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">GetUL_DD_withomega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DMmass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Lambda_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Mass_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">csi_vec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Exp</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#GetUL_DD_withomega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.GetUL_DD_withomega" title="Permalink to this definition">#</a></dt>
 <dd><p>Provides the direct detection sigma SI upper limits for specified experiment.</p>
 <p>It interpolates the limits on the array of dark matter masses provided.
-Limits are returned in units cm^2.</p>
+Limits are returned in units cm^2.
+&lt;missing&gt;</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
@@ -383,8 +384,8 @@ lambda_hs and DMmass.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>DMmass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
 <li><p><strong>lambdahs_val</strong> (<em>np.ndarray</em>) – Values of the lambda_HS parameter.</p></li>
+<li><p><strong>DMmass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
 <li><p><strong>Lambda_vec</strong> (<em>np.ndarray</em>) – Vector of the values of lambda_hs used for the calculation of the relic density</p></li>
 <li><p><strong>Mass_vec</strong> (<em>np.ndarray</em>) – Vector of the values of mass used for the calculation of the relic density</p></li>
 <li><p><strong>csi_vec</strong> (<em>np.ndarray</em>) – Vector of the values of csi used for the calculation of the relic density</p></li>
@@ -399,40 +400,20 @@ lambda_hs and DMmass.</p>
 </dl>
 </dd></dl>
 <dl class="py function">
-<dt class="sig sig-object py" id="singletscalar_dm._lambda2sigmav">
-<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">_lambda2sigmav</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DMmass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambdahs_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#_lambda2sigmav"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm._lambda2sigmav" title="Permalink to this definition">#</a></dt>
-<dd><p>Returns the interpolated <span class="math notranslate nohighlight">\(\sigma v\)</span> value on mass and coupling.</p>
-<p>The value is given in units of cm^3/s.</p>
-<dl class="field-list simple">
-<dt class="field-odd">Parameters<span class="colon">:</span></dt>
-<dd class="field-odd"><ul class="simple">
-<li><p><strong>DMmass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
-<li><p><strong>lambdahs_val</strong> (<em>np.ndarray</em>) – Values of the lambda_HS parameter.</p></li>
-<li><p><strong>table_int</strong> (<em>np.ndarray</em>) – Array containing all the computed values of the <span class="math notranslate nohighlight">\(\sigma v\)</span>.</p></li>
-</ul>
-</dd>
-<dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>sigmav</strong> – The values of the <span class="math notranslate nohighlight">\(\sigma v\)</span>.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>np.ndarray</p>
-</dd>
-</dl>
-</dd></dl>
-<dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.flux_DM_prompt">
-<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">flux_DM_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DMmass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_hs</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#flux_DM_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.flux_DM_prompt" title="Permalink to this definition">#</a></dt>
-<dd><p>Calculates the gamma-ray flux for the Galactic center excess.</p>
+<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">flux_DM_prompt</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">Energy</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">DMmass</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_hs</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#flux_DM_prompt"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.flux_DM_prompt" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates prompt flux of gamma rays from dark matter annihilation for a given dark matter mass and lambda_hs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>Energy</strong> (<em>np.ndarray</em>) – Gamma-ray energy in GeV</p></li>
+<li><p><strong>Energy</strong> (<em>np.ndarray</em>) – The gamma-ray energy in GeV</p></li>
 <li><p><strong>DMmass</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
 <li><p><strong>lambda_hs</strong> (<em>np.ndarray</em>) – The coupling between Higgs boson and the dark matter.</p></li>
+<li><p><strong>warningprint</strong> (<em>{True</em><em>, </em><em>False}</em>) – Flag to decide if you want to print the warning messages or not</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>flux</strong> – gamma-ray flux for the Galactic center excess.</p>
+<dd class="field-even"><p><strong>dNdE</strong> – The prompt flux of gamma rays from dark matter annihilation</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray</p>
@@ -442,17 +423,17 @@ lambda_hs and DMmass.</p>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.func_interpolate">
 <span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">func_interpolate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">varval</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">variablevec</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">funcvec</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#func_interpolate"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.func_interpolate" title="Permalink to this definition">#</a></dt>
-<dd><p>This is a generic function to perform an interpolation</p>
+<dd><p>This function is a generic 1D interpolator that can be used for every vectors variablevec,funcvec</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
-<li><p><strong>varval</strong> (<em>np.ndarray</em>) – Value of the variable for which we want the interpolated value</p></li>
-<li><p><strong>variablevec</strong> (<em>np.ndarray</em>) – Vector for the independent variable</p></li>
-<li><p><strong>funcvec</strong> (<em>np.ndarray</em>) – Vector for the dependent variable.</p></li>
+<li><p><strong>varval</strong> (<em>np.ndarray</em>) – Value at which the interpolation is performed</p></li>
+<li><p><strong>variablevec</strong> (<em>np.ndarray</em>) – Vector of the indipendent variable</p></li>
+<li><p><strong>funcvec</strong> (<em>np.ndarray</em>) – Vector of the dependent variable</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>value</strong> – Interpolated value.</p>
+<dd class="field-even"><p><strong>result</strong> – Result of the interpolation at varval</p>
 </dd>
 <dt class="field-odd">Return type<span class="colon">:</span></dt>
 <dd class="field-odd"><p>ndarray</p>
@@ -482,15 +463,14 @@ lambda_hs and DMmass.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.interpolate_Omega">
-<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_Omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QCDmodel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_Omega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_Omega" title="Permalink to this definition">#</a></dt>
-<dd><p>Calculates the relic density as Omega h^2 given the mass and lambda.</p>
+<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_Omega</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambda_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QCDmodel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_Omega"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_Omega" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the relic density as Omega h^2 given the dark matter mass and lambda_hs.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
 <li><p><strong>lambda_val</strong> (<em>np.ndarray</em>) – Values of the lambda_HS parameter.</p></li>
 <li><p><strong>QCDmodel</strong> (<em>{'QCDA'</em><em>, </em><em>'QCDB'}</em>) – Model for the QCD phase transition.</p></li>
-<li><p><strong>warningprint</strong> (<em>True</em><em>, </em><em>optional</em>) – Whether to print a warning when extrapolating.</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -502,7 +482,7 @@ and coupling.</p>
 </dd>
 </dl>
 <p class="rubric">Notes</p>
-<p>The computation of the relic density has been obtained via the code DRAKE and MicrOMEGAs.</p>
+<p>The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.interpolate_Omega_MicrOMEGAs">
@@ -528,7 +508,7 @@ and coupling.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.interpolate_lambda">
-<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Omega_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QCDmodel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_lambda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_lambda" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_lambda</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Omega_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QCDmodel</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_lambda"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_lambda" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculates the lambda_HS parameter for given relic density and mass values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
@@ -536,7 +516,7 @@ and coupling.</p>
 <li><p><strong>mass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
 <li><p><strong>Omega_val</strong> (<em>np.ndarray</em>) – The values of the relic density interpolated on the 2d grid of mass</p></li>
 <li><p><strong>QCDmodel</strong> (<em>{'QCDA'</em><em>, </em><em>'QCDB'}</em>) – Model for the QCD phase transition.</p></li>
-<li><p><strong>warningprint</strong> (<em>True</em><em>, </em><em>optional</em>) – Whether to print a warning when extrapolating.</p></li>
+<li><p><strong>warningprint</strong> (<em>{True</em><em>, </em><em>False}</em>) – Flag to decide if you want to print the warning messages or not</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -548,18 +528,18 @@ and coupling.</p>
 </dl>
 <p class="rubric">Notes</p>
 <p>The computation of the parameter uses the computation of the relic density
-obtained via the code DRAKE and MicrOMEGAs.</p>
+obtained via the code DRAKE and MICROMEGAs.</p>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.interpolate_lambda_MicrOMEGAs">
-<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_lambda_MicrOMEGAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Omega_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_lambda_MicrOMEGAs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_lambda_MicrOMEGAs" title="Permalink to this definition">#</a></dt>
+<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_lambda_MicrOMEGAs</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">Omega_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">warningprint</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_lambda_MicrOMEGAs"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_lambda_MicrOMEGAs" title="Permalink to this definition">#</a></dt>
 <dd><p>Calculates the lambda_HS parameter for given relic density and mass values.</p>
 <dl class="field-list simple">
 <dt class="field-odd">Parameters<span class="colon">:</span></dt>
 <dd class="field-odd"><ul class="simple">
 <li><p><strong>mass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
 <li><p><strong>Omega_val</strong> (<em>np.ndarray</em>) – The value of the relic density interpolated on the 2d grid of mass</p></li>
-<li><p><strong>warningprint</strong> (<em>True</em><em>, </em><em>optional</em>) – Whether to print a warning when extrapolating.</p></li>
+<li><p><strong>warningprint</strong> (<em>{True</em><em>, </em><em>False}</em>) – Flag to decide if you want to print the warning messages or not</p></li>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
@@ -572,6 +552,48 @@ obtained via the code DRAKE and MicrOMEGAs.</p>
 <p class="rubric">Notes</p>
 <p>The computation of the parameter uses the computation of the relic density
 obtained via the code MicrOMEGAs.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="singletscalar_dm.interpolate_relicdensity">
+<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">interpolate_relicdensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">QCDmodel</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#interpolate_relicdensity"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.interpolate_relicdensity" title="Permalink to this definition">#</a></dt>
+<dd><p>Calculates the lambda_hs value for which we obtain the observed DM relic density (Omegah^2=0.120).</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>mass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
+<li><p><strong>QCDmodel</strong> (<em>{'MICROMEGAs'</em><em>, </em><em>'QCDA'</em><em>, </em><em>'QCDB'}</em>) – Model for the QCD phase transition.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>lambda_val</strong> – Values of the lambda_HS parameter.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
+<p class="rubric">Notes</p>
+<p>The computation of the relic density has been obtained via the code DRAKE and MICROMEGAs.</p>
+</dd></dl>
+<dl class="py function">
+<dt class="sig sig-object py" id="singletscalar_dm.lambda2sigmav">
+<span class="sig-prename descclassname"><span class="pre">singletscalar_dm.</span></span><span class="sig-name descname"><span class="pre">lambda2sigmav</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">DMmass_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">lambdahs_val</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">table_int</span></span></em><span class="sig-paren">)</span><a class="reference internal" href="_modules/singletscalar_dm/_functions.html#lambda2sigmav"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#singletscalar_dm.lambda2sigmav" title="Permalink to this definition">#</a></dt>
+<dd><p>Returns the interpolated <span class="math notranslate nohighlight">\(\sigma v\)</span> value on mass and coupling.</p>
+<p>The value is given in units of cm^3/s.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>DMmass_val</strong> (<em>np.ndarray</em>) – Dark matter mass values in GeV.</p></li>
+<li><p><strong>lambdahs_val</strong> (<em>np.ndarray</em>) – Values of the lambda_HS parameter.</p></li>
+<li><p><strong>table_int</strong> (<em>np.ndarray</em>) – Array containing all the computed values of the <span class="math notranslate nohighlight">\(\sigma v\)</span>.</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p><strong>sigmav</strong> – The values of the <span class="math notranslate nohighlight">\(\sigma v\)</span>.</p>
+</dd>
+<dt class="field-odd">Return type<span class="colon">:</span></dt>
+<dd class="field-odd"><p>np.ndarray</p>
+</dd>
+</dl>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.minimize_br_inv">
@@ -609,27 +631,14 @@ Limits are returned in units cm^2.</p>
 </ul>
 </dd>
 <dt class="field-even">Returns<span class="colon">:</span></dt>
-<dd class="field-even"><p><strong>ul</strong> – The upper limit values sampled at the provided masses.</p>
-</dd>
-<dt class="field-odd">Return type<span class="colon">:</span></dt>
-<dd class="field-odd"><p>ndarray</p>
+<dd class="field-even"><p><ul class="simple">
+<li><p><strong>ul</strong> (<em>ndarray</em>) – The upper limit values sampled at the provided masses.</p></li>
+<li><p><em>Ref</em></p></li>
+<li><p><em>—</em></p></li>
+</ul>
+</p>
 </dd>
 </dl>
-<p class="rubric">Notes</p>
-<p>The upper limits are taken from the following references: LZ <a class="reference internal" href="#lz22" id="id1"><span>[LZ22]</span></a>, DARWIN <a class="reference internal" href="#darwin16" id="id2"><span>[DARWIN16]</span></a>.</p>
-<section id="ref">
-<h3>Ref<a class="headerlink" href="#ref" title="Permalink to this heading">#</a></h3>
-<div class="citation-list" role="list">
-<div class="citation" id="lz22" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a href="#id1" role="doc-backlink">LZ22</a><span class="fn-bracket">]</span></span>
-<p>J. Aalbers et al. (LZ) (2022), 2207.03764</p>
-</div>
-<div class="citation" id="darwin16" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a href="#id2" role="doc-backlink">DARWIN16</a><span class="fn-bracket">]</span></span>
-<p>J. Aalbers et al. (DARWIN), JCAP 11, 017 (2016), 1606.07001</p>
-</div>
-</div>
-</section>
 </dd></dl>
 <dl class="py function">
 <dt class="sig sig-object py" id="singletscalar_dm.sigmav_channels">
@@ -651,8 +660,12 @@ Limits are returned in units cm^2.</p>
 <dd class="field-odd"><p>np.ndarray</p>
 </dd>
 </dl>
+<div class="admonition seealso">
+<p class="admonition-title">See also</p>
+<p><code class="xref py py-obj docutils literal notranslate"><span class="pre">_lambda2sigma</span></code></p>
+</div>
 <p class="rubric">Notes</p>
-<p>This function internally calls <cite>_lambda2sigmav</cite> passing the <code class="docutils literal notranslate"><span class="pre">table_int</span></code> as
+<p>This function internally calls <cite>lambda2sigmav</cite> passing the <code class="docutils literal notranslate"><span class="pre">table_int</span></code> as
 the content of the data file related to the <code class="docutils literal notranslate"><span class="pre">channel</span></code> specified.</p>
 </dd></dl>
 </section>
@@ -697,7 +710,6 @@ the content of the data file related to the <code class="docutils literal notran
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.GetUL_DD_withomega"><code class="docutils literal notranslate"><span class="pre">GetUL_DD_withomega()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.SI_noomega"><code class="docutils literal notranslate"><span class="pre">SI_noomega()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.SI_withomega"><code class="docutils literal notranslate"><span class="pre">SI_withomega()</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm._lambda2sigmav"><code class="docutils literal notranslate"><span class="pre">_lambda2sigmav()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.flux_DM_prompt"><code class="docutils literal notranslate"><span class="pre">flux_DM_prompt()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.func_interpolate"><code class="docutils literal notranslate"><span class="pre">func_interpolate()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.import_data_file"><code class="docutils literal notranslate"><span class="pre">import_data_file()</span></code></a></li>
@@ -705,6 +717,8 @@ the content of the data file related to the <code class="docutils literal notran
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.interpolate_Omega_MicrOMEGAs"><code class="docutils literal notranslate"><span class="pre">interpolate_Omega_MicrOMEGAs()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.interpolate_lambda"><code class="docutils literal notranslate"><span class="pre">interpolate_lambda()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.interpolate_lambda_MicrOMEGAs"><code class="docutils literal notranslate"><span class="pre">interpolate_lambda_MicrOMEGAs()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.interpolate_relicdensity"><code class="docutils literal notranslate"><span class="pre">interpolate_relicdensity()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.lambda2sigmav"><code class="docutils literal notranslate"><span class="pre">lambda2sigmav()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.minimize_br_inv"><code class="docutils literal notranslate"><span class="pre">minimize_br_inv()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.provide_ULEXP"><code class="docutils literal notranslate"><span class="pre">provide_ULEXP()</span></code></a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#singletscalar_dm.sigmav_channels"><code class="docutils literal notranslate"><span class="pre">sigmav_channels()</span></code></a></li>

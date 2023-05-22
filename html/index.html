@@ -331,8 +331,8 @@ command in the package directory:</p>
 <p>We provide an examples gallery, where it is possible to see many applications
 of the routines contained in the package to plot relevant phenomenological
 quantities.
-It also enables the possibility of downloading every example either as <cite>.py</cite>
-scripts or <cite>.ipynb</cite> notebooks.</p>
+It also enables the possibility of downloading every example either as <code class="docutils literal notranslate"><span class="pre">.py</span></code>
+scripts or <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebooks.</p>
 <p>The examples rely on the <a class="reference external" href="https://matplotlib.org/"><code class="docutils literal notranslate"><span class="pre">matplotlib</span></code></a> package in order to show the plots.
 You can install this dependence using the following command in the package root
 directory:</p>
@@ -343,13 +343,36 @@ directory:</p>
 <section id="building-the-documentation">
 <h2>Building the documentation<a class="headerlink" href="#building-the-documentation" title="Permalink to this heading">#</a></h2>
 <p>If you want to rebuild the documentation for yourself, you need to use <a class="reference external" href="https://www.sphinx-doc.org/en/master/"><code class="docutils literal notranslate"><span class="pre">sphinx</span></code></a>
-with the configuration provided in the <cite>docs/</cite> folder.</p>
+with the configuration provided in the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> folder.</p>
 <p>You can install the required dependencies using the following command in the package
 root directory:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span><span class="s1">&#39;.[docs]&#39;</span>
 </pre></div>
 </div>
-<p>Build as usual following the <a class="reference external" href="https://www.sphinx-doc.org/en/master/"><code class="docutils literal notranslate"><span class="pre">sphinx</span></code></a> directives.</p>
+<p>Build using <a class="reference external" href="https://www.sphinx-doc.org/en/master/"><code class="docutils literal notranslate"><span class="pre">sphinx</span></code></a>.
+You can run the following commands inside the <code class="docutils literal notranslate"><span class="pre">docs/</span></code> directory.</p>
+<p>If you want to update the source documentation:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>rst
+</pre></div>
+</div>
+<p>If you want to build the documentation in a certain format, specifying a
+<code class="docutils literal notranslate"><span class="pre">&lt;builder&gt;</span></code> among the <a class="reference external" href="https://www.sphinx-doc.org/en/master/usage/builders/index.html">available builders</a>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>make<span class="w"> </span>&lt;builder&gt;
+</pre></div>
+</div>
+<p>Notice that it can take a while to build the whole documentation, given it will
+run all the examples.</p>
+</section>
+<section id="install-in-development-mode">
+<h2>Install in development mode<a class="headerlink" href="#install-in-development-mode" title="Permalink to this heading">#</a></h2>
+<p>If you wish to change something in the data files or in the code, we advise you
+to install the package in <em>development</em> or <em>editable</em> mode, using the following
+command in the package root directory:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>--editable<span class="w"> </span>.
+</pre></div>
+</div>
+<p>In this way you are free to modify anything inside the <code class="docutils literal notranslate"><span class="pre">src/</span></code> folder and the changes
+will be immediately reflected in the installed package once you re-import it.</p>
 </section>
 </section>
 <section id="contents">
@@ -387,7 +410,7 @@ please cite <a class="reference external" href="https://arxiv.org/abs/####.#####
 <ul class="simple">
 <li><p>MadDM <a class="reference internal" href="#maddm1-0" id="id1"><span>[MadDM1.0]</span></a>, <a class="reference internal" href="#maddm2-0" id="id2"><span>[MadDM2.0]</span></a>, <a class="reference internal" href="#maddm3-0" id="id3"><span>[MadDM3.0]</span></a>, <a class="reference internal" href="#maddm3-2" id="id4"><span>[MadDM3.2]</span></a></p></li>
 <li><p>DRAKE <a class="reference internal" href="#drake1-0" id="id5"><span>[DRAKE1.0]</span></a></p></li>
-<li><p>MicrOMEGAs <a class="reference internal" href="#micromegas2-0" id="id6"><span>[MicrOMEGAs2.0]</span></a>, <a class="reference internal" href="#micromegas3-0" id="id7"><span>[MicrOMEGAs3.0]</span></a>, <a class="reference internal" href="#micromegas4-0" id="id8"><span>[MicrOMEGAs4.0]</span></a>, <a class="reference internal" href="#micromegas5-0" id="id9"><span>[MicrOMEGAs5.0]</span></a>, <a class="reference internal" href="#micromegas5-2" id="id10"><span>[MicrOMEGAs5.2]</span></a>, <a class="reference internal" href="#micromegas5-3" id="id11"><span>[MicrOMEGAs5.3]</span></a>.</p></li>
+<li><p>micrOMEGAs <a class="reference internal" href="#micromegas2-0" id="id6"><span>[micrOMEGAs2.0]</span></a>, <a class="reference internal" href="#micromegas3-0" id="id7"><span>[micrOMEGAs3.0]</span></a>, <a class="reference internal" href="#micromegas4-0" id="id8"><span>[micrOMEGAs4.0]</span></a>, <a class="reference internal" href="#micromegas5-0" id="id9"><span>[micrOMEGAs5.0]</span></a>, <a class="reference internal" href="#micromegas5-2" id="id10"><span>[micrOMEGAs5.2]</span></a>, <a class="reference internal" href="#micromegas5-3" id="id11"><span>[micrOMEGAs5.3]</span></a>.</p></li>
 </ul>
 <div role="list" class="citation-list">
 <div class="citation" id="maddm1-0" role="doc-biblioentry">
@@ -411,27 +434,27 @@ please cite <a class="reference external" href="https://arxiv.org/abs/####.#####
 <p>T. Binder, T. Bringmann, M. Gustafsson, and A. Hryczuk, Eur. Phys. J. C 81, 577 (2021), 2103.01944</p>
 </div>
 <div class="citation" id="micromegas2-0" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">MicrOMEGAs2.0</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">micrOMEGAs2.0</a><span class="fn-bracket">]</span></span>
 <p>G. Belanger, F. Boudjema, A. Pukhov, and A. Semenov, Comput. Phys. Commun. 176, 367 (2007), hep-ph/0607059</p>
 </div>
 <div class="citation" id="micromegas3-0" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">MicrOMEGAs3.0</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id7">micrOMEGAs3.0</a><span class="fn-bracket">]</span></span>
 <p>G. Belanger, F. Boudjema, A. Pukhov, and A. Semenov, Comput. Phys. Commun. 185, 960 (2014), 1305.0237</p>
 </div>
 <div class="citation" id="micromegas4-0" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">MicrOMEGAs4.0</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id8">micrOMEGAs4.0</a><span class="fn-bracket">]</span></span>
 <p>D. Barducci, G. Belanger, J. Bernon, F. Boudjema, J. Da Silva, S. Kraml, U. Laa, and A. Pukhov, Comput. Phys. Commun. 222, 327 (2018), 1606.03834</p>
 </div>
 <div class="citation" id="micromegas5-0" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">MicrOMEGAs5.0</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id9">micrOMEGAs5.0</a><span class="fn-bracket">]</span></span>
 <p>G. Belanger, F. Boudjema, A. Goudelis, A. Pukhov, and B. Zaldivar, Comput. Phys. Commun. 231, 173 (2018), 1801.03509</p>
 </div>
 <div class="citation" id="micromegas5-2" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">MicrOMEGAs5.2</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id10">micrOMEGAs5.2</a><span class="fn-bracket">]</span></span>
 <p>G. Belanger, A. Mjallal and A. Pukhov, Eur. Phys. J. C 81, 239 (2021), 2003.08621</p>
 </div>
 <div class="citation" id="micromegas5-3" role="doc-biblioentry">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">MicrOMEGAs5.3</a><span class="fn-bracket">]</span></span>
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id11">micrOMEGAs5.3</a><span class="fn-bracket">]</span></span>
 <p>G. Alguero, G. Belanger, S. Kraml and A. Pukhov, SciPost Phys. 13, 124 (2022), 2207.10536</p>
 </div>
 </div>
@@ -479,6 +502,7 @@ please cite <a class="reference external" href="https://arxiv.org/abs/####.#####
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installation">Installation</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#running-the-examples">Running the examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-the-documentation">Building the documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-in-development-mode">Install in development mode</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#contents">Contents</a><ul class="visible nav section-nav flex-column">

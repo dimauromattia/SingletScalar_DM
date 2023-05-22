@@ -64,7 +64,7 @@ In the following, we sho the calculation of the spin independent cross section f
  .. code-block:: none
 
 
-    1.781425424359045e-46
+    1.7814254243590454e-46
 
 
 
@@ -133,7 +133,7 @@ The example below calculates the upper limits for :math:`\lambda_{HS}` for the L
 It is also possible to calculate the direct detection constraints including the rescaling due to the density of dark matter of the :math:`S` particles.
 First, we calculate the :math:`\xi` term which is the relative ratio of :math:`S` particle density over the total dark matter one.
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-75
+.. GENERATED FROM PYTHON SOURCE LINES 57-78
 
 .. code-block:: default
 
@@ -155,6 +155,9 @@ First, we calculate the :math:`\xi` term which is the relative ratio of :math:`S
 
     print(csi_vec)
 
+    val = GetUL_DD_withomega(60,Lambda_vec,MassDD_vec,csi_vec,'LZ')
+    print(val)
+
 
 
 
@@ -165,20 +168,24 @@ First, we calculate the :math:`\xi` term which is the relative ratio of :math:`S
 
     [1.24166667e+06 1.21250000e+06 1.18416667e+06 ... 2.54083333e-05
      2.40916667e-05 2.28333333e-05]
+    Optimization terminated successfully.
+             Current function value: 0.000000
+             Iterations: 31
+             Function evaluations: 62
+    0.13446874237060566
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 76-77
+.. GENERATED FROM PYTHON SOURCE LINES 79-80
 
 The we use the function `GetUL_DD` to get the upper limits including also the relic density of :math:`S`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 77-85
+.. GENERATED FROM PYTHON SOURCE LINES 80-87
 
 .. code-block:: default
 
 
-    DMmassDD_vec = np.logspace(np.log10(5),4.,100)
     LambdaDD_LZ_HS_vec = np.zeros(len(MassDD_vec))
     LambdaDD_Darwin_HS_vec = np.zeros(len(MassDD_vec))
     for t in range(len(MassDD_vec)):
@@ -577,7 +584,7 @@ The we use the function `GetUL_DD` to get the upper limits including also the re
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-98
+.. GENERATED FROM PYTHON SOURCE LINES 88-100
 
 .. code-block:: default
 
@@ -600,7 +607,7 @@ The we use the function `GetUL_DD` to get the upper limits including also the re
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-122
+.. GENERATED FROM PYTHON SOURCE LINES 101-124
 
 .. code-block:: default
 
@@ -642,7 +649,7 @@ The we use the function `GetUL_DD` to get the upper limits including also the re
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.707 seconds)
+   **Total running time of the script:** ( 0 minutes  12.147 seconds)
 
 
 .. _sphx_glr_download_examples_gallery_plot_direct_detection.py:

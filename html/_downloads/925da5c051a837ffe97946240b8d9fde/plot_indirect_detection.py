@@ -32,7 +32,7 @@ funcint_dwarf = interp2d(mass_vec,sigmav_vec,LogLike_table_dwarf)
 LogLikel_table_dwarf = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(lambdap_vec)):
-        sigmav_val = _lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
+        sigmav_val = lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
         LogLikel_table_dwarf[u,t] = funcint_dwarf(mass_vec[t],sigmav_val)
 
 
@@ -49,7 +49,7 @@ funcint_pbar = interp2d(mass_vec,sigmav_vec,LogLike_table_pbar)
 LogLikel_table_pbar = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(lambdap_vec)):
-        sigmav_val = _lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
+        sigmav_val = lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
         LogLikel_table_pbar[u,t] = funcint_pbar(mass_vec[t],sigmav_val)
 
 
@@ -66,7 +66,7 @@ funcint_gce = interp2d(mass_vec,sigmav_vec,LogLike_table_gce)
 LogLikel_table_gce = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(lambdap_vec)):
-        sigmav_val = _lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
+        sigmav_val = lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
         LogLikel_table_gce[u,t] = funcint_gce(mass_vec[t],sigmav_val)
 
 
@@ -139,7 +139,7 @@ funcint_pbar = interp2d(mass_vec,sigmav_vec,LogLike_table_pbar)
 LogLikel_table_pbar = np.zeros(shape=(len(lambdap_vec),len(mass_vec)))
 for t in range(len(mass_vec)):
     for u in range(len(lambdap_vec)):
-        sigmav_val = _lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
+        sigmav_val = lambda2sigmav(mass_vec[t],lambdap_vec[u],table_int)
         LogLikel_table_pbar[u,t] = funcint_pbar(mass_vec[t],sigmav_val)
 
 # %%
