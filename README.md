@@ -103,7 +103,7 @@ one of them.
 ## Citation
 
 If you are using this tool or the results obtained with it in a published work,
-please cite [arXiv:2305.#####](https://arxiv.org/abs/2305.XXXXX).
+please cite [arXiv:2305.11937](https://arxiv.org/abs/2305.11937).
 
 ## References
 
