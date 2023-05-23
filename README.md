@@ -1,6 +1,6 @@
 # SingletScalar-DM
 
-[![arXiv](https://img.shields.io/static/v1?label=arXiv&message=2305.XXXXX&color=red&style=for-the-badge)](https://arxiv.org/abs/2305.11937)
+[![arXiv](https://img.shields.io/static/v1?label=arXiv&message=2305.11937&color=red&style=for-the-badge)](https://arxiv.org/abs/2305.11937)
 [![License MIT](https://img.shields.io/static/v1?label=License&message=MIT&color=yellow&style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 This repository contains the code for calculating cross sections, relic density
