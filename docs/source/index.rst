@@ -116,7 +116,7 @@ Citation
 ========
 
 If you are using this tool or the results obtained with it in a published work,
-please cite `arXiv:####.##### <https://arxiv.org/abs/####.#####>`_.
+please cite `arXiv:2305.11937 <https://arxiv.org/abs/2305.11937>`_.
 
 Indices and tables
 ==================
